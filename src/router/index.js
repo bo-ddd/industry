@@ -1,11 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '../views/layout/Layout.vue'
-
+import LoginView from "../views/loginView/loginView.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { path: "/", redirect: "/layout" },
+  {
+    path: "/",
+    name: 'login',
+    component: LoginView,
+  },
+  {
+    path:"/hoem",
+    name:"Home",
+    component: () => import("../views/home/Home.vue")
+  },
   {
     path: '/layout',
     name: 'Layout',
@@ -85,25 +94,35 @@ const routes = [
       path: '/extinguishingAndProtection',
       name: 'extinguishingAndProtection',
       component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
-    },{
+    }, {
+      // 办公管理  > 公文 > 发布公文
+      path: '/publishKumon',
+      name: 'publishKumon',
+      component: () => import("../views/officeManagement/kumonManagement/publishKumon.vue")
+    }, {
+      // 办公管理  > 事务
+      path: '/transactionManagement',
+      name: 'transactionManagement',
+      component: () => import("../views/officeManagement/transactionManagement/transactionManagement.vue")
+    }, {
       //园区应急管理 > 应急模拟训练
-      path:'/meetDrill',
-      name:'meetDrill',
+      path: '/meetDrill',
+      name: 'meetDrill',
       component: () => import("../views/meet/meetDrill/meetDrill.vue")
     },
     {
       //园区应急管理 > 应急检测预警
-      path:'/meetEarly',
-      name:'meetEarly',
+      path: '/meetEarly',
+      name: 'meetEarly',
       component: () => import("../views/meet/meetEarly/meetEarly.vue")
     },
     {
       //园区应急管理 > 应急预案管理
-      path:'/meetPlan',
-      name:'meetPlan',
+      path: '/meetPlan',
+      name: 'meetPlan',
       component: () => import("../views/meet/meetPlan/meetPlan.vue")
     },
-     {
+    {
       // 坏境管理  > 消防
       path: '/energyManagement',
       name: 'EnergyManagement',
@@ -113,8 +132,8 @@ const routes = [
   },
   {
     //园区应急管理 > 应急资源管理
-    path:'/meetResource',
-    name:'meetResource',
+    path: '/meetResource',
+    name: 'meetResource',
     component: () => import("../views/meet/meetResource/meetResource.vue")
   },
 ]
