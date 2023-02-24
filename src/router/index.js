@@ -45,6 +45,46 @@ const routes = [
       path: '/SuperviseView',
       name: 'SuperviseView',
       component: () => import("../views/safetyProductionManagement/SuperviseView/SuperviseView.vue")
+    }, {
+      // 安全生产管理  > 安全隐患排查
+      path: '/hiddenTrouble',
+      name: 'HiddenTrouble',
+      component: () => import("../views/safetyProductionManagement/HiddenTrouble/HiddenTrouble.vue")
+    }, {
+      // 安全生产管理  > 风险隐患详情
+      path: '/hiddenDangerDetail',
+      name: 'HiddenDangerDetail',
+      component: () => import("../views/safetyProductionManagement/HiddenDangerDetail/HiddenDangerDetail.vue")
+    }, {
+      // 安全生产管理  > 卡口管理
+      path: '/checkpointManagement',
+      name: 'CheckpointManagement',
+      component: () => import("../views/safetyProductionManagement/CheckpointManagement/CheckpointManagement.vue")
+    }, {
+      // 坏境管理  > 环境质量
+      path: '/environmentalQuality',
+      name: 'EnvironmentalQuality',
+      component: () => import("../views/environmentalManagement/EnvironmentalQuality/EnvironmentalQuality.vue")
+    }, {
+      // 坏境管理  > 污染源
+      path: '/pollutionSource',
+      name: 'PollutionSource',
+      component: () => import("../views/environmentalManagement/PollutionSource/PollutionSource.vue")
+    }, {
+      // 坏境管理  > 污染物
+      path: '/pollutant',
+      name: 'Pollutant',
+      component: () => import("../views/environmentalManagement/pollutant/Pollutant.vue")
+    }, {
+      // 坏境管理  > 环保登记
+      path: '/enterpriseEnvironmentalProtection',
+      name: 'enterpriseEnvironmentalProtection',
+      component: () => import("../views/environmentalManagement/enterpriseEnvironmentalProtection/enterpriseEnvironmentalProtection.vue")
+    }, {
+      // 坏境管理  > 消防
+      path: '/extinguishingAndProtection',
+      name: 'extinguishingAndProtection',
+      component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
     }
     ]
   },

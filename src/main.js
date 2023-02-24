@@ -5,8 +5,10 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/lib/flexible'
+import dataV from '@jiaminghi/data-view'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(dataV)
 Vue.use(ElementUI);
 new Vue({
   router,
