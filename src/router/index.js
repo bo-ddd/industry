@@ -45,6 +45,21 @@ const routes = [
       path: '/SuperviseView',
       name: 'SuperviseView',
       component: () => import("../views/safetyProductionManagement/SuperviseView/SuperviseView.vue")
+    }, {
+      // 安全生产管理  > 安全隐患排查
+      path: '/hiddenTrouble',
+      name: 'HiddenTrouble',
+      component: () => import("../views/safetyProductionManagement/HiddenTrouble/HiddenTrouble.vue")
+    }, {
+      // 安全生产管理  > 风险隐患详情
+      path: '/hiddenDangerDetail',
+      name: 'HiddenDangerDetail',
+      component: () => import("../views/safetyProductionManagement/HiddenDangerDetail/HiddenDangerDetail.vue")
+    }, {
+      // 安全生产管理  > 卡口管理
+      path: '/checkpointManagement',
+      name: 'CheckpointManagement',
+      component: () => import("../views/safetyProductionManagement/CheckpointManagement/CheckpointManagement.vue")
     }
     ]
   },
