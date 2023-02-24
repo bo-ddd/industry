@@ -85,6 +85,11 @@ const routes = [
       path: '/extinguishingAndProtection',
       name: 'extinguishingAndProtection',
       component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
+    }, {
+      // 坏境管理  > 消防
+      path: '/energyManagement',
+      name: 'EnergyManagement',
+      component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
     }
     ]
   },
