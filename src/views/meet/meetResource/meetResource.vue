@@ -79,7 +79,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num mt-1">
                 122.5
                 <span class="unit">万</span>
@@ -91,7 +91,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num mt-1">
                 122.5
                 <span class="unit">万</span>
@@ -103,7 +103,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num mt-1">
                 122.5
                 <span class="unit">万</span>
@@ -115,7 +115,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num mt-1">
                 122.5
                 <span class="unit">万</span>
@@ -123,11 +123,11 @@
             </div>
           </div>
         </div>
-        <div class="chat"></div>
+        <div id="chat1" class="chat"></div>
       </div>
       <div class="grid-content flex-column-between">
         <div class="title">效绩预警</div>
-        <div class="chat2"></div>
+        <div ref="chat2" id="chat2" class="chat2"></div>
       </div>
       <div class="grid-content flex-column-between">
         <div class="title">库存总量统计</div>
@@ -137,7 +137,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num">
                 122.5
                 <span class="unit">万</span>
@@ -149,7 +149,7 @@
               <img src="@/assets/image/icon-storeHouse.png" alt />
             </div>
             <div>
-              <div class="title">商品品类</div>
+              <div class="title">库存品类</div>
               <div class="num">
                 122.5
                 <span class="unit">万</span>
@@ -157,13 +157,15 @@
             </div>
           </div>
         </div>
-        <div class="table">hahah</div>
+        <dv-scroll-board class="table" :config="config3" style="width:500px;height:220px" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Charts from "@jiaminghi/charts";
+import { changeDefaultConfig } from "@jiaminghi/charts";
 export default {
   data() {
     return {
@@ -195,23 +197,122 @@ export default {
         colors: ["#fcc800", "#16d6ff"],
         showValue: true,
       },
+      config3: {
+        headerBGC:'#152561',
+        oddRowBGC:'#0b1c48',
+        evenRowBGC:'#0b1c48',
+        header: ["库存量", "商品类别", "商品品类"],
+        data: [
+          ["200", "灭火器", "器材工具"],
+          ["100", "防毒面罩", "防身用具"],
+          ["100", "照明灯", "照明设备"],
+          ["30", "担架", "运输设备"],
+          ["20", "喊话器", "通讯设备"],
+          ["10", "对讲机", "通讯设备"],
+          ["10", "盾牌", "防身用具"],
+          ["10", "消防栓", "器材工具"],
+          ["10", "医疗箱", "声明救援"],
+          ["5", "车辆", "运输设备"],
+        ],
+        index: true,
+        columnWidth: [50],
+        align: ["center"],
+      },
       option1: {
         title: {
-          text: "周销售额趋势",
+          text: "货物流动趋势",
+        },
+        legend: {
+          data: ["待收货", "待出货", "已出货"],
         },
         xAxis: {
-          name: "第一周",
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+          //   name: "第一周",
+          data: [
+            "2月18日",
+            "2月19日",
+            "2月20日",
+            "2月21日",
+            "2月22日",
+            "2月23日",
+            "2月24日",
+          ],
         },
         yAxis: {
-          name: "销售额",
+          name: "货物量",
           data: "value",
         },
         series: [
           {
+            name: "待收货",
             data: [1200, 2230, 1900, 2100, 3500, 4200, 3985],
             type: "line",
             smooth: true,
+            stack: "a",
+            lineStyle: {
+              fill: "#ebf158",
+              style: {
+                fill: "#ebf158",
+                lineWidth: 1,
+              },
+            },
+            lineArea: {
+              show: true,
+              style: {
+                fill: "#ebf158",
+                //   opacity: 0.5
+              },
+            },
+            label: {
+              style: {
+                fontSize: 10,
+                fill: "#ebf158",
+              },
+            },
+          },
+          {
+            name: "待出货",
+            data: [1260, 2230, 4900, 2100, 2500, 6200, 1985],
+            type: "line",
+            smooth: true,
+            stack: "b",
+            lineArea: {
+              show: true,
+            },
+          },
+          {
+            name: "已出货",
+            data: [1250, 1230, 1600, 2800, 1500, 4200, 3985],
+            type: "line",
+            smooth: true,
+            stack: "c",
+            lineArea: {
+              show: true,
+            },
+          },
+        ],
+      },
+      option2: {
+        series: [
+          {
+            type: "pie",
+            data: [
+              { name: "0-10", value: 12 },
+              { name: "10-20", value: 12 },
+              { name: "20-30", value: 32 },
+              { name: "30-60", value: 65 },
+              { name: "无保质", value: 44 },
+              { name: "期超期", value: 52 },
+            ],
+            radius: ["20%", "40%"],
+            insideLabel: {
+              show: true,
+            },
+            style: {
+              fontSize: 10,
+              fill: "#f2f34d",
+              textAlign: "center",
+              textBaseline: "middle",
+            },
           },
         ],
       },
@@ -219,6 +320,102 @@ export default {
   },
   mounted() {
     console.log(this.config);
+    this.$nextTick(() => {
+      changeDefaultConfig("color", ["#fff"]);
+      changeDefaultConfig("gauge", {
+        lineStyle: {
+          fill: "#fff",
+          style: {
+            fill: "#fff",
+            lineWidth: 1,
+          },
+        },
+        lineArea: {
+          style: {
+            fill: "#fff",
+            //   opacity: 0.5
+          },
+        },
+        label: {
+          style: {
+            fontSize: 10,
+            fill: "#fff",
+          },
+        },
+      });
+      changeDefaultConfig("xAxis", {
+        nameTextStyle: {
+          fill: "#fff",
+          fontSize: 10,
+        },
+        axisLine: {
+          style: {
+            stroke: "#fff",
+            lineWidth: 1,
+          },
+        },
+        axisLabel: {
+          style: {
+            fill: "#fff",
+            fontSize: 10,
+            rotate: 0,
+          },
+        },
+        axisTick: {
+          style: {
+            stroke: "#fff",
+            lineWidth: 1,
+          },
+        },
+        splitLine: {
+          style: {
+            stroke: "#fff",
+            lineWidth: 1,
+          },
+        },
+      });
+      changeDefaultConfig("yAxis", {
+        nameTextStyle: {
+          fill: "#fff",
+          fontSize: 10,
+        },
+        axisLine: {
+          style: {
+            stroke: "#fff",
+            lineWidth: 1,
+          },
+        },
+        axisTick: {
+          style: {
+            stroke: "#fff",
+            lineWidth: 1,
+          },
+        },
+        axisLabel: {
+          style: {
+            fill: "#fff",
+            fontSize: 10,
+            rotate: 0,
+          },
+        },
+      });
+      changeDefaultConfig("title", {
+        style: {
+          fill: "#fff",
+          fontSize: 18,
+          fontWeight: "bold",
+          textAlign: "center",
+          textBaseline: "bottom",
+        },
+      });
+      const chat1 = document.getElementById("chat1");
+      const myChat1 = new Charts(chat1);
+      myChat1.setOption(this.option1);
+      const chat2 = this.$refs.chat2;
+      console.log(chat2);
+      const myChat2 = new Charts(chat2);
+      myChat2.setOption(this.option2);
+    });
   },
 };
 </script>
@@ -372,10 +569,25 @@ h3 {
   width: 100%;
   height: 50rem;
 }
-.table {
+.chat2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 3000rem;
+  height: 40rem;
+}
+::v-deep.chat2 canvas {
+  /* width: 80%; */
+  /* padding: 3rem; */
+  /* box-sizing: border-box; */
+}
+.table {
+  width: 43.5rem;
+  /* height: 3000rem; */
   background-color: #0b1c48;
+}
+::v-deep .dv-scroll-board{
+    width: 100%!important;
 }
 .ml-2 {
   margin-left: 2rem;
