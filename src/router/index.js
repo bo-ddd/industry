@@ -85,13 +85,37 @@ const routes = [
       path: '/extinguishingAndProtection',
       name: 'extinguishingAndProtection',
       component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
-    }, {
+    },{
+      //园区应急管理 > 应急模拟训练
+      path:'/meetDrill',
+      name:'meetDrill',
+      component: () => import("../views/meet/meetDrill/meetDrill.vue")
+    },
+    {
+      //园区应急管理 > 应急检测预警
+      path:'/meetEarly',
+      name:'meetEarly',
+      component: () => import("../views/meet/meetEarly/meetEarly.vue")
+    },
+    {
+      //园区应急管理 > 应急预案管理
+      path:'/meetPlan',
+      name:'meetPlan',
+      component: () => import("../views/meet/meetPlan/meetPlan.vue")
+    },
+     {
       // 坏境管理  > 消防
       path: '/energyManagement',
       name: 'EnergyManagement',
       component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
     }
     ]
+  },
+  {
+    //园区应急管理 > 应急资源管理
+    path:'/meetResource',
+    name:'meetResource',
+    component: () => import("../views/meet/meetResource/meetResource.vue")
   },
 ]
 

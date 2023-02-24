@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/lib/flexible'
 import dataV from '@jiaminghi/data-view'
+import '@/assets/css/common.css'
 
 Vue.config.productionTip = false;
 Vue.use(dataV)
