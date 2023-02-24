@@ -1,23 +1,26 @@
 <template>
     <div class="home">
-        <dv-full-screen-container>
-            <dv-border-box-8 :reverse="true">
-
-                <dv-border-box-1>
-                    <div class="main-box">
-                        <div class="main" v-for="item in list">
-                            <div class="title">{{ item.title }}</div>
-                            <div class="item" v-for="child in item.children">{{ child.title }}</div>
+            <div class="main-box">
+                <div class="container" v-for="item in list" >
+                    <div class="title">{{ item.title }}</div>
+                    <div class="main">
+                        <div class="item clamp-1" v-for="child in item.children" @click="to(child.url)">
+                            <dv-border-box-12>
+                                {{ child.title }}
+                            </dv-border-box-12>
                         </div>
                     </div>
-                </dv-border-box-1>
-
-            </dv-border-box-8>
-        </dv-full-screen-container>
+                </div>
+            </div>
+            
+            <!-- <dv-border-box-8 :reverse="true">
+            </dv-border-box-8> -->
     </div>
 </template>
 
 <script>
+import { Message } from 'element-ui';
+
 
 export default {
     data() {
@@ -111,7 +114,16 @@ export default {
                     ]
                 }
             ],
-
+        }
+    },
+    methods:{
+        to(url){
+            if(!url){
+                Message.warning("该模块暂未开放");
+                return;
+            }
+            console.log(url);
+            this.$router.push({path: url})
         }
     }
 }
@@ -125,28 +137,42 @@ export default {
     color: white;
 }
 
-.main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-    align-items: center;
-    padding-top: 5rem;
+.container{
+    display: grid;
+    grid-template-columns: 14rem auto;
+    gap: 2rem;
+    margin-top: 4rem;
+}
 
+.main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
 }
 
 .main-box {
-  padding-left: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0 auto;
+  width: 90vw;
 }
 
 .item {
-    padding:3rem;
+    height: 8rem;
+    line-height: 8rem;
     background-color: rgb(10, 79, 120);
     border-radius: .5rem;
-    width: 15rem;
     text-align: center;
+    cursor: pointer;
 }
 
 .title {
-    font-size: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: right;
 }
 </style>

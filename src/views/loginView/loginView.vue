@@ -1,25 +1,26 @@
 <template>
     <div class="main">
-        <dv-border-box-11  title="乌拉拉工业园区平台" titleHeight="500" class="dv-box" >
+        <dv-border-box-11 title="乌拉拉工业园区平台" titleHeight="500" class="dv-box">
             <div class="box-login">
-                <dv-border-box-13  class="dv-login" >
+                <dv-border-box-13 class="dv-login">
                     <div>
                         <div class="login">登录</div>
-                    <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
+                        <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
                     </div>
                     <div class="box-inp">
-                       
+
                         <div class="box">
                             <div class="mr-2">账户</div>
-                        <input class="inp" type="text" value="yonghuming">
+                            <input class="inp" type="text" value="admin">
                         </div>
                         <div class="box">
                             <div class="mr-2">密码</div>
-                        <input class="inp" type="password" value="yonghuming">
+                            <input class="inp" type="password" value="">
                         </div>
-                       
+
                     </div>
-                    <div class="btn" @click="toPage()"><dv-decoration-11  style="width:20rem;height:6rem;" >登入平台</dv-decoration-11></div>
+                    <div class="btn" @click="toPage()"><dv-decoration-11
+                            style="width:20rem;height:6rem;">登入平台</dv-decoration-11></div>
                 </dv-border-box-13>
 
             </div>
@@ -31,51 +32,55 @@
 <script>
 
 export default {
-    
+
     data() {
         return {
-           
+
         }
     },
-   methods:{
-      toPage(){
-        console.log(1);
-        this.$router.push({
-        name: "home",
-      });
-      }
-   }
+    methods: {
+        toPage() {
+            console.log(1);
+            this.$router.push({
+                name: "Home",
+            });
+        }
+    }
 };
 </script>
 
 <style scoped>
-.box{
+.box {
     width: 40rem;
     font-size: 2rem;
     display: flex;
     align-items: center;
 }
+
 .main {
     width: 100vw;
     height: 100vh;
-    background-image: url("../../assets/images/xk2.png") ;
-    background-size:100% 100% ;
+    background-image: url("../../assets/images/xk2.png");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     color: #2e77f8;
-    
+
 }
-.mr-2{
+
+.mr-2 {
     margin-right: 2rem;
 }
-.box-login{
+
+.box-login {
     width: 60rem;
     height: 40rem;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-.box-inp{
+
+.box-inp {
     height: 20rem;
     display: flex;
     flex-direction: column;
@@ -84,16 +89,19 @@ export default {
     top: 16%;
     left: 16%;
 }
+
 .dv-box {
     width: 100%;
     position: relative;
 }
-.dv-login{
+
+.dv-login {
     box-sizing: border-box;
     padding: 2rem;
-  
+
 }
-.login{
+
+.login {
     display: flex;
     justify-content: center;
     color: white;
@@ -101,26 +109,26 @@ export default {
     position: relative;
 }
 
-.dv-8{
+.dv-8 {
     position: absolute;
     top: 5%;
     left: 22%;
 }
-.inp{
+
+.inp {
     text-indent: 2em;
     color: white;
     width: 30rem;
     height: 4rem;
-    background:none;  
-	outline:none;  
-	border-bottom:1px solid #ccc;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
 }
-.btn{
+
+.btn {
     color: white;
     font-size: 2rem;
     position: absolute;
     top: 75%;
     left: 32%;
-}
-
-</style>
+}</style>
