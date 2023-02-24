@@ -40,7 +40,6 @@ export default {
     },
     methods: {
         toPage() {
-            console.log(1);
             this.$router.push({
                 name: "Home",
             });
