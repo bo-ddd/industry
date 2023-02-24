@@ -60,6 +60,31 @@ const routes = [
       path: '/checkpointManagement',
       name: 'CheckpointManagement',
       component: () => import("../views/safetyProductionManagement/CheckpointManagement/CheckpointManagement.vue")
+    }, {
+      // 坏境管理  > 环境质量
+      path: '/environmentalQuality',
+      name: 'EnvironmentalQuality',
+      component: () => import("../views/environmentalManagement/EnvironmentalQuality/EnvironmentalQuality.vue")
+    }, {
+      // 坏境管理  > 污染源
+      path: '/pollutionSource',
+      name: 'PollutionSource',
+      component: () => import("../views/environmentalManagement/PollutionSource/PollutionSource.vue")
+    }, {
+      // 坏境管理  > 污染物
+      path: '/pollutant',
+      name: 'Pollutant',
+      component: () => import("../views/environmentalManagement/pollutant/Pollutant.vue")
+    }, {
+      // 坏境管理  > 环保登记
+      path: '/enterpriseEnvironmentalProtection',
+      name: 'enterpriseEnvironmentalProtection',
+      component: () => import("../views/environmentalManagement/enterpriseEnvironmentalProtection/enterpriseEnvironmentalProtection.vue")
+    }, {
+      // 坏境管理  > 消防
+      path: '/extinguishingAndProtection',
+      name: 'extinguishingAndProtection',
+      component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
     }
     ]
   },
