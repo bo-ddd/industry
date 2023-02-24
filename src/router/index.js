@@ -60,8 +60,62 @@ const routes = [
       path: '/checkpointManagement',
       name: 'CheckpointManagement',
       component: () => import("../views/safetyProductionManagement/CheckpointManagement/CheckpointManagement.vue")
+    }, {
+      // 坏境管理  > 环境质量
+      path: '/environmentalQuality',
+      name: 'EnvironmentalQuality',
+      component: () => import("../views/environmentalManagement/EnvironmentalQuality/EnvironmentalQuality.vue")
+    }, {
+      // 坏境管理  > 污染源
+      path: '/pollutionSource',
+      name: 'PollutionSource',
+      component: () => import("../views/environmentalManagement/PollutionSource/PollutionSource.vue")
+    }, {
+      // 坏境管理  > 污染物
+      path: '/pollutant',
+      name: 'Pollutant',
+      component: () => import("../views/environmentalManagement/pollutant/Pollutant.vue")
+    }, {
+      // 坏境管理  > 环保登记
+      path: '/enterpriseEnvironmentalProtection',
+      name: 'enterpriseEnvironmentalProtection',
+      component: () => import("../views/environmentalManagement/enterpriseEnvironmentalProtection/enterpriseEnvironmentalProtection.vue")
+    }, {
+      // 坏境管理  > 消防
+      path: '/extinguishingAndProtection',
+      name: 'extinguishingAndProtection',
+      component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
+    },{
+      //园区应急管理 > 应急模拟训练
+      path:'/meetDrill',
+      name:'meetDrill',
+      component: () => import("../views/meet/meetDrill/meetDrill.vue")
+    },
+    {
+      //园区应急管理 > 应急检测预警
+      path:'/meetEarly',
+      name:'meetEarly',
+      component: () => import("../views/meet/meetEarly/meetEarly.vue")
+    },
+    {
+      //园区应急管理 > 应急预案管理
+      path:'/meetPlan',
+      name:'meetPlan',
+      component: () => import("../views/meet/meetPlan/meetPlan.vue")
+    },
+     {
+      // 坏境管理  > 消防
+      path: '/energyManagement',
+      name: 'EnergyManagement',
+      component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
     }
     ]
+  },
+  {
+    //园区应急管理 > 应急资源管理
+    path:'/meetResource',
+    name:'meetResource',
+    component: () => import("../views/meet/meetResource/meetResource.vue")
   },
 ]
 
