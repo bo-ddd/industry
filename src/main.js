@@ -5,10 +5,10 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/lib/flexible'
-import { borderBox1 } from '@jiaminghi/data-view'
+import dataV from '@jiaminghi/data-view'
 
 Vue.config.productionTip = false;
-Vue.use(borderBox1)
+Vue.use(dataV)
 Vue.use(ElementUI);
 new Vue({
   router,
