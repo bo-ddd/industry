@@ -442,12 +442,13 @@ h3 {
   font-weight: normal;
 }
 .grid-box {
-  height: calc(100vh - 11rem);
+  height: calc(100vh - 13rem);
+  padding: 0 2.5rem;
   display: grid;
   gap: 2.5rem 3.5rem;
   justify-content: center;
-  grid-template-columns: 43.5rem 92.5rem 43.5rem;
-  grid-template-rows: 42.5rem 50rem;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 42.5fr 50fr;
   grid-template-areas:
     "a c d"
     "b c e";
