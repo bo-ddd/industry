@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '../views/layout/Layout.vue'
-
+import LoginView from "../views/loginView/loginView.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { path: "/", redirect: "/layout" },
+  { path: "/",
+  name: 'login', 
+  component: LoginView,
+},
   {
     path: '/layout',
     name: 'Layout',
@@ -85,6 +88,16 @@ const routes = [
       path: '/extinguishingAndProtection',
       name: 'extinguishingAndProtection',
       component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue")
+    },{
+      // 办公管理  > 公文 > 发布公文
+      path: '/publishKumon',
+      name: 'publishKumon',
+      component: () => import("../views/officeManagement/kumonManagement/publishKumon.vue")
+    },{
+      // 办公管理  > 事务
+      path: '/transactionManagement',
+      name: 'transactionManagement',
+      component: () => import("../views/officeManagement/transactionManagement/transactionManagement.vue")
     }
     ]
   },

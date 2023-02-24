@@ -65,6 +65,8 @@ body{
 
 .countent{
     width:calc(100vw - 25rem);
+    height: 90%;
+    box-sizing: border-box;
 }
 </style>
   
