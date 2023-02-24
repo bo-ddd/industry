@@ -103,6 +103,12 @@ const routes = [
       name:'meetPlan',
       component: () => import("../views/meet/meetPlan/meetPlan.vue")
     },
+     {
+      // 坏境管理  > 消防
+      path: '/energyManagement',
+      name: 'EnergyManagement',
+      component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
+    }
     ]
   },
   {

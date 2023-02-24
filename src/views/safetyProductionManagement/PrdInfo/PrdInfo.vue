@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .prd_info {
-    width: calc(100vw - 12.6rem);
+    width: calc(100vw - 25rem - 1px);
     height: 100vh;
     background-color: #060d25;
     color: #fff;
