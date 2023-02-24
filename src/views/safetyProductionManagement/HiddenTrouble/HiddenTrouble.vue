@@ -5,29 +5,27 @@
         <div class="box">
             <div class="security-risk mt-2">
                 <dv-border-box-11 title="安全风险监管">
-                    <div class="left left-top">
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
+                    <div class="flex left-top">
+                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
+                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
+                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
                     </div>
                     <dv-capsule-chart :config="config" style="width:300px;height:200px" />
                 </dv-border-box-11>
             </div>
             <div class="operation-process mt-2">
-                <dv-border-box-11 title="作业流程安全图">
-                    <div class="left left-bottom">
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
+                <dv-border-box-11 title="安全走势图">
+                    <div class="flex left-bottom">
+                        <Line-chart></Line-chart>
                     </div>
-                    <dv-capsule-chart :config="config" style="width:300px;height:200px" />
                 </dv-border-box-11>
             </div>
             <div class="middle mt-4">
                 <dv-border-box-12>
                     <p class="title">风险分布</p>
-                        <p class="lable">风险<span class="num">10</span>处</p>
-                        <p class="lable mt-2">隐患<span class="num">10</span>处</p>
+                    <p class="lable">风险<span class="num">10</span>处</p>
+                    <p class="lable mt-2">隐患<span class="num">10</span>处</p>
+                    <Histogram></Histogram>
                     <div class="img">
                         <img class="icon-map" src="@/assets/images/map.png" alt="">
                     </div>
@@ -36,20 +34,16 @@
 
             <div class="hidden-treatment mt-2">
                 <dv-border-box-11 title="隐患排查治理">
-                    <div class="right left right-top">
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="config" style="width:150px;height:150px;" />
+                    <div class="right right-top">
+                        <dv-scroll-board :config="row" style="width:500px;height:220px" />
                     </div>
-                    <dv-capsule-chart :config="config" style="width:300px;height:200px" />
                 </dv-border-box-11>
             </div>
             <div class="hidden-type mt-2">
                 <dv-border-box-11 title="隐患类型">
-                    <div class="right left right-bottom">
-                        <dv-conical-column-chart :config="column" style="width:400px;height:200px;" />
+                    <div class="right flex right-bottom">
+                        <dv-conical-column-chart :config="column" style="width:400px;height:300px;" />
                     </div>
-
                 </dv-border-box-11>
             </div>
         </div>
@@ -57,7 +51,14 @@
 </template>
 
 <script>
+import Histogram from './HiddenHistogram.vue'
+import LineChart from './HiddenLineChart.vue'
+
 export default {
+    components: {
+        Histogram,
+        LineChart
+    },
     methods: {
         handleClick(row) {
             console.log(row);
@@ -71,24 +72,20 @@ export default {
                 activeRadius: '60%',
                 data: [
                     {
-                        name: '周口',
+                        name: '生产',
                         value: 55
                     },
                     {
-                        name: '南阳',
+                        name: '出售',
                         value: 120
                     },
                     {
-                        name: '西峡',
+                        name: '买进',
                         value: 78
                     },
                     {
-                        name: '驻马店',
+                        name: '税务',
                         value: 66
-                    },
-                    {
-                        name: '新乡',
-                        value: 80
                     }
                 ],
                 digitalFlopStyle: {
@@ -96,6 +93,33 @@ export default {
                 },
                 showOriginValue: true,
                 lineWidth: 10
+            },
+            cake: {
+                data: [
+                    {
+                        name: '火灾',
+                        value: 1
+                    },
+                    {
+                        name: '气体泄露',
+                        value: 10
+                    },
+                    {
+                        name: '辐射',
+                        value: 0
+                    },
+                    {
+                        name: '行人安全',
+                        value: 3
+                    },
+                    {
+                        name: '失窃',
+                        value: 0
+                    },
+
+                ],
+                showValue: true,
+                activeTimeGap: 5000
             },
             column: {
                 data: [
@@ -122,6 +146,30 @@ export default {
 
                 ],
                 showValue: true
+            },
+            row: {
+                header: ['列1', '列2', '列3'],
+                data: [
+                    ['行1列1', '行1列2', '行1列3'],
+                    ['行2列1', '行2列2', '行2列3'],
+                    ['行3列1', '行3列2', '行3列3'],
+                    ['行4列1', '行4列2', '行4列3'],
+                    ['行5列1', '行5列2', '行5列3'],
+                    ['行6列1', '行6列2', '行6列3'],
+                    ['行7列1', '行7列2', '行7列3'],
+                    ['行8列1', '行8列2', '行8列3'],
+                    ['行9列1', '行9列2', '行9列3'],
+                    ['行10列1', '行10列2', '行10列3']
+                ],
+                index: true,
+                columnWidth: [50],
+                align: ['center']
+            },
+            environment: {
+                value: 66,
+                borderWidth: 5,
+                borderRadius: 10,
+                borderGap: 5
             }
         }
     }
@@ -133,7 +181,7 @@ export default {
     width: 100vw;
     height: 100vh;
     grid-template-rows: repeat(2, 48%);
-    grid-template-columns: repeat(3, 56rem);
+    grid-template-columns: repeat(3, 33.3333%);
     grid-template-areas: "security-risk  middle  hidden-treatment"
         "operation-process  middle  hidden-type";
 }
@@ -198,10 +246,14 @@ export default {
     border-left: 0.6rem solid red;
 }
 
+.right-top {
+    padding: 12rem 2.2rem 2rem;
+}
 
-
-.left {
+.flex {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
     font-size: 1.2rem;
 }
 
@@ -210,13 +262,12 @@ export default {
 }
 
 .img {
-    margin-top: 30rem;
+    /* margin-top: 30rem; */
     text-align: center;
 }
 
 .icon-map {
-    width: 52rem;
-
+    width: 60rem;
 }
 
 :deep(.dv-border-box-9) {
@@ -239,4 +290,5 @@ export default {
 :deep(.dv-conical-column-chart) {
     margin-left: 4rem;
     margin-top: 8rem;
-}</style>
+}
+</style>
