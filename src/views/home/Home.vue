@@ -93,7 +93,7 @@ export default {
                             url: "/meetResource",
                             title: "应急资源管理"
                         }, {
-                            url: "",
+                            url: "/EconomyManage",
                             title: "园区经济管理"
                         }, {
                             url: "",
