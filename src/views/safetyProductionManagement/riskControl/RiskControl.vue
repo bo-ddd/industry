@@ -6,7 +6,7 @@
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
-                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" class="risk-num"/>
+                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" class="risk-num" />
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">管控任务执行情况</div>
@@ -52,9 +52,9 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全隐患列举</div>
-                <div class="colo-ye">1、加盐量 662车间</div>
-                <div class="colo-ye">2、加盐量 662车间</div>
-                <div class="colo-ye">3、加盐量 662车间</div>
+                <div class="colo-ye" v-for="item in pitfallData" :key="item.id">
+                    <div class="colo-ye">{{ item.title }}</div>
+                </div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">分级管控比</div>
@@ -150,10 +150,26 @@ export default {
                 ],
                 lineWidth: 10
             },
-            pitfallData:[
+            pitfallData: [
                 {
-                id:1,
-                title:'用手代替工具操作'
+                    id: 1,
+                    title: '1、用手代替工具操作'
+                },
+                {
+                    id: 2,
+                    title: '2、冒险进入危险场所'
+                },
+                {
+                    id: 3,
+                    title: '3、有干扰或者分散注意力的行为'
+                },
+                {
+                    id: 4,
+                    title: '4、对易燃易爆危险物品的接触和处理错误'
+                },
+                {
+                    id: 5,
+                    title: '5、生产设施工具有缺陷'
                 },
             ]
 
@@ -166,7 +182,11 @@ export default {
             var myChart = echarts.init(chartDom);
             var option;
             option = {
-                legend: {},
+                legend: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                },
                 tooltip: {},
                 dataset: {
                     dimensions: ['product', '2015', '2016', '2017'],
@@ -176,8 +196,21 @@ export default {
                         { product: '小组', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
                     ]
                 },
-                xAxis: { type: 'category' },
-                yAxis: {},
+                xAxis: {
+                    type: 'category',
+                     axisLabel: {
+                        show: true,
+                        color: '#ffffff',
+                        fontSize: 16
+                    }
+                },
+                yAxis: {
+                    axisLabel: {
+                        show: true,
+                        color: '#ffffff',
+                        fontSize: 16
+                    }
+                },
                 series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
             };
 
@@ -192,7 +225,10 @@ export default {
 
             option = {
                 legend: {
-                    top: 'bottom'
+                    top: 'bottom',
+                    textStyle: {
+                        color: '#fff'
+                    },
                 },
                 toolbox: {
                     show: true,
@@ -207,11 +243,11 @@ export default {
                     {
                         name: 'Nightingale Chart',
                         type: 'pie',
-                        radius: [10, 60],
+                        radius: [0, 60],
                         center: ['50%', '50%'],
                         roseType: 'area',
                         itemStyle: {
-                            borderRadius: 8
+                            borderRadius: 5
                         },
                         data: [
                             { value: 40, name: '' },
@@ -241,7 +277,10 @@ export default {
                 },
                 legend: {
                     top: '5%',
-                    left: 'center'
+                    left: 'center',
+                    textStyle: {
+                        color: '#fff'
+                    },
                 },
                 series: [
                     {
@@ -292,9 +331,10 @@ export default {
 }
 </script>
 <style scoped>
-.risk-num{
+.risk-num {
     margin: 0 auto;
 }
+
 .progress {
     display: flex;
     justify-content: space-around;
@@ -314,6 +354,7 @@ export default {
 .mat-20 {
     margin-top: 2rem;
 }
+
 .mat-40 {
     margin-top: 4rem;
 }
@@ -342,7 +383,7 @@ export default {
 }
 
 .co-gre {
-    color: green;
+    color: rgb(36, 201, 36);
 }
 
 .co-red {
@@ -362,7 +403,7 @@ export default {
 }
 
 .risk-box {
-    /* padding: 1rem 0; */
+    min-width: 1000px;
     height: 100vh !important;
     background-color: black;
     box-sizing: border-box;
