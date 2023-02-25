@@ -12,11 +12,13 @@ export default{
         }
     },
     created(){
-        console.log(this.e);
-        console.log(this.type);
+        
     },
     methods:{
-        orderInfo(){
+        orderInfo(e){
+            if (e==undefined) {
+                e=true;
+            }
             var chartDom = this.$refs.echartSell;
             var myChart = echarts.init(chartDom);
             var option;
@@ -100,7 +102,10 @@ export default{
             option && myChart.setOption(option);
 
         },
-        sellTrend(){
+        sellTrend(e){
+            if (e==undefined) {
+                e=true;
+            }
             var chartDom = this.$refs.echartSell;
             var myChart = echarts.init(chartDom);
             var option;
@@ -164,9 +169,9 @@ export default{
     },
     mounted(){
         if (this.type == 1) {
-            this.sellTrend();
+            this.sellTrend();//订单数
         }else{
-            this.orderInfo();
+            this.orderInfo();//销售额
         }
     }
 }

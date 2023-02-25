@@ -4,7 +4,7 @@
         <div>
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <span>事件列表</span>
+                    <dv-decoration-11 style="width:200px;height:60px;">事件列表</dv-decoration-11>
                 </div>
                 <div class="sidebar-main">
                     <div class="sidebar-main_left">
@@ -100,7 +100,6 @@
                         <p>客户：<span>xxx科技有限公司</span></p>
                         <p>单位：<span>xxx应急产业园</span></p>
                         <p>站点：<span>xxx测试站点</span></p>
-
                     </div>
                 </div>
                 <div class="main-content">
@@ -108,7 +107,7 @@
                         <span>地理位置</span>
                     </div>
                     <div class="content-mains">
-                        <img class="map" src="@/assets/images/map.png" alt="">
+                        <img src="@/assets/images/map.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -116,7 +115,7 @@
                         <span>事件图片</span>
                     </div>
                     <div class="content-mains">
-                        <img class="map" src="@/assets/images/picture.png" alt="">
+                        <img src="@/assets/images/picture.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -124,7 +123,7 @@
                         <span>事件视频</span>
                     </div>
                     <div class="content-mains">
-                        <img class="map" src="@/assets/images/video.png" alt="">
+                        <img src="@/assets/images/video.png" alt="">
                     </div>
                 </div>
             </div>
@@ -146,7 +145,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wraps {
     height: 100vh;
     background: #202429;
@@ -164,7 +163,7 @@ export default {
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* justify-items: center; */
+    justify-items: center;
 }
 
 .main-content {
@@ -172,6 +171,9 @@ export default {
     height: 40vh;
     background: #2a2d34;
     margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    overflow :scroll;
 }
 
 .content-header {
@@ -185,19 +187,25 @@ export default {
 .content-main {
     color: #fff;
     padding: 2rem 3rem;
+    overflow: scroll;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .content-main p {
-    padding: .7rem 0;
+    padding: .2rem 0;
 }
 
 
 .content-mains{
-    
+    overflow: scroll;
 }
 .content-mains img {
     width: 100%;
-    height: 35vh;
+    height: 40vh;
+    /* object-fit: cover; */
+    object-fit: cover;
+    
 }
 
 .sidebar {
@@ -215,6 +223,8 @@ export default {
     font-size: 2rem;
     padding: 1rem 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .sidebar-main{
     background: #212429;
@@ -242,6 +252,7 @@ export default {
 }
 .right{
     width: 100%;
+    max-height: 80vh;
 }
 .iconA{
     width: 4rem;
