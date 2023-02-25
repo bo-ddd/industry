@@ -39,7 +39,6 @@
                     </div>
 
                 </div>
-            <el-button type="warning" icon="el-icon-star-off" circle @click="toSafetyProtection"></el-button>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">最新风险计划</div>
@@ -278,9 +277,6 @@ export default {
             option && myChart.setOption(option);
 
         },
-        toSafetyProtection(){
-            this.$router.push({ path:'/safetyProtection'})
-        }
 
     },
     mounted() {
@@ -323,11 +319,13 @@ export default {
     margin: 0 auto;
     margin-top: 1rem;
 }
-.grade{
+
+.grade {
     width: 30rem;
     height: 30rem;
     margin: 0 auto;
 }
+
 .fs-35 {
     font-size: 3.5rem;
 }
