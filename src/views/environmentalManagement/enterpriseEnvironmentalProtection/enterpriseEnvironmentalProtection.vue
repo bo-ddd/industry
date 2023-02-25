@@ -61,7 +61,7 @@
                                     <i class="el-icon-delete icon" @click.stop="handleDelete(scope.$index,scope.row)"></i>
                                 </div>
                                 <!-- 添加按钮 -->
-                                <div class="operate-productinfo_btn" v-if="scope.row.index == tableData.length">
+                                <div class="operate-productinfo_btn" v-if="tableData.length == 1">
                                     <i class="el-icon-circle-plus-outline icon" @click.stop="handleAdd"></i>
                                 </div>
                             </div>
@@ -206,9 +206,9 @@ export default {
             this.addProductInfodialogVisible = true;
         },
         AddData() {
-            let updateContent = this.tableData.push(this.addProductInfoForm);
-            this.$set(this.tableData,index,updateContent);
-            this.addProductInfoForm = '';
+            this.tableData.push(this.addProductInfoForm);
+            // this.$set(this.tableData,index,updateContent);
+            // this.addProductInfoForm = '';
             this.addProductInfodialogVisible = false;
         },
         //删除一行表格数据方法
