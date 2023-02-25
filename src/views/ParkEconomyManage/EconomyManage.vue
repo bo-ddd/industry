@@ -294,7 +294,6 @@ export default {
             this.toDay = {...this.toDay};
         },
         orderTrend(e){
-            console.log('asdf');
             if (this.$refs.funs == undefined) {
                 return
             }else{
@@ -358,6 +357,8 @@ export default {
 .df-fd{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4rem;
 }
 .df{

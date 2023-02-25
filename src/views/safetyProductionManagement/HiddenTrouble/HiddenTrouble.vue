@@ -1,16 +1,15 @@
 <!-- 安全隐患排查 -->
 <template>
-    <!-- <dv-loading>Loading...</dv-loading> -->
     <dv-border-box-9 class="border">
         <div class="box">
             <div class="security-risk mt-2">
                 <dv-border-box-11 title="安全风险监管">
                     <div class="flex left-top">
-                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
-                        <dv-active-ring-chart :config="cake" style="width:150px;height:150px;" />
+                        <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" />
+                        <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" />
+                        <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" />
                     </div>
-                    <dv-capsule-chart :config="config" style="width:300px;height:200px" />
+                    <dv-capsule-chart :config="config" style="width:50rem;height:20rem" />
                 </dv-border-box-11>
             </div>
             <div class="operation-process mt-2">
@@ -23,8 +22,10 @@
             <div class="middle mt-4">
                 <dv-border-box-12>
                     <p class="title">风险分布</p>
-                    <p class="lable">风险<span class="num">10</span>处</p>
-                    <p class="lable mt-2">隐患<span class="num">10</span>处</p>
+                    <div class="top">
+                        <p class="lable">风险<span class="num">10</span>处</p>
+                        <p class="lable">隐患<span class="num">10</span>处</p>
+                    </div>
                     <Histogram></Histogram>
                     <div class="img">
                         <img class="icon-map" src="@/assets/images/map.png" alt="">
@@ -35,14 +36,14 @@
             <div class="hidden-treatment mt-2">
                 <dv-border-box-11 title="隐患排查治理">
                     <div class="right right-top">
-                        <dv-scroll-board :config="row" style="width:500px;height:220px" />
+                        <dv-scroll-board :config="row" style="width:55rem;height:28rem" />
                     </div>
                 </dv-border-box-11>
             </div>
             <div class="hidden-type mt-2">
                 <dv-border-box-11 title="隐患类型">
                     <div class="right flex right-bottom">
-                        <dv-conical-column-chart :config="column" style="width:400px;height:300px;" />
+                        <dv-conical-column-chart :config="column" style="width:50rem;height:30rem;" />
                     </div>
                 </dv-border-box-11>
             </div>
@@ -148,22 +149,22 @@ export default {
                 showValue: true
             },
             row: {
-                header: ['列1', '列2', '列3'],
+                header: ['隐患', '是否处理', '负责人'],
                 data: [
-                    ['行1列1', '行1列2', '行1列3'],
-                    ['行2列1', '行2列2', '行2列3'],
-                    ['行3列1', '行3列2', '行3列3'],
-                    ['行4列1', '行4列2', '行4列3'],
-                    ['行5列1', '行5列2', '行5列3'],
-                    ['行6列1', '行6列2', '行6列3'],
-                    ['行7列1', '行7列2', '行7列3'],
-                    ['行8列1', '行8列2', '行8列3'],
-                    ['行9列1', '行9列2', '行9列3'],
-                    ['行10列1', '行10列2', '行10列3']
+                    ['火灾', '已处理', '安全部马格烜'],
+                    ['气体泄露', '已处理', '安全部侯任性'],
+                    ['液体泄漏', '已处理', '安全部侯任性'],
+                    ['工程车', '已处理', '安全部朱大壮'],
+                    ['辐射物质', '已处理', '安全部朱大壮'],
+                    ['设施设备', '已处理', '安全部王胖胖'],
+                    ['储存区', '已处理', '安全部王胖胖'],
+                    ['静电', '已处理', '安全部朱大壮'],
+                    ['现场安全', '已处理', '安全部马格烜'],
+                    ['生产', '已处理', '安全部王胖胖']
                 ],
                 index: true,
                 columnWidth: [50],
-                align: ['center']
+                align: ['center'],
             },
             environment: {
                 value: 66,
@@ -225,7 +226,6 @@ export default {
     background-color: rgba(128, 128, 128, 0.5);
     width: 16rem;
     font-size: 2.4rem;
-    margin-left: 4rem;
     box-sizing: border-box;
     border-radius: 50rem;
     padding: 1rem;
@@ -239,22 +239,27 @@ export default {
 
 .middle .title {
     color: white;
+    width: 90%;
     font-size: 2.4rem;
-    padding-left: 2rem;
-    margin-left: 4rem;
+    margin-left: 2rem;
+    text-align: right;
     margin-bottom: 2rem;
     border-left: 0.6rem solid red;
 }
 
+.middle .top {
+    display: flex;
+    justify-content: space-around;
+}
+
 .right-top {
-    padding: 12rem 2.2rem 2rem;
+    padding: 12rem 2.4rem 2rem;
 }
 
 .flex {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 1.2rem;
 }
 
 .border {
@@ -262,12 +267,11 @@ export default {
 }
 
 .img {
-    /* margin-top: 30rem; */
     text-align: center;
 }
 
 .icon-map {
-    width: 60rem;
+    width: 90%;
 }
 
 :deep(.dv-border-box-9) {
