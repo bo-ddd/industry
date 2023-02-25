@@ -129,7 +129,7 @@ const routes = [
       component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue")
     },
     {
-      // 坏境管理  > 消防
+      // 坏境管理  > 能源管理
       path: '/energyManagement',
       name: 'EnergyManagement',
       component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
