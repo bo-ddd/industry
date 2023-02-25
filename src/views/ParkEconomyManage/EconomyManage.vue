@@ -1,4 +1,5 @@
 <template>
+    <dv-full-screen-container>
     <div class="box">
         <div class="box-content mg-15">
             <!-- 销售总揽 -->
@@ -109,11 +110,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="echarts" ref="echartOrder"></div>
+                    <!-- <div class="echarts" ref="echartOrder"></div> -->
+                    <echarts-view :e="isCollapse" :type="1"></echarts-view>
                 </div>
             </div>
             <!-- 销售趋势 -->
-            <div class="sale-overview">
+            <div class="sale-overview mb-30">
                 <div class="df-sb mb-30">
                     <div class="sale-title">销售趋势</div>
                     <el-radio-group v-model="isCollapses" @change="sellTrend(isCollapses)" style="">
@@ -155,16 +157,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="echarts" ref="echartSell"></div>
+                    <!-- <div class="echarts" ref="echartSell"></div> -->
+                    <echarts-view :e="isCollapses" :type="2"></echarts-view>
                 </div>
             </div>
         </div>
     </div>
+    </dv-full-screen-container>
 </template>
 
 <script>
 import * as echarts from 'echarts';
+import echartsView from './echartsView.vue';
 export default {
+    components:{
+        echartsView
+    }, 
     data() {
         return{
             orderText:'同比上周',
@@ -253,7 +261,7 @@ export default {
             isCollapse: true,
             isCollapses: true
         }
-    },
+    }, 
     // 接口
     created(){
         setTimeout( ()=>{
@@ -284,7 +292,6 @@ export default {
             this.toDay = {...this.toDay};
         },
         orderTrend(e){
-            console.log(e);//本周true
             var chartDom = this.$refs.echartOrder;
             var myChart = echarts.init(chartDom);
             var option;
@@ -467,7 +474,6 @@ export default {
 
 .df-sb{
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
 }
 .df-fd{
@@ -494,7 +500,7 @@ export default {
 
 .box{
     background-color: #f3f3f3;
-    height: 100vh;
+    height: 100%;
     overflow: scroll;
 }
 .sale-overview{
