@@ -6,7 +6,7 @@
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
-                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" />
+                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" class="risk-num"/>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">管控任务执行情况</div>
@@ -24,7 +24,7 @@
                     <div class="echarts mat-20" ref="echart"></div>
 
                 </div>
-                <div class="progress">
+                <div class="progress mat-40">
                     <div>
                         <el-progress type="circle" :percentage="25"></el-progress>
                         <div>管控覆盖率</div>
@@ -124,7 +124,6 @@ export default {
                 ],
                 colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
                 unit: '单位'
-
             },
             cakeConfig: {
                 data: [
@@ -151,6 +150,12 @@ export default {
                 ],
                 lineWidth: 10
             },
+            pitfallData:[
+                {
+                id:1,
+                title:'用手代替工具操作'
+                },
+            ]
 
         }
     },
@@ -287,6 +292,9 @@ export default {
 }
 </script>
 <style scoped>
+.risk-num{
+    margin: 0 auto;
+}
 .progress {
     display: flex;
     justify-content: space-around;
@@ -306,6 +314,9 @@ export default {
 .mat-20 {
     margin-top: 2rem;
 }
+.mat-40 {
+    margin-top: 4rem;
+}
 
 .echarts {
     width: 80rem;
@@ -314,8 +325,8 @@ export default {
 }
 
 .distribute {
-    width: 22rem;
-    height: 10rem;
+    width: 26rem;
+    height: 14rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
@@ -364,7 +375,7 @@ export default {
     height: 90vh !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr 3fr 2fr;
+    grid-template-rows: 1fr 2fr 2fr 2fr;
     grid-template-areas:
         "left-aside_1 center center right-aside_1"
         "left-aside_2 center center right-aside_2"
