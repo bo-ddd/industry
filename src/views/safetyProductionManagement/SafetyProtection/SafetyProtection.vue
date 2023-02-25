@@ -24,6 +24,7 @@
         <div class="safety mat-20">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">受攻击省份排名</div>
+                <div class="ranking" ref="ranking"></div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <dv-flyline-chart :config="config" :dev="true" style="width:100%;height:100%;" />
@@ -35,20 +36,18 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全危险等级</div>
+                <div class="hazardLevel" ref="hazardLevel"></div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">实时攻防详情</div>
 
             </dv-border-box-8>
-            <!-- <dv-border-box-8 :reverse="true" class="item">
-            </dv-border-box-8>
-            <dv-border-box-8 :reverse="true" class="item"> -->
-            <!-- <dv-capsule-chart :config="config" style="height:200px" /> -->
-            <!-- </dv-border-box-8> -->
+           
         </div>
     </div>
 </template>
 <script>
+import * as echarts from 'echarts';
 export default {
     data() {
         return {
@@ -75,41 +74,117 @@ export default {
                 ],
                 bgImgUrl: '/img/flylineChart/map.jpg'
             },
-            leakConfig:{
+            leakConfig: {
                 data: [
-    {
-      name: '南阳',
-      value: 167
-    },
-    {
-      name: '周口',
-      value: 123
-    },
-    {
-      name: '漯河',
-      value: 98
-    },
-    {
-      name: '郑州',
-      value: 75
-    },
-    {
-      name: '西峡',
-      value: 66
-    },
-  ],
-  colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
-  unit: '单位'
+                    {
+                        name: '南阳',
+                        value: 167
+                    },
+                    {
+                        name: '周口',
+                        value: 123
+                    },
+                    {
+                        name: '漯河',
+                        value: 98
+                    },
+                    {
+                        name: '郑州',
+                        value: 75
+                    },
+                    {
+                        name: '西峡',
+                        value: 66
+                    },
+                ],
+                colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
+                unit: '单位'
             }
 
         }
 
     },
     methods: {
+        hazardLevel() {
+            var chartDom = this.$refs.hazardLevel;
+            var myChart = echarts.init(chartDom);
+            var option;
 
+            option = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [
+                    {
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: 40,
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            { value: 1048, name: 'Search Engine' },
+                            { value: 735, name: 'Direct' },
+                            { value: 580, name: 'Email' },
+                            { value: 484, name: 'Union Ads' },
+                            { value: 300, name: 'Video Ads' }
+                        ]
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+
+        },
+        ranking() {
+            var chartDom = this.$refs.ranking;
+            var myChart = echarts.init(chartDom);
+            var option;
+            option = {
+                legend: {},
+                tooltip: {},
+                dataset: {
+                    source: [
+                        ['product', '2015', '2016', '2017'],
+                        ['Matcha Latte', 43.3, 85.8, 93.7],
+                        ['Milk Tea', 83.1, 73.4, 55.1],
+                        ['Cheese Cocoa', 86.4, 65.2, 82.5],
+                        ['Walnut Brownie', 72.4, 53.9, 39.1]
+                    ]
+                },
+                xAxis: { type: 'category' },
+                yAxis: {},
+                series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+            };
+
+            option && myChart.setOption(option);
+
+        }
     },
     mounted() {
-
+        this.hazardLevel()
+        this.ranking()
     }
 }
 </script>
@@ -121,6 +196,17 @@ export default {
 .co-blue {
     color: rgb(110, 177, 240);
     font-size: 2.5rem;
+}
+
+.hazardLevel {
+    width: 70rem;
+    height: 30rem;
+    margin: 0 auto;
+}
+.ranking{
+    width: 60rem;
+    height: 40rem;
+    margin: 0 auto;
 }
 
 .safety-box {
@@ -163,7 +249,7 @@ export default {
 .safety {
     height: 80vh !important;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 2fr 2fr;
     grid-template-areas:
         "left-aside_1 center center right-aside_1"
