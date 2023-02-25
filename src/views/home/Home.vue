@@ -50,6 +50,9 @@ export default {
                         }, {
                             url: "/safetyProtection",
                             title: "安全防护管理"
+                        }, {
+                            url: "/transportationView",
+                            title: "运输管理"
                         }
                     ]
                 },
@@ -70,12 +73,9 @@ export default {
                             url: "/pollutant",
                             title: "特征污染物名录库"
                         }, {
-                            url: "",
-                            title: "能源统计分析"
-                        }, {
-                            url: "",
-                            title: "能源监测预警"
-                        }, {
+                            url: "/energyManagement",
+                            title: "能源管理"
+                        },  {
                             url: "/extinguishingAndProtection",
                             title: "园区消防管理"
                         },
@@ -96,13 +96,13 @@ export default {
                             url: "/meetResource",
                             title: "应急资源管理"
                         }, {
-                            url: "",
+                            url: "/EconomyManage",
                             title: "园区经济管理"
                         }, {
                             url: "",
                             title: "园区招商管理"
                         }, {
-                            url: "",
+                            url: "/publishKumon",
                             title: "公文管理"
                         }, {
                             url: "/transactionManagement",
@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home {
     background-color: #0C1F34;
     height: 100vh;
