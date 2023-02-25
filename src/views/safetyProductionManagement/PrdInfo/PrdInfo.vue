@@ -7,7 +7,7 @@
             </div>
             <div>
                 <div class="fs-2 text_center fw-700">
-                    安全风险分区大数据
+                    安全生产信息管理
                 </div>
                 <dv-decoration-5 style="width:32rem;height:3rem;margin: 0 auto;" />
             </div>
@@ -32,15 +32,41 @@
                         </div>
                     </div>
                 </dv-border-box-10>
+
                 <dv-border-box-10 class="left_among">
                     <div class="box">
                         <div class="box_title">
                             <i class="c-35cee9 el-icon-d-arrow-right"></i>
                             风险点统计
                         </div>
-                        <div class="sdsad">sadsad</div>
+                        <div class="content flex-center">
+                            <div class="left flex-center">
+                                <div>
+                                    <div class="one align-center">
+                                        <lxs-border class="lxs-border">
+                                            <i class="el-icon-user"></i>
+                                        </lxs-border>
+                                        <div class="text_center ml-1">
+                                            <h4 class="fs-2 c-61c2cb">11</h4>
+                                            <div class="fs-1">风险预警</div>
+                                        </div>
+                                    </div>
+                                    <div class="two mt-2 align-center">
+                                        <lxs-border class="lxs-border">
+                                            <i class="el-icon-warning"></i>
+                                        </lxs-border>
+                                        <div class="text_center ml-1">
+                                            <h4 class="fs-2 c-61c2cb">1</h4>
+                                            <div class="fs-1">当前隐患</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <pieChart class="right flex-center" />
+                        </div>
                     </div>
                 </dv-border-box-10>
+
                 <dv-border-box-10 class="left_footer">
                     <div class="box">
                         <div class="box_title">
@@ -51,15 +77,15 @@
                             <el-carousel-item v-for="item in carouselData" :key="item.id">
                                 <div class="small jc-sa">
                                     <div class="align-center">
-                                        <i class="fs-9 c-35cee9" :class="item.iconOnw"></i>
-                                        <div class="text_center">
+                                        <i class="fs-5 c-35cee9" :class="item.iconOnw"></i>
+                                        <div class="text_center ml-1">
                                             <div class="c-35cee9 fw-700 fs-2">{{ item.num }}</div>
                                             <div class="fs-2">{{ item.text }}</div>
                                         </div>
                                     </div>
                                     <div class="align-center">
-                                        <i class="fs-9 c-35cee9" :class="item.iconTon"></i>
-                                        <div class="text_center">
+                                        <i class="fs-5 c-35cee9" :class="item.iconTon"></i>
+                                        <div class="text_center ml-1">
                                             <div class="c-35cee9 fw-700 fs-2">{{ item.num }}</div>
                                             <div class="fs-2">{{ item.text }}</div>
                                         </div>
@@ -80,31 +106,32 @@
                                     风险研判和安全承诺公告
                                 </div>
                                 <div class="nav mt-1">
-                                    <button class="flex-center">
-                                        <span class="i mr-1"></span>
-                                        <span>风险四色图</span>
-                                    </button>
-                                    <button class="flex-center">
-                                        <span class="i mr-1"></span>
-                                        <span>风险四色图</span>
-                                    </button>
-                                    <button class="flex-center">
-                                        <span class="i mr-1"></span>
-                                        <span>风险四色图</span>
-                                    </button>
-                                    <button class="flex-center">
-                                        <span class="i mr-1"></span>
-                                        <span>风险四色图</span>
-                                    </button>
-                                    <button class="flex-center">
-                                        <span class="i mr-1"></span>
-                                        <span>风险四色图</span>
-                                    </button>
+                                    <div v-for="item in navList" :key="item.id">
+                                        <button @click="setIsok(item.nav, item)" :class="item.isActive ? 'btn-active' : ''"
+                                            class="flex-center">
+                                            <span class="i mr-1"></span>
+                                            <span>{{ item.title }}</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </el-header>
-                        <el-main>
-                            <RouterView />
+                        <el-main class="el-main-content">
+                            <div v-if="isok == 1">
+                                <riskFourColorDiagram />
+                            </div>
+                            <div v-else-if="isok == 2">
+                                <hazardousOperationDistributionMap />
+                            </div>
+                            <div v-else-if="isok == 3">
+                                <riskDistributionMap />
+                            </div>
+                            <div v-else-if="isok == 4">
+                                <riskList />
+                            </div>
+                            <div v-else-if="isok == 5">
+                                <twoMonadThreeCheckpost />
+                            </div>
                         </el-main>
                     </el-container>
                 </dv-border-box-10>
@@ -114,8 +141,14 @@
 </template>
 
 <script>
-import '@/assets/lib/flexible'
-import { RouterView } from 'vue-router';
+import '@/assets/lib/flexible';
+import riskFourColorDiagram from './riskFourColorDiagram.vue';
+import hazardousOperationDistributionMap from './hazardousOperationDistributionMap.vue';
+import riskDistributionMap from './riskDistributionMap.vue';
+import riskList from './riskList.vue';
+import twoMonadThreeCheckpost from './twoMonadThreeCheckpost.vue';
+import pieChart from './pieChart.vue';
+import lxsBorder from './border.vue'
 export default {
     data() {
         return {
@@ -214,36 +247,79 @@ export default {
                     num: 16,
                     text: "储罐信息"
                 }
+            ],
+            isok: 5,// 1风险四色图  2危险作业分布图  3风险分布图   4风险清单   5两单三卡
+            isActive: true,
+            navList: [
+                {
+                    id: 1,
+                    title: '风险四色图',
+                    nav: 1,
+                    isActive: false,
+                },
+                {
+                    id: 2,
+                    title: '危险作业分布图',
+                    nav: 2,
+                    isActive: false,
+                },
+                {
+                    id: 3,
+                    title: '风险分布图',
+                    nav: 3,
+                    isActive: false,
+                },
+                {
+                    id: 4,
+                    title: '风险清单',
+                    nav: 4,
+                    isActive: false,
+                },
+                {
+                    id: 5,
+                    title: '两单三卡',
+                    nav: 5,
+                    isActive: false,
+                },
             ]
         };
     },
     created() {
+        this.navList.forEach((item) => {
+            if (this.isok == item.id) {
+                item.isActive = !item.isActive
+            }
+        })
     },
-    components: { RouterView }
+    components: {
+        pieChart,
+        riskList,
+        riskDistributionMap,
+        riskFourColorDiagram,
+        twoMonadThreeCheckpost,
+        hazardousOperationDistributionMap,
+        lxsBorder,
+    },
+    methods: {
+        setIsok(num, item) {
+            this.isok = num
+            this.navList.forEach(el => {
+                el.isActive = false;
+                if (el.id == item.id) {
+                    el.isActive = true
+                }
+            });
+        },
+    }
 }
 </script>
 
 <style scoped>
 .prd_info {
-    width: calc(100vw - 25rem - 1px) !important;
+    width: 100vw !important;
     height: 100vh;
     background-color: #060d25;
     color: #87a9d8;
-}
-
-.mr-1 {
-    margin-right: 1rem;
-}
-
-.mt-1 {
-    margin-top: 1rem;
-}
-
-.i {
-    display: inline-block;
-    width: .5rem;
-    height: 1.8rem;
-    background-color: #61c2cb;
 }
 
 .prd_info .header {
@@ -264,6 +340,7 @@ export default {
     padding: 0 1rem 1rem 1rem;
     gap: 1rem 2rem;
     color: #fff;
+    margin: 0;
 }
 
 .container .left {
@@ -310,8 +387,38 @@ export default {
 
 .prd_info .container .left .left_among {
     min-width: 35% !important;
-    height: 35%;
+    height: 35% !important;
     margin-bottom: 1rem;
+}
+
+.prd_info .container .left .left_among .box {
+    width: 100% !important;
+    height: calc(100% - 2rem) !important;
+    box-sizing: border-box;
+}
+
+.prd_info .container .left .left_among .content {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.prd_info .container .left .left_among .content .left {
+    width: 50%;
+    height: 100%;
+}
+
+.prd_info .container .left .left_among .content .left .lxs-border {
+    width: 5rem !important;
+    height: 5rem !important;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 5rem;
+    color: #61c2cb;
+}
+
+.prd_info .container .left .left_among .content .right {
+    width: 30rem;
+    height: 26rem;
 }
 
 .prd_info .container .left .left_footer {
@@ -328,7 +435,6 @@ export default {
     height: 100%;
 }
 
-
 .el-header {
     width: 100%;
     height: 8rem !important;
@@ -336,35 +442,54 @@ export default {
     color: #fff;
     padding: 1rem;
     border-bottom: .1rem solid #2175a7;
+    position: relative;
 }
 
 .el-header .nav {
     display: flex !important;
     align-items: center !important;
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
 }
 
 .el-header .el-header-title {
     color: #83b6f8;
     font-size: 1.6rem;
+    padding-bottom: 3rem;
 }
 
 .el-header button {
     background-color: #0b3e7d;
     color: #fff;
     padding: 1rem 1.5rem;
+    border-radius: .6rem .6rem 0 0;
+    margin-right: 1rem;
 }
+
 .el-header button:hover {
     background-color: #3288b6;
     color: #fff;
-    cursor:pointer;
+    cursor: pointer;
     padding: 1rem 1.5rem;
+}
+
+.btn-active {
+    background-color: #3288b6 !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    padding: 1rem 1.5rem !important;
 }
 
 .el-main {
     padding: 1rem;
-    color: #fff;
+    box-sizing: border-box;
 }
 
+.el-main-content {
+    width: 100% !important;
+    height: calc(100vh - 17rem) !important;
+}
 
 .fw-700 {
     font-weight: 700;
@@ -372,6 +497,37 @@ export default {
 
 .fs-2 {
     font-size: 2rem;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mlr-1 {
+    margin: 0 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+
+.i {
+    display: inline-block;
+    width: .5rem;
+    height: 1.8rem;
+    background-color: #61c2cb;
+}
+
+.c-61c2cb {
+    color: #61c2cb !important;
 }
 
 .c-35cee9 {
@@ -427,7 +583,7 @@ export default {
     margin-right: 5rem;
 }
 
-.fs-9 {
-    font-size: 9rem;
+.fs-5 {
+    font-size: 5rem;
 }
 </style>

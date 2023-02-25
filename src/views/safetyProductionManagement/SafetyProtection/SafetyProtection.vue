@@ -1,4 +1,5 @@
 <template>
+    <dv-full-screen-container>
     <div class="safety-box">
         <span class="title">安全监管</span>
         <dv-decoration-5 style="height:40px;" />
@@ -23,22 +24,24 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全危险等级</div>
-                <div class="hazardLevel" ref="hazardLevel"></div>
+                <hazardLevel></hazardLevel>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">实时攻防详情</div>
-                <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail mat-20" />
+                <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail" />
             </dv-border-box-8>
 
         </div>
     </div>
+</dv-full-screen-container>
 </template>
 <script>
-import * as echarts from 'echarts';
 import rankingView from "../SafetyProtection/RankingView.vue";
+import hazardLevel from "../SafetyProtection/HazardLevel.vue";
 export default {
     components: {
-        rankingView
+        rankingView,
+        hazardLevel,
     },
     data() {
         return {
@@ -131,70 +134,7 @@ export default {
         }
 
     },
-    methods: {
-        //饼
-        hazardLevel() {
-            var chartDom = this.$refs.hazardLevel;
-            var myChart = echarts.init(chartDom);
-            var option;
-
-            option = {
-                tooltip: {
-                    trigger: 'item'
-                },
-
-                legend: {
-                    top: '5%',
-                    left: 'center',
-                    textStyle: {
-                        color: '#fff'
-                    },
-                },
-                series: [
-                    {
-                        name: 'Access From',
-                        type: 'pie',
-                        radius: ['40%', '70%'],
-                        avoidLabelOverlap: false,
-                        textStyle: '#fff',
-                        itemStyle: {
-                            borderRadius: 10,
-                            borderColor: '#fff',
-                            borderWidth: 2,
-                        },
-                        label: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            label: {
-                                show: true,
-                                fontSize: 40,
-                                fontWeight: 'bold'
-                            }
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        data: [
-                            { value: 1048, name: '低风险' },
-                            { value: 735, name: '一般风险' },
-                            { value: 580, name: '较大风险' },
-                            { value: 484, name: '重大风险' },
-                        ]
-                    }
-                ]
-            };
-
-            option && myChart.setOption(option);
-
-        },
-        //柱状图
-
-    },
-    mounted() {
-        this.hazardLevel()
-    }
+   
 }
 </script>
 <style scoped>
@@ -212,6 +152,7 @@ export default {
 
 .detail {
     height: 23rem;
+    margin: 0 auto;
 }
 
 .mat-20 {
@@ -221,11 +162,6 @@ export default {
 .co-blue {
     color: rgb(110, 177, 240);
     font-size: 2.5rem;
-}
-
-.hazardLevel {
-    width: 60rem;
-    height: 30rem;
 }
 
 .safety-box {
@@ -276,7 +212,6 @@ export default {
         "left-aside_1 left-aside_1 center center center right-aside_1"
         "left-aside_2 left-aside_2 center center center right-aside_2"
         "left-aside_2 left-aside_2 center center center right-aside_2"
-        /* "left-aside_3 center center right-aside_3" */
 }
 
 .item {
@@ -303,16 +238,4 @@ export default {
 .item:nth-of-type(5) {
     grid-area: right-aside_2;
 }
-
-/* .item:nth-of-type(6) {
-    grid-area: right-aside_2;
-} */
-
-/* 
-.item:nth-of-type(7) {
-    grid-area: left-aside_3;
-}
-
-.item:nth-of-type(8) {
-    grid-area: right-aside_2;
-} */</style>
+</style>
