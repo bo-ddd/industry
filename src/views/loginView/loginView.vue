@@ -19,8 +19,8 @@
                         </div>
 
                     </div>
-                    <div class="btn" @click="toPage()"><dv-decoration-11
-                            style="width:20rem;height:6rem;">登入平台</dv-decoration-11></div>
+                    <div class="btn" @click="toPage()"><dv-decoration-9
+                            style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
                 </dv-border-box-13>
 
             </div>
@@ -128,6 +128,6 @@ export default {
     color: white;
     font-size: 2rem;
     position: absolute;
-    top: 75%;
-    left: 32%;
+    top: 70%;
+    left: 41.5%;
 }</style>
