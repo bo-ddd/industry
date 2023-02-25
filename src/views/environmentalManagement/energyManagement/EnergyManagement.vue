@@ -10,7 +10,7 @@
 
                     <dv-water-level-pond :config="config3" style="width:15rem;height:22rem" />
                     <dv-water-level-pond :config="config4" style="width:15rem;height:22rem" />
-                    <dv-water-level-pond :config="config" style="width:15rem;height:22rem" />
+                    <dv-water-level-pond :config="config5" style="width:15rem;height:22rem" />
                 </div>
 
                 <div><dv-capsule-chart :config="config1" style="width:40rem;height:30rem" /></div>
@@ -87,6 +87,10 @@ export default {
             },
             config4: {
                 data: [20, 45],
+                shape: 'roundRect'
+            },
+            config5: {
+                data: [0, 0],
                 shape: 'roundRect'
             }
         }
