@@ -182,23 +182,7 @@ export default {
                 certificate: '点击查看合格证',
                 monitoringReport: '点击查看检测报告',
                 recordNo: '京ICP备12040110'
-            },
-            // {
-            //     index:2,
-            //     productName: '避雷针2',
-            //     specification: 'CH-33',
-            //     certificate: '点击查看合格证',
-            //     monitoringReport: '点击查看检测报告',
-            //     recordNo: '京ICP备12040110'
-            // },{
-            //     index:3,
-            //     productName: '避雷针3',
-            //     specification: 'CH-33',
-            //     certificate: '点击查看合格证',
-            //     monitoringReport: '点击查看检测报告',
-            //     recordNo: '京ICP备12040110'
-            // },
-            ],
+            }],
             addProductInfoForm: {
                 productName: '',
                 specification: '',
@@ -246,28 +230,28 @@ export default {
 </script>
 <style>
 .wrap {
-    padding: 20px;
+    padding: 2rem;
     width: 89vw;
 }
 
 .mt-20 {
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .pd-20 {
-    padding: 20px;
+    padding: 2rem;
 }
 
 .header {
-    font-size: 20px;
-    padding: 20px;
+    font-size: 3rem;
+    padding: 2rem;
 }
 
 .flex-left-gap20 {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 2rem;
 }
 
 .grid-center {
@@ -289,18 +273,18 @@ export default {
     align-items: center;
     grid-template-columns: 1fr 6fr;
     justify-items: flex-end;
-    gap: 30px;
+    gap: 3rem;
 }
 
 .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
 }
 
 .certificate-image {
-    width: 400px;
+    width: 40rem;
 }
 
 .input-box {
@@ -315,6 +299,6 @@ export default {
 }
 
 .icon {
-    font-size: 20px;
+    font-size: 3rem;
 }
 </style>

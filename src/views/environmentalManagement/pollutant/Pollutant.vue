@@ -1,33 +1,71 @@
 <template>
-    <div class="wrap">
+    <div class="wrap pollutant-box">
         <div class="title">污染物记录</div>
-        <div>
+        <div class="mtb-10">
             <div class="second-title">信息检索</div>
+            <div class="flex-between">
+                <div class="flex-center">
+                    <label class="third-title">事件内容：</label>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <div class="flex-center">
+                    <label class="third-title">事件来源：</label>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <div class="flex-center">
+                    <label class="third-title">开始时间：</label>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <div class="flex-center">
+                    <label class="third-title">结束时间：</label>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <!-- <div class="flex-center">
+                    <label class="third-title">受理状态：</label>
+                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <div class="flex-center">
+                    <label class="third-title">所属网格：</label>
+                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
+                </div>
+                <div class="flex-center">
+                    <label class="third-title">污染类型：</label>
+                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
+                </div> -->
+            </div>
         </div>
+        <div class="border"></div>
         <div>
-            <div class="second-title">时间记录</div>
-            <dv-scroll-board :config="this.pollutantData" style="width:700px; height:220px" />
+            <div class="flex-center mtb-10">
+                <div class="second-title">事件记录</div>
+                <div>
+                    <el-button type="primary" size="small">增加</el-button>
+                    <el-button type="primary" size="small">批量删除</el-button>
+                    <el-button type="primary" size="small">批量导出</el-button>
+                </div>
+            </div>
+            <dv-scroll-board :config="config" style="width:100%; height:300px" />
         </div>
     </div>
 </template>
 <script>
 
 export default {
-    header: ['列1', '列2', '列3'],
-    pollutantData: [
-        ['行1列1', '行1列2', '行1列3'],
-        ['行2列1', '行2列2', '行2列3'],
-        ['行3列1', '行3列2', '行3列3'],
-        ['行4列1', '行4列2', '行4列3'],
-        ['行5列1', '行5列2', '行5列3'],
-        ['行6列1', '行6列2', '行6列3'],
-        ['行7列1', '行7列2', '行7列3'],
-        ['行8列1', '行8列2', '行8列3'],
-        ['行9列1', '行9列2', '行9列3'],
-        ['行10列1', '行10列2', '行10列3']
-    ],
     data() {
         return {
+            config: {
+                header: ['编号', '事件内容', '污染源名称', '事件来源', '污染类型', '所属网络', '上报人', '受理状态', '巡查时间', '操作'],
+                data: [
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                    ['行1列1', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2', '行1列3', '行1列2'],
+                ],
+                index: true,
+                align: ['center', 'center', 'center', 'center', 'center', 'center', 'center', 'center', 'center']
+            }
         }
     }
 }
@@ -37,7 +75,44 @@ export default {
     padding: 20px;
 }
 
+.mtb-10 {
+    margin: 10px 0;
+}
+
+.border {
+    border-bottom: 2px solid red;
+}
+
+.pollutant-box {
+    background-color: black;
+    color: white;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
 .title {
     font-size: 26px;
+}
+
+.second-title {
+    font-size: 22px;
+}
+
+.third-title{
+     font-size: 18px;
+}
+
+.text-kuang{
+    width: 200px;
+}
+.flex-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>

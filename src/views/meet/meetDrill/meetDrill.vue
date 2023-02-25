@@ -18,7 +18,36 @@
                     </el-form-item>
                     <el-form-item>
                         <el-button class="button" type="primary" @click="onSubmit">查询</el-button>
-                        <el-button class="add-button button" type="primary" @click="onSubmit">添加</el-button>
+                        <el-button class="add-button button" type="primary" @click="dialogFormVisible = true">添加</el-button>
+                        <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+                            <el-form :model="form">
+                                <el-form-item label="内容" :label-width="formLabelWidth">
+                                    <el-input v-model="form.content" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="人员" :label-width="formLabelWidth">
+                                    <el-input v-model="form.personnel" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="指挥人" :label-width="formLabelWidth">
+                                    <el-input v-model="form.commander" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="创建人" :label-width="formLabelWidth">
+                                    <el-input v-model="form.createby" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="演练科目" :label-width="formLabelWidth">
+                                    <el-input v-model="form.subject" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="是否合格" :label-width="formLabelWidth">
+                                    <el-select v-model="form.qualified" placeholder="请选择活动区域">
+                                        <el-option label="是" value="shanghai"></el-option>
+                                        <el-option label="否" value="beijing"></el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+                            </div>
+                        </el-dialog>
                     </el-form-item>
                 </el-form>
             </div>
@@ -40,13 +69,12 @@
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <div class="block">
                 <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                    :current-page="currentPage" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                     :page-sizes="[100, 200, 300, 400]" :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper" :total="400">
                 </el-pagination>
             </div>
@@ -60,7 +88,6 @@ export default {
         return {
             formInline: {
                 user: '',
-                currentPage: 1,
                 region: '',
             },
             tableData: [{
@@ -68,38 +95,45 @@ export default {
                 content: '应急避震',
                 subject: '防震',
                 personnel: '全体员工',
-                name: '防震',
-                commander: '张三',
-                createby: '李四',
+                commander: '普肖帅',
+                createby: '李帅',
                 qualified: '是',
             }, {
                 date: '2016-05-04',
-                content: '应急避震',
+                content: '应急避火',
                 subject: '防火',
-                personnel: '全体员工',
-                name: '防震',
-                commander: '张三',
-                createby: '李四',
+                personnel: 'A区员工',
+                commander: '周永峰',
+                createby: '申少杰',
                 qualified: '是',
             }, {
                 date: '2016-05-01',
-                content: '应急避震',
-                subject: '防震',
+                content: '应急避洪',
+                subject: '防洪',
                 personnel: '全体员工',
-                name: '防震',
-                commander: '张三',
-                createby: '李四',
+                commander: '郝永祥',
+                createby: '卫正阳',
                 qualified: '否',
             }, {
                 date: '2016-05-03',
-                content: '应急避震',
-                subject: '防火',
-                personnel: '全体员工',
-                name: '防震',
-                commander: '张三',
-                createby: '李四',
+                content: '应急避电',
+                subject: '防电',
+                personnel: 'C区员工',
+                commander: '尚宇豪',
+                createby: '朱鑫鹏',
                 qualified: '是',
-            }]
+            }],
+            dialogFormVisible: false,
+            form: {
+                qualified: '',
+                type: [],
+                content: '',
+                personnel: '',
+                subject: '',
+                commander: '',
+                createby: '',
+            },
+            formLabelWidth: '120px'
         }
     },
     methods: {
@@ -115,9 +149,6 @@ export default {
         handleEdit(index, row) {
             console.log(index, row);
         },
-        handleDelete(index, row) {
-            console.log(index, row);
-        }
     }
 }
 </script>
@@ -159,9 +190,13 @@ export default {
 .block {
     margin: 0 2rem;
 }
-.main{
+
+.main {
     background: #fff;
     padding: 2rem 0;
     margin: 2rem 0;
+}
+.el-form-item{
+    padding: 1rem 0;
 }
 </style>

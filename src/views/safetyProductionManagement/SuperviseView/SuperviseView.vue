@@ -4,7 +4,7 @@
             <el-row class="el-row" :gutter="20">
                 <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
                     <dv-border-box-10 class="equipment">
-                        <dv-decoration-11 class="title" style="width:200px;height:60px;">设备</dv-decoration-11>
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">设备</dv-decoration-11>
                         <div class="container pd-10">
                             <div class="rate flex-col" v-for="(item, index) in rateList" :key="index">
                                 <div class="subtitle">{{ item.title }}</div>
@@ -12,7 +12,7 @@
                                     <div class="icon-rate">
                                     </div>
                                     <div class="chart-rate font-white">
-                                        <dv-decoration-9 style="width:90px;height:90px;">{{ item.rateValue + '%'
+                                        <dv-decoration-9 style="width:13rem;height:13rem;">{{ item.rateValue + '%'
                                         }}</dv-decoration-9>
                                     </div>
                                 </div>
@@ -22,22 +22,24 @@
                 </el-col>
                 <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
                     <dv-border-box-10 class="command">
-                        <dv-decoration-11 class="title" style="width:200px;height:60px;">总指挥</dv-decoration-11>
-                        <div class="container pd-10 flex-col">
-                            <div class="map subtitle">厂区覆盖图</div>
-                            <div class="overall-ratio flex-row_around">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">总指挥</dv-decoration-11>
+                        <div class="container flex-col">
+                            <div class="map scale-8">
+                              <mapView></mapView>
+                            </div>
+                            <!-- <div class="overall-ratio flex-row_around">
                                 <div class="ratio flex-col" v-for="(item, index) in ratioList" :key="index">
                                     <div class="key-ratio font-white">
-                                        <dv-decoration-9 style="width:90px;height:90px;">{{ item.ratioValue + '%'
+                                        <dv-decoration-9 style="width:9rem;height:9rem;">{{ item.ratioValue + '%'
                                         }}</dv-decoration-9>
                                     </div>
                                     <div class="name-ratio subtitle">{{ item.name }}</div>
                                 </div>
-                            </div>
-                            <div class="yield-trend">
+                            </div> -->  
+                            <div class="yield-trend flex-col">
                                 <div class="title-trend subtitle">产量趋势</div>
                                 <div class="chart-trend">
-
+                                    <yield-trend></yield-trend>
                                 </div>
                             </div>
                         </div>
@@ -45,37 +47,58 @@
                 </el-col>
                 <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
                     <dv-border-box-10 class="production">
-                        <dv-decoration-11 class="title" style="width:200px;height:60px;">精益生产</dv-decoration-11>
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">精益生产</dv-decoration-11>
                         <div class="container pd-10 flex-col">
-                            <div class="fit">
+                            <div class="fit flex-row scale-8">
                                 <div class="title-fit subtitle">首次合格率FIT</div>
-                                <div class="chart-fit"></div>
+                                <div class="chart-fit">
+                                    <fitView></fitView>
+                                </div>
                             </div>
-                            <div class="bts">
+                            <div class="bts flex-row scale-8">
                                 <div class="title-bts subtitle">计划制造完成率BTS</div>
-                                <div class="chart-bts"></div>
+                                <div class="chart-bts">
+                                    <btsView></btsView>
+                                </div>
                             </div>
-                            <div class="oee">
+                            <div class="oee flex-row scale-8">
                                 <div class="title-oee subtitle">设备总效率OEE</div>
-                                <div class="chart-oee"></div>
+                                <div class="chart-oee">
+                                    <oeeView></oeeView>
+                                </div>
                             </div>
-                            <div class="dtd">
+                            <div class="dtd flex-row scale-8">
                                 <div class="title-dtd subtitle">物资转换时间DTD</div>
-                                <div class="chart-dtd"></div>
+                                <div class="chart-dtd">
+                                    <dtdView></dtdView>
+                                </div>
                             </div>
                         </div>
                     </dv-border-box-10>
                 </el-col>
             </el-row>
         </dv-border-box-11>
-
     </div>
 </template>
 
 <script>
+import yieldTrend from './YieldTrend.vue';
+import dtdView from './DtdView.vue';
+import fitView from './FitView.vue';
+import oeeView from './OeeView.vue';
+import btsView from './BtsView.vue';
+import mapView from './MapView.vue';
 
 export default {
     name: 'superviseView',
+    components: {
+        yieldTrend,
+        fitView,
+        btsView,
+        oeeView,
+        dtdView,
+        mapView
+    },
     data() {
         return {
             rateList: [
@@ -120,6 +143,7 @@ export default {
         }
     }
 
+
 };
 </script>
 
@@ -132,7 +156,7 @@ export default {
 
 .dv-box {
     width: 100%;
-    padding: 20px 10px 20px 30px;
+    padding: 2rem 1rem 2rem 3rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -142,13 +166,13 @@ export default {
 
 .el-row {
     width: 100%;
-    height: calc(100% - 80px);
-    margin-top: 80px;
+    height: calc(100% - 8rem);
+    margin-top: 8rem;
 
 }
 
 .el-col {
-    border-radius: 4px;
+    border-radius: 0.4rem;
     height: 100%;
 }
 
@@ -165,28 +189,29 @@ export default {
 }
 
 .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
+    border-radius: 0.4rem;
+    min-height: 3.6rem;
 }
 
 .equipment .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 3rem;
 }
 
 .flex-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
 }
 
 .flex-row {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap:0.5rem;
 }
 
 .flex-row_around {
@@ -201,27 +226,27 @@ export default {
 
 .title {
     color: white;
-    font-size: 18px;
+    font-size: 2rem;
     position: absolute;
     left: 50%;
-    top: -28px;
-    margin-left: -100px;
+    top: -2.8rem;
+    margin-left: -10rem;
     transform: scale(0.8);
 }
 
 .pd-10 {
-    padding: 36px;
+    padding: 3.6rem;
     box-sizing: border-box;
 }
 
 .font-white {
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .subtitle {
-    font-size: 14px;
+    font-size: 1.6rem;
     font-weight: bold;
     background: linear-gradient(to right, #53e8f8, #2e77f8);
     -webkit-background-clip: text;
@@ -229,6 +254,51 @@ export default {
     color: transparent;
 }
 
+.scale-8 {
+    transform: scale(0.8);
+}
 
+.scale-7 {
+    transform: scale(0.7);
+}
+.scale-4 {
+    transform: scale(0.4);
+}
 
-</style>
+.yield-trend {
+    width: 40rem;
+    position: relative;
+}
+
+.yield-trend .title-trend {
+    position: absolute;
+    top: 4rem;
+}
+
+.dtd {
+    position: relative;
+}
+
+.production .container {
+    position: relative;
+}
+
+.fit {
+    position: absolute;
+    top: -0.5rem;
+}
+
+.bts {
+    position: absolute;
+    top: 18vh;
+}
+
+.oee {
+    position: absolute;
+    top: 40vh;
+}
+
+.dtd {
+    position: absolute;
+    top: 58vh;
+}</style>
