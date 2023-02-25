@@ -6,7 +6,7 @@
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
-                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" />
+                <dv-active-ring-chart :config="cakeConfig" style="width:200px;height:200px" class="risk-num" />
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">管控任务执行情况</div>
@@ -24,7 +24,7 @@
                     <div class="echarts mat-20" ref="echart"></div>
 
                 </div>
-                <div class="progress">
+                <div class="progress mat-40">
                     <div>
                         <el-progress type="circle" :percentage="25"></el-progress>
                         <div>管控覆盖率</div>
@@ -52,9 +52,9 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全隐患列举</div>
-                <div class="colo-ye">1、加盐量 662车间</div>
-                <div class="colo-ye">2、加盐量 662车间</div>
-                <div class="colo-ye">3、加盐量 662车间</div>
+                <div class="colo-ye" v-for="item in pitfallData" :key="item.id">
+                    <div class="colo-ye">{{ item.title }}</div>
+                </div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">分级管控比</div>
@@ -124,7 +124,6 @@ export default {
                 ],
                 colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
                 unit: '单位'
-
             },
             cakeConfig: {
                 data: [
@@ -151,6 +150,28 @@ export default {
                 ],
                 lineWidth: 10
             },
+            pitfallData: [
+                {
+                    id: 1,
+                    title: '1、用手代替工具操作'
+                },
+                {
+                    id: 2,
+                    title: '2、冒险进入危险场所'
+                },
+                {
+                    id: 3,
+                    title: '3、有干扰或者分散注意力的行为'
+                },
+                {
+                    id: 4,
+                    title: '4、对易燃易爆危险物品的接触和处理错误'
+                },
+                {
+                    id: 5,
+                    title: '5、生产设施工具有缺陷'
+                },
+            ]
 
         }
     },
@@ -161,7 +182,11 @@ export default {
             var myChart = echarts.init(chartDom);
             var option;
             option = {
-                legend: {},
+                legend: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                },
                 tooltip: {},
                 dataset: {
                     dimensions: ['product', '2015', '2016', '2017'],
@@ -171,8 +196,21 @@ export default {
                         { product: '小组', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
                     ]
                 },
-                xAxis: { type: 'category' },
-                yAxis: {},
+                xAxis: {
+                    type: 'category',
+                    axisLabel: {
+                        show: true,
+                        color: '#ffffff',
+                        fontSize: 16
+                    }
+                },
+                yAxis: {
+                    axisLabel: {
+                        show: true,
+                        color: '#ffffff',
+                        fontSize: 16
+                    }
+                },
                 series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
             };
 
@@ -186,38 +224,39 @@ export default {
             var option;
 
             option = {
-                legend: {
-                    top: 'bottom'
+                title: {
+                   
+                  
+                    left: 'center'
                 },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        mark: { show: true },
-                        dataView: { show: false, readOnly: false },
-                        restore: { show: false },
-                        saveAsImage: { show: false }
-                    }
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    textStyle: {
+                        color: '#fff'
+                    },
                 },
                 series: [
                     {
-                        name: 'Nightingale Chart',
+                        name: 'Access From',
                         type: 'pie',
-                        radius: [10, 60],
-                        center: ['50%', '50%'],
-                        roseType: 'area',
-                        itemStyle: {
-                            borderRadius: 8
-                        },
+                        radius: '50%',
                         data: [
-                            { value: 40, name: '' },
-                            { value: 38, name: '' },
-                            { value: 32, name: '' },
-                            { value: 30, name: '' },
-                            { value: 28, name: '' },
-                            { value: 26, name: '' },
-                            { value: 22, name: '' },
-                            { value: 18, name: '' }
-                        ]
+                            { value: 1048, name: '石油化工' },
+                            { value: 735, name: '基础化工' },
+                            { value: 580, name: '化学化纤' },
+                            { value: 484, name: '塑料化工' },
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
                     }
                 ]
             };
@@ -236,7 +275,10 @@ export default {
                 },
                 legend: {
                     top: '5%',
-                    left: 'center'
+                    left: 'center',
+                    textStyle: {
+                        color: '#fff'
+                    },
                 },
                 series: [
                     {
@@ -287,6 +329,10 @@ export default {
 }
 </script>
 <style scoped>
+.risk-num {
+    margin: 0 auto;
+}
+
 .progress {
     display: flex;
     justify-content: space-around;
@@ -307,6 +353,10 @@ export default {
     margin-top: 2rem;
 }
 
+.mat-40 {
+    margin-top: 4rem;
+}
+
 .echarts {
     width: 80rem;
     height: 40rem;
@@ -314,8 +364,8 @@ export default {
 }
 
 .distribute {
-    width: 22rem;
-    height: 10rem;
+    width: 50rem;
+    height:20rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
@@ -331,7 +381,7 @@ export default {
 }
 
 .co-gre {
-    color: green;
+    color: rgb(36, 201, 36);
 }
 
 .co-red {
@@ -351,7 +401,7 @@ export default {
 }
 
 .risk-box {
-    /* padding: 1rem 0; */
+    min-width: 1000px;
     height: 100vh !important;
     background-color: black;
     box-sizing: border-box;
@@ -364,7 +414,7 @@ export default {
     height: 90vh !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr 3fr 2fr;
+    grid-template-rows: 1fr 2fr 2fr 2fr;
     grid-template-areas:
         "left-aside_1 center center right-aside_1"
         "left-aside_2 center center right-aside_2"
@@ -413,4 +463,5 @@ export default {
 .risk-points {
     display: flex;
     justify-content: space-around;
-}</style>
+}
+</style>

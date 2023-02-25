@@ -1,6 +1,7 @@
 <template>
   <div class="box">
-    <div class="title">事务管理</div>
+    <el-page-header class="pb-2" @back="goBack" content="事务管理">
+    </el-page-header>
     <div class="box-top">
       <div class="box-select">
         <el-select class="" placeholder="全部类型" size="small">
@@ -31,86 +32,101 @@
         </el-input>
       </div>
       <div class="box-search">
-        <el-button type="primary" size="small"  @click="dialogFormVisible = true" plain>发起事务</el-button>
+        <el-button
+          type="primary"
+          size="small"
+          @click="dialogFormVisible = true"
+          plain
+          >发起事务</el-button
+        >
         <el-dialog title="发起事务" class="" :visible.sync="dialogFormVisible">
-        <el-form ref="form" :model="sizeForm" label-width="80px" size="mini">
-          <el-form-item label="事务名称">
-            <el-input v-model="sizeForm.name"></el-input>
-          </el-form-item>
-          <el-form-item label="事务类型">
-            <el-select v-model="sizeForm.region" placeholder="请选择事务类型">
-              <el-option label="基础保障" value="shanghai"></el-option>
-              <el-option label="证件年检" value="beijing"></el-option>
-              <el-option label="防范演练" value="shanghai"></el-option>
-              <el-option label="会议" value="beijing"></el-option>
-              <el-option label="园区环卫" value="shanghai"></el-option>
-              <el-option label="设备检修" value="beijing"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="开始时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm.startDate"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-            <el-col class="line" :span="2">-</el-col>
-            <el-col :span="11">
-              <el-time-picker
-                placeholder="选择时间"
-                v-model="sizeForm.startTime"
-                style="width: 100%"
-              ></el-time-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="结束时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm.endDate"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-            <el-col class="line" :span="2">-</el-col>
-            <el-col :span="11">
-              <el-time-picker
-                placeholder="选择时间"
-                v-model="sizeForm.endTime"
-                style="width: 100%"
-              ></el-time-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="活动性质">
-            <el-checkbox-group v-model="sizeForm.type">
-              <el-checkbox-button
-                label="美食/餐厅线上活动"
-                name="type"
-              ></el-checkbox-button>
-              <el-checkbox-button
-                label="地推活动"
-                name="type"
-              ></el-checkbox-button>
-              <el-checkbox-button
-                label="线下主题活动"
-                name="type"
-              ></el-checkbox-button>
-            </el-checkbox-group>
-          </el-form-item>
-          <el-form-item label="特殊资源">
-            <el-radio-group v-model="sizeForm.resource" size="medium">
-              <el-radio border label="线上品牌商赞助"></el-radio>
-              <el-radio border label="线下场地免费"></el-radio>
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item size="large">
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
-            <el-button>取消</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
+          <el-form ref="form" :model="sizeForm" label-width="80px" size="mini">
+            <el-form-item label="事务名称">
+              <el-input v-model="sizeForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="部门">
+              <el-select v-model="sizeForm.region" placeholder="请选择部门">
+                <el-option label="全部门" value="shanghai"></el-option>
+                <el-option label="服务部" value="beijing"></el-option>
+                <el-option label="维修部" value="shanghai"></el-option>
+                <el-option label="拓展部" value="beijing"></el-option>
+                <el-option label="消防部" value="shanghai"></el-option>
+                <el-option label="运输部" value="beijing"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="开始时间">
+              <el-col :span="11">
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  v-model="sizeForm.startDate"
+                  style="width: 100%"
+                ></el-date-picker>
+              </el-col>
+              <el-col class="line" :span="2">-</el-col>
+              <el-col :span="11">
+                <el-time-picker
+                  placeholder="选择时间"
+                  v-model="sizeForm.startTime"
+                  style="width: 100%"
+                ></el-time-picker>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="结束时间">
+              <el-col :span="11">
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  v-model="sizeForm.endDate"
+                  style="width: 100%"
+                ></el-date-picker>
+              </el-col>
+              <el-col class="line" :span="2">-</el-col>
+              <el-col :span="11">
+                <el-time-picker
+                  placeholder="选择时间"
+                  v-model="sizeForm.endTime"
+                  style="width: 100%"
+                ></el-time-picker>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="事务类型">
+              <el-checkbox-group v-model="sizeForm.type">
+                <el-checkbox-button
+                  label="基础保障"
+                  name="type"
+                ></el-checkbox-button>
+                <el-checkbox-button
+                  label="证件年检"
+                  name="type"
+                ></el-checkbox-button>
+                <el-checkbox-button
+                  label="防范演练"
+                  name="type"
+                ></el-checkbox-button>
+                <el-checkbox-button
+                  label="会议"
+                  name="type"
+                ></el-checkbox-button>
+                <el-checkbox-button
+                  label="园区环卫"
+                  name="type"
+                ></el-checkbox-button>
+                <el-checkbox-button
+                  label="设备检修"
+                  name="type"
+                ></el-checkbox-button>
+              </el-checkbox-group>
+            </el-form-item>
+            <el-form-item label="事务详情">
+              <el-input type="textarea" v-model="sizeForm.desc"></el-input>
+            </el-form-item>
+            <el-form-item size="large">
+              <el-button type="primary" @click="onSubmit">立即创建</el-button>
+              <el-button>取消</el-button>
+            </el-form-item>
+          </el-form>
+        </el-dialog>
       </div>
     </div>
     <div class="box-table mt-2">
@@ -142,7 +158,9 @@
         </el-table-column>
         <el-table-column prop="state" align="center" label="当前状态">
           <template slot-scope="scope">
-            <el-tag size="medium">{{ scope.row.state }}</el-tag>
+            <el-tag size="medium" :type="scope.row.type">{{
+              scope.row.state
+            }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="massage" align="center" label="组织人员">
@@ -166,7 +184,7 @@ export default {
   data() {
     return {
       delivery: false,
-      dialogFormVisible:false,
+      dialogFormVisible: false,
       options: [
         {
           value: "选项1",
@@ -215,6 +233,7 @@ export default {
           extent: "每日",
           unit: "服务部",
           state: "进行中",
+          type: "",
           massage: "刘伟波",
         },
         {
@@ -232,13 +251,15 @@ export default {
           unit: "运输部",
           state: "进行中",
           massage: "卫正阳",
+          type: "",
         },
         {
           name: "防火演练",
           time: "防范演练",
           extent: "2023-02-25",
           unit: "服务部",
-          state: "待会签",
+          state: "待进行",
+          type: "warning",
           massage: "周永峰",
         },
         {
@@ -247,6 +268,7 @@ export default {
           extent: "2023-03-01",
           unit: "拓展部",
           state: "待进行",
+          type: "warning",
           massage: "侯心如",
         },
         {
@@ -255,6 +277,7 @@ export default {
           extent: "2023-03-01",
           unit: "全部门",
           state: "待进行",
+          type: "warning",
           massage: "耿磊",
         },
 
@@ -265,6 +288,7 @@ export default {
           unit: "维修部",
           state: "待进行",
           massage: "马格轩",
+          type: "warning",
         },
 
         {
@@ -273,6 +297,7 @@ export default {
           extent: "2023-02-15",
           unit: "维修部",
           state: "已完成",
+          type: "success",
           massage: "马格轩",
         },
         {
@@ -281,6 +306,7 @@ export default {
           extent: "2023-01-15",
           unit: "维修部",
           state: "已完成",
+          type: "success",
           massage: "马格轩",
         },
         {
@@ -289,22 +315,29 @@ export default {
           extent: "2023-02-01",
           unit: "服务部",
           state: "已完成",
+          type: "success",
           massage: "朱鑫鹏",
         },
       ],
       sizeForm: {
-          name: '',
-          region: '',
-          startDate: '',
-          startTime: '',
-          endDate: '',
-          endTime: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
+        name: "",
+        region: "",
+        startDate: "",
+        startTime: "",
+        endDate: "",
+        endTime: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+      },
+      input3:'',
     };
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -332,6 +365,9 @@ export default {
 }
 .width-20 {
   width: 20%;
+}
+.pb-2 {
+  padding-bottom: 2rem;
 }
 .dialog {
   display: flex;
@@ -382,9 +418,9 @@ element.style {
 .mt-2 {
   margin-top: 2rem;
 }
-.line.el-col.el-col-2{
+.line.el-col.el-col-2 {
   display: flex;
-    justify-content: center; 
+  justify-content: center;
 }
 ::v-deep .is-scrolling-none {
   overflow-x: hidden; /* 设置溢出滚动 */

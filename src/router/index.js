@@ -124,8 +124,8 @@ const routes = [
     },
     {
       //园区应急管理 > 应急预案管理详情
-      path: '/meetPlan',
-      name: 'meetPlan',
+      path: '/meetPlandetail',
+      name: 'meetPlandetail',
       component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue")
     },
     {

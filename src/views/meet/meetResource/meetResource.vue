@@ -198,9 +198,9 @@ export default {
         showValue: true,
       },
       config3: {
-        headerBGC:'#152561',
-        oddRowBGC:'#0b1c48',
-        evenRowBGC:'#0b1c48',
+        headerBGC: "#152561",
+        oddRowBGC: "#0b1c48",
+        evenRowBGC: "#0b1c48",
         header: ["库存量", "商品类别", "商品品类"],
         data: [
           ["200", "灭火器", "器材工具"],
@@ -216,7 +216,8 @@ export default {
         ],
         index: true,
         columnWidth: [50],
-        align: ["center"],
+        align: ["center", "center", "center"],
+        carousel: "single",
       },
       option1: {
         title: {
@@ -424,6 +425,7 @@ export default {
 .meet {
   height: 100vh;
   overflow: hidden;
+  /* border-bottom: 2rem solid red; */
   background-image: linear-gradient(to bottom, #0f0c37, #0b1c48);
   color: white;
   font-size: 1.6rem;
@@ -442,13 +444,16 @@ h3 {
   font-weight: normal;
 }
 .grid-box {
+  /* width: 100; */
   height: calc(100% - 13rem);
+  box-sizing: border-box;
   padding: 0 2.5rem;
+  padding-bottom: 2rem;
   display: grid;
   gap: 2.5rem 3.5rem;
   justify-content: center;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 42.5fr 50fr;
+  grid-template-rows: 25fr 50fr;
   grid-template-areas:
     "a c d"
     "b c e";
@@ -569,15 +574,15 @@ h3 {
   color: #ecf044;
 }
 .chat {
-  width: 100%;
-  height: 50rem;
+  /* width: 100%; */
+  height: 40rem;
 }
 .chat2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 40rem;
+  /* width: 100%; */
+  height: 20rem;
 }
 ::v-deep.chat2 canvas {
   /* width: 80%; */
@@ -589,8 +594,8 @@ h3 {
   /* height: 3000rem; */
   background-color: #0b1c48;
 }
-::v-deep .dv-scroll-board{
-    width: 100%!important;
+::v-deep .dv-scroll-board {
+  width: 100% !important;
 }
 .ml-2 {
   margin-left: 2rem;
