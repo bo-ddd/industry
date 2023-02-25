@@ -50,6 +50,9 @@ export default {
                         }, {
                             url: "/safetyProtection",
                             title: "安全防护管理"
+                        }, {
+                            url: "/transportationView",
+                            title: "运输管理"
                         }
                     ]
                 },
