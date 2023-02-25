@@ -99,7 +99,7 @@ export default {
                             url: "",
                             title: "园区招商管理"
                         }, {
-                            url: "",
+                            url: "/publishKumon",
                             title: "公文管理"
                         }, {
                             url: "/transactionManagement",
