@@ -123,6 +123,12 @@ const routes = [
       component: () => import("../views/meet/meetPlan/meetPlan.vue")
     },
     {
+      //园区应急管理 > 应急预案管理详情
+      path: '/meetPlan',
+      name: 'meetPlan',
+      component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue")
+    },
+    {
       // 坏境管理  > 消防
       path: '/energyManagement',
       name: 'EnergyManagement',
