@@ -70,12 +70,9 @@ export default {
                             url: "/pollutant",
                             title: "特征污染物名录库"
                         }, {
-                            url: "",
-                            title: "能源统计分析"
-                        }, {
-                            url: "",
-                            title: "能源监测预警"
-                        }, {
+                            url: "/energyManagement",
+                            title: "能源管理"
+                        },  {
                             url: "/extinguishingAndProtection",
                             title: "园区消防管理"
                         },
@@ -129,7 +126,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home {
     background-color: #0C1F34;
     height: 100vh;

@@ -442,7 +442,7 @@ h3 {
   font-weight: normal;
 }
 .grid-box {
-  height: calc(100vh - 13rem);
+  height: calc(100% - 13rem);
   padding: 0 2.5rem;
   display: grid;
   gap: 2.5rem 3.5rem;
@@ -480,6 +480,7 @@ h3 {
 .title {
   font-size: 2rem;
   color: #f1f352;
+  font-weight: bold;
 }
 .flex-column-between {
   display: flex;
@@ -525,6 +526,7 @@ h3 {
   border-bottom: 0.3rem solid #3b54a8;
   background-color: #11265f;
 }
+
 .classBox .item img {
   width: 3.4rem;
   height: 3.4rem;

@@ -42,6 +42,12 @@
                 <div class="title-t">实时攻防详情</div>
 
             </dv-border-box-8>
+            <!-- <dv-border-box-8 :reverse="true" class="item">
+
+            </dv-border-box-8>
+            <dv-border-box-8 :reverse="true" class="item">
+
+            </dv-border-box-8> -->
            
         </div>
     </div>
@@ -199,9 +205,8 @@ export default {
 }
 
 .hazardLevel {
-    width: 70rem;
+    width: 60rem;
     height: 30rem;
-    margin: 0 auto;
 }
 .ranking{
     width: 60rem;
@@ -249,12 +254,12 @@ export default {
 .safety {
     height: 80vh !important;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 2fr 2fr;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(2,1fr);
     grid-template-areas:
-        "left-aside_1 center center right-aside_1"
-        "left-aside_2 center center right-aside_2"
-        "left-aside_2 center center right-aside_2"
+        "left-aside_1 left-aside_1 center center right-aside_1  right-aside_1"
+        "left-aside_2 left-aside_2 center center right-aside_2  right-aside_2"
+        "left-aside_2 left-aside_2 center center right-aside_2  right-aside_2"
         /* "left-aside_3 center center right-aside_3" */
 }
 
@@ -286,8 +291,8 @@ export default {
 .item:nth-of-type(6) {
     grid-area: right-aside_3;
 }
-
-/* .item:nth-of-type(7) {
+/* 
+.item:nth-of-type(7) {
     grid-area: left-aside_3;
 }
 
