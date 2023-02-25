@@ -3,35 +3,35 @@
         <div class="title">污染物记录</div>
         <div class="mtb-10">
             <div class="second-title">信息检索</div>
-            <div class="flex-between">
-                <div class="flex-center">
+            <div class="flex-start header">
+                <div class="flex-center mtb-10">
                     <label class="third-title">事件内容：</label>
                     <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <div class="flex-center">
+                <div class="flex-center  mtb-10">
                     <label class="third-title">事件来源：</label>
                     <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <div class="flex-center">
+                <div class="flex-center  mtb-10">
                     <label class="third-title">开始时间：</label>
                     <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <div class="flex-center">
+                <div class="flex-center  mtb-10">
                     <label class="third-title">结束时间：</label>
                     <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <!-- <div class="flex-center">
+                 <div class="flex-center  mtb-10">
                     <label class="third-title">受理状态：</label>
-                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <div class="flex-center">
+                <div class="flex-center  mtb-10">
                     <label class="third-title">所属网格：</label>
-                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
-                <div class="flex-center">
+                <div class="flex-center  mtb-10">
                     <label class="third-title">污染类型：</label>
-                    <el-input v-model="input" class="text-kuang" label-width="100px"></el-input>
-                </div> -->
+                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                </div>
             </div>
         </div>
         <div class="border"></div>
@@ -75,8 +75,19 @@ export default {
     padding: 20px;
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* .mlr-10{
+    margin: 0 10px;
+} */
+
 .mtb-10 {
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 
 .border {
@@ -87,6 +98,7 @@ export default {
     background-color: black;
     color: white;
     height: 100vh;
+    width: 100vw;
     box-sizing: border-box;
 }
 
@@ -113,6 +125,11 @@ export default {
 .flex-between{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.flex-start{
+    display: flex;
+    justify-content: start;
     align-items: center;
 }
 </style>

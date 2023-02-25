@@ -124,12 +124,12 @@ const routes = [
     },
     {
       //园区应急管理 > 应急预案管理详情
-      path: '/meetPlan',
-      name: 'meetPlan',
+      path: '/meetPlandetail',
+      name: 'meetPlandetail',
       component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue")
     },
     {
-      // 坏境管理  > 消防
+      // 坏境管理  > 能源管理
       path: '/energyManagement',
       name: 'EnergyManagement',
       component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")

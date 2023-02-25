@@ -19,7 +19,7 @@
                     <el-form-item>
                         <el-button class="button" type="primary" @click="onSubmit">查询</el-button>
                         <el-button class="add-button button" type="primary" @click="dialogFormVisible = true">添加</el-button>
-                        <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+                        <el-dialog :visible.sync="dialogFormVisible">
                             <el-form :model="form">
                                 <el-form-item label="内容" :label-width="formLabelWidth">
                                     <el-input v-model="form.content" autocomplete="off"></el-input>
@@ -51,31 +51,62 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <el-table :data="tableData" stripe style=" width: 97%">
-                <el-table-column prop="date" label="时间" width="160">
+            <el-table :data="tableData" stripe style=" width: 100%">
+                <el-table-column prop="date" label="时间" width="180">
                 </el-table-column>
-                <el-table-column prop="subject" label="演练科目" width="160">
+                <el-table-column prop="subject" label="演练科目" width="180">
                 </el-table-column>
-                <el-table-column prop="personnel" label="人员" width="160">
+                <el-table-column prop="personnel" label="人员" width="180">
                 </el-table-column>
-                <el-table-column prop="content" label="内容" width="160">
+                <el-table-column prop="content" label="内容" width="180">
                 </el-table-column>
-                <el-table-column prop="commander" label="指挥人" width="160">
+                <el-table-column prop="commander" label="指挥人" width="180">
                 </el-table-column>
-                <el-table-column prop="createby" label="创建人" width="160">
+                <el-table-column prop="createby" label="创建人" width="180">
                 </el-table-column>
-                <el-table-column prop="qualified" label="是否合格" width="160">
+                <el-table-column prop="qualified" label="是否合格" width="180">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button size="mini"
+                            @click="handleEdit(scope.$index, scope.row), dialogFormVisibles = true">编辑</el-button>
+                        <el-dialog :visible.sync="dialogFormVisibles">
+                            <el-form :model="forms">
+                                <el-form-item label="内容" :label-width="formLabelWidth">
+                                    <el-input v-model="forms.content" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="人员" :label-width="formLabelWidth">
+                                    <el-input v-model="forms.personnel" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="指挥人" :label-width="formLabelWidth">
+                                    <el-input v-model="forms.commander" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="创建人" :label-width="formLabelWidth">
+                                    <el-input v-model="forms.createby" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="演练科目" :label-width="formLabelWidth">
+                                    <el-input v-model="forms.subject" autocomplete="off"></el-input>
+                                </el-form-item>
+                                <el-form-item label="是否合格" :label-width="formLabelWidth">
+                                    <el-select v-model="forms.qualified" placeholder="请选择活动区域">
+                                        <el-option label="是" value="shanghai"></el-option>
+                                        <el-option label="否" value="beijing"></el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisibles = false, open3()" :plain="true">取 消</el-button>
+                                <el-button type="primary" @click="dialogFormVisibles = false, open2()" :plain="true">确
+                                    定</el-button>
+                            </div>
+                        </el-dialog>
                     </template>
                 </el-table-column>
             </el-table>
             <div class="block">
                 <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                     :page-sizes="[100, 200, 300, 400]" :page-size="100"
-                    layout="total, sizes, prev, pager, next, jumper" :total="400">
+                    :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper"
+                    :total="400">
                 </el-pagination>
             </div>
         </div>
@@ -124,7 +155,17 @@ export default {
                 qualified: '是',
             }],
             dialogFormVisible: false,
+            dialogFormVisibles: false,
             form: {
+                qualified: '',
+                type: [],
+                content: '',
+                personnel: '',
+                subject: '',
+                commander: '',
+                createby: '',
+            },
+            forms: {
                 qualified: '',
                 type: [],
                 content: '',
@@ -148,8 +189,21 @@ export default {
         },
         handleEdit(index, row) {
             console.log(index, row);
+            this.forms = row;
         },
-    }
+        open2() {
+            this.$message({
+                message: '修改成功',
+                type: 'success'
+            });
+        },
+        open3() {
+            this.$message({
+                message: '取消修改',
+                type: 'warning'
+            });
+        },
+    },
 }
 </script>
 
@@ -195,8 +249,20 @@ export default {
     background: #fff;
     padding: 2rem 0;
     margin: 2rem 0;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: min-content auto;
+
+    height: 90vh;
+    width: 100%;
+    min-height: 40vh;
+    
 }
-.el-form-item{
+.el-table{
+    overflow: scroll;
+}
+
+.el-form-item {
     padding: 1rem 0;
 }
 </style>
