@@ -7,12 +7,10 @@
                 <el-date-picker v-model="value2" type="monthrange" align="right" unlink-panels range-separator="至"
                     start-placeholder="开始月份" end-placeholder="结束月份" :picker-options="pickerOptions">
                 </el-date-picker>
-                <el-button class="btn-search" type="primary">查询</el-button>
             </div>
             <div class="visitorName">
                 <span class="title">访客查询</span>
-                <el-input placeholder="请输入访客姓名" v-model="input" clearable>
-                </el-input>
+                <el-input v-model="input" placeholder="请输入访客姓名" clearable></el-input>
                 <el-button class="btn-search" type="primary">查询</el-button>
             </div>
         </div>
@@ -48,7 +46,7 @@
         <div class="paging">
             <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
                 :current-page="currentPage4" :page-sizes="[5, 10, 15, 20]" :page-size="10" background
-                layout="total, sizes, prev, pager, next, jumper" :total="30">
+                layout="total, sizes, prev, pager, next, jumper" :total="4">
             </el-pagination>
         </div>
     </div>
@@ -65,40 +63,49 @@ export default {
     data() {
         return {
             tableData: [{
-                date: '2016-05-02',
-                name: '王小虎',
+                date: '2023-02-22',
+                name: '王小龙',
                 license: '京A00000',
-                phone: '11111111111',
-                comeFrom: '上海市普陀区金沙江路 1518 弄',
+                phone: '14523658741',
+                comeFrom: '浙江省杭州市萧山区',
                 department: '生产',
-                purpose: '学习',
-                peopleNum: 1
+                purpose: '调研',
+                peopleNum: 3
             }, {
-                date: '2016-05-04',
+                date: '2023-02-22',
                 name: '王小虎',
                 license: '京A00001',
-                phone: '11111111111',
-                comeFrom: '上海市普陀区金沙江路 1517 弄',
-                department: '生产',
+                phone: '17859547823',
+                comeFrom: '江苏省苏州市姑苏区',
+                department: '安保',
                 purpose: '学习',
                 peopleNum: 6
             }, {
-                date: '2016-05-01',
-                name: '王小虎',
+                date: '2023-02-25',
+                name: '王小鼠',
                 license: '京A00002',
-                phone: '11111111111',
-                comeFrom: '上海市普陀区金沙江路 1519 弄',
-                department: '生产',
-                purpose: '学习',
-                peopleNum: 1
+                phone: '15614589658',
+                comeFrom: '上海市普陀区',
+                department: '安全防护',
+                purpose: '参观',
+                peopleNum: 10
             }, {
-                date: '2016-05-03',
-                name: '王小虎',
+                date: '2023-02-26',
+                name: '王小马',
                 license: '京A00003',
-                phone: '11111111111',
-                comeFrom: '上海市普陀区金沙江路 1516 弄',
-                department: '生产',
-                purpose: '学习',
+                phone: '19958742364',
+                comeFrom: '福建省厦门市思明区',
+                department: '行政',
+                purpose: '商务洽谈',
+                peopleNum: 3
+            }, {
+                date: '2023-02-26',
+                name: '刘志祥',
+                license: '京A00004',
+                phone: '13954785412',
+                comeFrom: '浙江省杭州市余杭区',
+                department: '行政',
+                purpose: '合作',
                 peopleNum: 3
             }],
             pickerOptions: {
@@ -171,4 +178,5 @@ export default {
 .btn-operate {
     font-size: 1.6rem;
 }
+
 </style>
