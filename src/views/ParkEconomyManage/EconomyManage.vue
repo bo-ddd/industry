@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <echarts-view :e="isCollapse" :type="1"></echarts-view>
+                    <echarts-view ref="funs" :e="isCollapse" :type="1"></echarts-view>
                 </div>
             </div>
             <!-- 销售趋势 -->
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                    <echarts-view ref="abc" :e="isCollapses" :type="2"></echarts-view>
+                    <echarts-view ref="fun" :e="isCollapses" :type="2"></echarts-view>
                 </div>
             </div>
         </div>
@@ -269,9 +269,6 @@ export default {
         setTimeout( ()=>{
             this.power(360);
         },200);
-        this.$nextTick(()=>{
-          console.log(this.$refs.abc);
-        })
     },
     // 方法
     methods:{
@@ -297,19 +294,29 @@ export default {
             this.toDay = {...this.toDay};
         },
         orderTrend(e){
+            console.log('asdf');
+            if (this.$refs.funs == undefined) {
+                return
+            }else{
+                let fn = this.$refs.funs.sellTrend;
+                fn(e);
+            }
             this.orderText = e==false?'同比本月':'同比本周'
-
         },
         sellTrend(e){
+            // console.log(this.$refs.fun.orderInfo);
+            if (this.$refs.fun == undefined) {
+                return
+            }else{
+                let fn = this.$refs.fun.orderInfo;
+                fn(e);
+            }
             this.lossText = e==false?'同比上月':'同比上周'
         }
     },
     mounted(){
         this.orderTrend(this.isCollapse);
         this.sellTrend(this.isCollapses);
-        this.$nextTick(()=>{
-          console.log(this.$refs.abc);
-        })
     }
 }
 </script>
