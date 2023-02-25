@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home {
     background-color: #0C1F34;
     height: 100vh;
