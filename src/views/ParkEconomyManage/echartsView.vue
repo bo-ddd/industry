@@ -12,8 +12,7 @@ export default{
         }
     },
     created(){
-        console.log(this.e);
-        console.log(this.type);
+        
     },
     methods:{
         orderInfo(){

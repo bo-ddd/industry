@@ -38,34 +38,35 @@
             </div>
             <!-- 线上购买用户总揽 -->
             <div class="sale-overview mb-10">
-                <div class="mb-30">
+                <div class="">
                     <div class="sale-title">线上购买用户总揽</div>
                 </div>
-                <div class="on-line_user">
                     <div class="on-line_num df">
                         <div class="num">
                             <dv-digital-flop :config="toDay" style="width: 10rem;height: 5rem;" />
-                            <div class="text df-c ml-5">
+                            <div class="text df-c">
                                 <div class="bj-1 br"></div>
                                 <div class="ml-5">今日新增</div>
                             </div>
                         </div>
                         <div class="num">
                             <dv-digital-flop :config="toDay" style="width: 10rem;height: 5rem;" />
-                            <div class="text df-c ml-5">
+                            <div class="text df-c">
                                 <div class="on-line_bj br"></div>
                                 <div class="ml-5">昨日新增</div>
                             </div>
                         </div>
                         <div class="num">
                             <dv-digital-flop :config="toDay" style="width: 10rem;height: 5rem;" />
-                            <div class="text df-c ml-5">
+                            <div class="text df-c">
                                 <div class="on-line_bj2 br"></div>
                                 <div class="ml-5">本月新增</div>
                             </div>
                         </div>
+                        <div class="on-line_num df-c">
+                            <jigsaw-puzzle-view></jigsaw-puzzle-view>
+                        </div>
                     </div>
-                </div>
             </div>
             <!-- 订单趋势 -->
             <div class="sale-overview mb-10">
@@ -89,7 +90,7 @@
                                         <img class="curve" src="../../assets/image/icon-top.png" alt="">
                                         10%
                                     </div>
-                                    <div>{{orderText}}</div>
+                                    <div class="ml-5">{{orderText}}</div>
                                 </div>
                             </div>
                         </div>
@@ -105,17 +106,16 @@
                                         <img class="curve" src="../../assets/image/icon-bottom.png" alt="">
                                         3%
                                     </div>
-                                    <div>{{orderText}}</div>
+                                    <div class="ml-5">{{orderText}}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="echarts" ref="echartOrder"></div> -->
                     <echarts-view :e="isCollapse" :type="1"></echarts-view>
                 </div>
             </div>
             <!-- 销售趋势 -->
-            <div class="sale-overview mb-30">
+            <div class="sale-overview">
                 <div class="df-sb mb-30">
                     <div class="sale-title">销售趋势</div>
                     <el-radio-group v-model="isCollapses" @change="sellTrend(isCollapses)" style="">
@@ -136,7 +136,7 @@
                                         <img class="curve" src="../../assets/image/icon-top.png" alt="">
                                         10%
                                     </div>
-                                    <div>{{lossText}}</div>
+                                    <div class="ml-5">{{lossText}}</div>
                                 </div>
                             </div>
                         </div>
@@ -152,13 +152,12 @@
                                         <img class="curve" src="../../assets/image/icon-bottom.png" alt="">
                                         3%
                                     </div>
-                                    <div>{{lossText}}</div>
+                                    <div class="ml-5">{{lossText}}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="echarts" ref="echartSell"></div> -->
-                    <echarts-view :e="isCollapses" :type="2"></echarts-view>
+                    <echarts-view ref="abc" :e="isCollapses" :type="2"></echarts-view>
                 </div>
             </div>
         </div>
@@ -167,11 +166,12 @@
 </template>
 
 <script>
-import * as echarts from 'echarts';
 import echartsView from './echartsView.vue';
+import jigsawPuzzleView from './jigsawPuzzleView.vue';
 export default {
     components:{
-        echartsView
+        echartsView,
+        jigsawPuzzleView
     }, 
     data() {
         return{
@@ -179,7 +179,7 @@ export default {
             lossText:'同比上周',
             toDay:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -190,6 +190,7 @@ export default {
                 number: [0],
                 toFixed: 2,
                 content: '{nt}',
+                textAlign:'left',
                 style:{
                     fontSize:20,
                     fill:'#fff'
@@ -198,6 +199,7 @@ export default {
             config1:{
                 number: [0],
                 toFixed: 2,
+                textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -206,7 +208,7 @@ export default {
             },
             config2:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -215,7 +217,7 @@ export default {
             },
             config3:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -224,7 +226,7 @@ export default {
             },
             sellProfitNum:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '${nt}',
                 style:{
                     fontSize:20,
@@ -233,7 +235,7 @@ export default {
             },
             sellLossNum:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '${nt}',
                 style:{
                     fontSize:20,
@@ -242,7 +244,7 @@ export default {
             },
             orderTrendNum:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -251,7 +253,7 @@ export default {
             },
             orderLossNum:{
                 number: [0],
-                toFixed: 2,
+                toFixed: 2,textAlign:'left',
                 content: '{nt}',
                 style:{
                     fontSize:20,
@@ -267,6 +269,9 @@ export default {
         setTimeout( ()=>{
             this.power(360);
         },200);
+        this.$nextTick(()=>{
+          console.log(this.$refs.abc);
+        })
     },
     // 方法
     methods:{
@@ -292,156 +297,19 @@ export default {
             this.toDay = {...this.toDay};
         },
         orderTrend(e){
-            var chartDom = this.$refs.echartOrder;
-            var myChart = echarts.init(chartDom);
-            var option;
-
-            option = {
-            title: {
-                text: '订单数'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data: ['订单总数', '线下订单数', '线上订单数']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {}
-                }
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: e==false?["02-01","02-02","02-03","02-04","02-05","02-06","02-07","02-08","02-09","02-10","02-11" ,"02-12","02-13","02-14"
-                ,"02-15","02-16","02-17","02-18","02-19","02-20","02-21","02-22","02-23","02-24"
-                ]
-                :
-                ["周六","周日","周一","周二","周三","周四","周五"]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                name: '订单总数',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[320, 132, 401, 234, 690, 130, 10,34,325,12,13,345,423,64,345,62,255,222,534,7,224,5] : [120, 532, 101, 134, 90, 230, 210] 
-                },
-                {
-                name: '线下订单数',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[234,234,6546,665,7,744,4,52,42,324,235,42,56,265,62,52,62,24,523,543,52,252,24,5,21,3]: [150, -10, 201, 154, 190, 330, 410]
-                },
-                {
-                name: '线上订单数',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[343,654,77,878,98,35,7,324,423,3,4,444,4,524,52,6,44,6,24,4,426,64,532,543,24,24,78] :[320, 232, 301, 334, 390, 330, 320]
-                },
-            ]
-            };        
-            option && myChart.setOption(option);
             this.orderText = e==false?'同比本月':'同比本周'
 
         },
         sellTrend(e){
-            var chartDom = this.$refs.echartSell;
-            var myChart = echarts.init(chartDom);
-            var option;
-
-            option = {
-            title: {
-                text: '销售额'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data: ['销售总额', '线上销售额', '线下销售额']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {}
-                }
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data:e==false?["02-01","02-02","02-03","02-04","02-05","02-06","02-07","02-08","02-09","02-10","02-11" ,"02-12","02-13","02-14"
-                ,"02-15","02-16","02-17","02-18","02-19","02-20","02-21","02-22","02-23","02-24"
-                ]: ["周六","周日","周一","周二","周三","周四","周五"]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                name: '销售总额',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[34,435,1212,34,634,34,346,45,45,4,5,48,189,14,8,4,,1,81,146,18,48,,8,504,122,71,451]:[100, 532, 1, 334, 190, 230, 20],
-                itemStyle: {
-                    normal: {
-                        color: '#a80000', //改变折线点的颜色
-                        lineStyle: {
-                            color: '#a80000' //改变折线颜色
-                        }
-                    }
-			    },
-                },
-                {
-                name: '线上销售额',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[234,56,23,634,63,452,5,14,14,151,5,187,1,68,18,71,1,781,781,64,8,26,58,2,841,6,45,99]:[50, 200, -1, 154, 290, 530, 410],
-                itemStyle:{
-                    normal:{
-                        color:'#00a2e0',
-                        lineStyle:{
-                            color:'#00a2e0'
-                        }
-                    }
-                }
-                },
-                {
-                name: '线下销售额',
-                type: 'line',
-                stack: 'Total',
-                data: e==false?[144,435,543,1,-34,34,4,18,187,41,84,848,46,498,1125,18,1,518,818,1,18,5,59,41,125,51]:[320, 262, 601, 893, 30, 30, 320],
-                itemStyle:{
-                    normal:{
-                        color:'#3abe9e',
-                        lineStyle:{
-                            color:'#3abe9e'
-                        }
-                    }
-                }
-                },
-            ]
-            };        
-            option && myChart.setOption(option);
             this.lossText = e==false?'同比上月':'同比上周'
         }
     },
     mounted(){
         this.orderTrend(this.isCollapse);
         this.sellTrend(this.isCollapses);
+        this.$nextTick(()=>{
+          console.log(this.$refs.abc);
+        })
     }
 }
 </script>
@@ -471,7 +339,11 @@ export default {
 .bj-4{
     background-image: linear-gradient(to right,#f5715c,#f48760,#f19d61);
 }
-
+.df-s{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
 .df-sb{
     display: flex;
     justify-content: space-between;
@@ -500,7 +372,7 @@ export default {
 
 .box{
     background-color: #f3f3f3;
-    height: 100%;
+    height: 95%;
     overflow: scroll;
 }
 .sale-overview{
@@ -542,7 +414,6 @@ export default {
 .order-trend-num .num{
     color: #ccc;
     font-size: 1.5rem;
-    text-align: center;
 }
 .profit{
     color: #fff;
