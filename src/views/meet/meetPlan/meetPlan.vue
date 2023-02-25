@@ -1,23 +1,23 @@
 <template>
   <div class="plan">
     <div class="title">应急预案管理</div>
-    <div class="body mt-3">
+    <div class="body mt-2">
       <div class="head flex-between">
         <div>
           <span class="fs-2">输入预案名称：</span>
-          <el-input class="ml-2" v-model="input" placeholder="请输入名称"></el-input>
-          <el-button class="ml-2" type="primary" plain>搜索</el-button>
+          <el-input size="small" class="ml-2" v-model="input" placeholder="请输入名称"></el-input>
+          <el-button size="small" class="ml-2" type="primary" plain>搜索</el-button>
         </div>
         <div>
-          <el-button type="primary">发布新预案</el-button>
+          <el-button size="small" type="primary">发布新预案</el-button>
         </div>
       </div>
       <div class="tabel mt-2">
-        <el-table align="center" :data="tableData" stripe style="width: 100%">
+        <el-table size="small" align="center" :data="tableData" stripe style="width: 100%">
           <el-table-column align="center" prop="name" label="预案名称"></el-table-column>
           <el-table-column align="center" prop="address" label="预案类型"></el-table-column>
           <el-table-column align="center" prop="user" label="制定人"></el-table-column>
-          <el-table-column align="center" prop="date" label="日期"></el-table-column>
+          <el-table-column align="center" prop="date" label="发布日期"></el-table-column>
           <el-table-column align="center" prop="leve" label="紧急程度">
             <template slot-scope="scope">
               <el-tag
@@ -161,7 +161,7 @@ export default {
 }
 .body {
   overflow: hidden;
-  height: calc(100vh - 9rem);
+  height: calc(100vh - 8rem);
   background-color: white;
   padding: 2.5rem;
   box-sizing: border-box;
@@ -174,6 +174,9 @@ export default {
 }
 .mt-2 {
   margin-top: 2rem;
+}
+.mt-1 {
+  margin-top: 1rem;
 }
 .ml-2{
   margin-left: 2rem;
