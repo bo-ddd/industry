@@ -207,7 +207,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wraps {
     height: 100vh;
     background-color: #f1f1f1;

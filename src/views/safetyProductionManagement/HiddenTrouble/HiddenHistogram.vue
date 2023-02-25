@@ -36,8 +36,8 @@ export default {
 <style scoped>
 #main {
     width: 50rem;
-    height: 34rem;
+    height: 30rem;
     /* background-color: white; */
-    margin: 2rem auto 2rem;
+    margin: 1rem auto ;
 }
 </style>
