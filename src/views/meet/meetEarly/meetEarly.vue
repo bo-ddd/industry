@@ -1,40 +1,130 @@
 //应急检测预警
 <template>
     <div class="wraps">
-        <div class="header">
-            <span>实时事件</span>
+        <div>
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <dv-decoration-11 style="width:200px;height:60px;">事件列表</dv-decoration-11>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconA">A</div>
+                        <div>
+                            <p class="colorA">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconA">A</div>
+                        <div>
+                            <p class="colorA">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconB">B</div>
+                        <div>
+                            <p class="colorB">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconB">B</div>
+                        <div>
+                            <p class="colorB">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconC">C</div>
+                        <div>
+                            <p class="colorC">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+                <div class="sidebar-main">
+                    <div class="sidebar-main_left">
+                        <div class="iconD">D</div>
+                        <div>
+                            <p class="colorD">入侵报警</p>
+                            <p>XXX厂区西北角</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-main_right">
+                        <p>11:01:20</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="main">
-            <div class="main-content">
-                <div class="content-header">
-                    <span>基本信息</span>
-                </div>
-                <div class="content-main">
-                    <p>类型：<span class="red">入侵报警</span></p>
-                    <p>级别：<span class="red">A级警告</span></p>
-                    <p>时间：<span>2016-03-12 13:03:21</span></p>
-                    <p>位置：<span>xx省xx市xx区xx路xx号楼1-4-101</span></p>
-                    <p>内容：<span>xx摄像机在xx监控区域发现入侵对象</span></p>
-                    <p>客户：<span>xxx科技有限公司</span></p>
-                    <p>单位：<span>xxx应急产业园</span></p>
-                    <p>站点：<span>xxx测试站点</span></p>
-                    
-                </div>
+        <div class="right">
+            <div class="header">
+                <span>实时事件</span>
             </div>
-            <div class="main-content">
-                <div class="content-header">
-                    <span>地理位置</span>
+
+            <div class="main">
+                <div class="main-content">
+                    <div class="content-header">
+                        <span>基本信息</span>
+                    </div>
+                    <div class="content-main">
+                        <p>类型：<span class="colorA">入侵报警</span></p>
+                        <p>级别：<span class="colorA">A级警告</span></p>
+                        <p>时间：<span>2022-03-12 13:03:21</span></p>
+                        <p>位置：<span>xx省xx市xx区xx路xx号楼1-4-101</span></p>
+                        <p>内容：<span>xx摄像机在xx监控区域发现入侵对象</span></p>
+                        <p>客户：<span>xxx科技有限公司</span></p>
+                        <p>单位：<span>xxx应急产业园</span></p>
+                        <p>站点：<span>xxx测试站点</span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="main-content">
-                <div class="content-header">
-                    <span>事件图片</span>
+                <div class="main-content">
+                    <div class="content-header">
+                        <span>地理位置</span>
+                    </div>
+                    <div class="content-mains">
+                        <img src="@/assets/images/map.png" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="main-content">
-                <div class="content-header">
-                    <span>事件视频</span>
+                <div class="main-content">
+                    <div class="content-header">
+                        <span>事件图片</span>
+                    </div>
+                    <div class="content-mains">
+                        <img src="@/assets/images/picture.png" alt="">
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="content-header">
+                        <span>事件视频</span>
+                    </div>
+                    <div class="content-mains">
+                        <img src="@/assets/images/video.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,7 +135,8 @@
 export default {
     data() {
         return {
-
+            checked:true,
+            value1:true
         }
     },
     mounted: {
@@ -54,41 +145,173 @@ export default {
 }
 </script>
 
-<style>
-.wraps{
+<style scoped>
+.wraps {
     height: 100vh;
     background: #202429;
+    display: flex;
 }
-.header{
+
+.header {
     background: #2a2d34;
     color: #fff;
     font-weight: 600;
     font-size: 2rem;
     padding: 2rem;
 }
-.main{
+
+.main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
-.main-content{
-    width: 75%;
-    /* height: 50vh; */
+
+.main-content {
+    width: 99%;
+    height: 40vh;
     background: #2a2d34;
-    margin: 1rem 0 ;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    overflow :scroll;
 }
-.content-header{
+
+.content-header {
     color: #fff;
     font-weight: 600;
     font-size: 1.6rem;
     padding: 1rem 2rem;
     background: #333740;
 }
-.content-main{
+
+.content-main {
     color: #fff;
     padding: 2rem 3rem;
+    overflow: scroll;
+    /* display: flex;
+    flex-direction: column; */
 }
-.red{
+
+.content-main p {
+    padding: .2rem 0;
+}
+
+
+.content-mains{
+    overflow: scroll;
+}
+.content-mains img {
+    width: 100%;
+    height: 40vh;
+    /* object-fit: cover; */
+    object-fit: cover;
+    
+}
+
+.sidebar {
+    width: 30rem;
+    height: calc(100vh - 2rem);
+    background: #2a2d34;
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.sidebar-header {
+    font-weight: 600;
+    background: #15161a;
+    color: #35b6d5;
+    font-size: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.sidebar-main{
+    background: #212429;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+
+}
+.sidebar-main_left{
+    display: flex;
+    align-items: center;
+    padding: .5rem 0;
+    color: #fff;
+}
+.sidebar-main_left p{
+    padding: .5rem 0;
+    margin: 0 1rem;
+}
+.sidebar-main_left img{
+    width: 5.5rem;
+}
+.sidebar-main_right{
+    color: #fff;
+    padding-top: 1rem;
+}
+.right{
+    width: 100%;
+    max-height: 80vh;
+}
+.iconA{
+    width: 4rem;
+    height: 4rem;
+    background: red;
+    border-radius: 10rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.iconB{
+    width: 4rem;
+    height: 4rem;
+    background: #d99045;
+    border-radius: 10rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.iconC{
+    width: 4rem;
+    height: 4rem;
+    background: #cbba6c;
+    border-radius: 10rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.iconD{
+    width: 4rem;
+    height: 4rem;
+    background: #0192cb;
+    border-radius: 10rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.colorA{
     color: #ff0000;
+}
+.colorB{
+    color: #d99045;
+}
+.colorC{
+    color: #cbba6c;
+}
+.colorD{
+    color: #0192cb;
 }
 </style>

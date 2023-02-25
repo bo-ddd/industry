@@ -1,0 +1,141 @@
+<template>
+    <div class="main">
+        <dv-border-box-11 title="乌拉拉工业园区平台" titleHeight="500" class="dv-box">
+            <div class="box-login">
+                <dv-border-box-13 class="dv-login">
+                    <dv-border-box-8 :reverse="true">
+                    <div>
+                        <div class="login ">登录</div>
+                        <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
+                    </div>
+                    <div class="box-inp">
+
+                        <div class="box">
+                            <div class="mr-2 cl-white">账户</div>
+                            <input class="inp" type="text" value="Admin">
+                        </div>
+                        <div class="box">
+                            <div class="mr-2 cl-white">密码</div>
+                            <input class="inp" type="password" value="">
+                        </div>
+
+                    </div>
+                    <div class="btn" @click="toPage()"><dv-decoration-9
+                            style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
+                        </dv-border-box-8>
+                </dv-border-box-13>
+            </div>
+        </dv-border-box-11>
+
+    </div>
+</template>
+
+<script>
+
+export default {
+
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        toPage() {
+            this.$router.push({
+                name: "Home",
+            });
+        }
+    }
+};
+</script>
+
+<style scoped>
+.box {
+    width: 40rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../assets/images/xk2.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: #2e77f8;
+
+}
+.mt-1{
+    margin-top: 1rem;
+}
+.mr-2 {
+    margin-right: 2rem;
+}
+
+.box-login {
+    width: 60rem;
+    height: 45rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box-inp {
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 20%;
+    left: 16%;
+}
+
+.dv-box {
+    width: 100%;
+    position: relative;
+}
+
+.dv-login {
+    box-sizing: border-box;
+    padding: 2rem;
+
+}
+
+.login {
+    
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    padding-top: 1rem;
+}
+
+.dv-8 {
+    position: absolute;
+    top: 8%;
+    left: 22%;
+}
+.cl-white{
+    color: white;
+}
+.inp {
+    font-size: 2rem;
+    text-indent: 2em;
+    color: white;
+    width: 30rem;
+    height: 4rem;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn {
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 70%;
+    left: 41.5%;
+}</style>
