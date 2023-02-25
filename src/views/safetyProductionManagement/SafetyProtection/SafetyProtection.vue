@@ -4,8 +4,8 @@
         <dv-decoration-5 style="height:40px;" />
         <div class="header">
             <div class="header-item" v-for="item in headerData" :key="item.id">
-                <div class="item-title">{{item.title }}</div>
-                <div class="co-blue">{{item.num}}</div>
+                <div class="item-title">{{ item.title }}</div>
+                <div class="co-blue">{{ item.num }}</div>
             </div>
         </div>
         <div class="safety mat-20">
@@ -13,12 +13,12 @@
                 <div class="title-t">受攻击省份排名</div>
                 <rankingView></rankingView>
             </dv-border-box-8>
-            <dv-border-box-8 :reverse="true" class="item">
-                <dv-flyline-chart :config="config" style="width:100%;height:100%;" class="map" />
+            <dv-border-box-8 :reverse="true" class="item map">
+                <dv-flyline-chart :config="config" style="width:100%;height:100%;" />
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">已发现漏洞类型排名</div>
-                <dv-capsule-chart :config="leakConfig" class="leak"/>
+                <dv-capsule-chart :config="leakConfig" class="leak" />
 
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
@@ -27,7 +27,7 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">实时攻防详情</div>
-                <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail"/>
+                <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail mat-20" />
             </dv-border-box-8>
 
         </div>
@@ -42,27 +42,27 @@ export default {
     },
     data() {
         return {
-            headerData:[
-               {
-               id:1,
-               title:'总攻击数',
-               num:'350,425,000'
-               },
-               {
-               id:1,
-               title:'扫描发现总漏洞',
-               num:'3500'
-               },
-               {
-               id:1,
-               title:'防火墙拦截数',
-               num:'350,78'
-               },
-               {
-               id:1,
-               title:'保护资产个数',
-               num:'350,42'
-               },
+            headerData: [
+                {
+                    id: 1,
+                    title: '总攻击数',
+                    num: '350,425,000'
+                },
+                {
+                    id: 1,
+                    title: '扫描发现总漏洞',
+                    num: '3500'
+                },
+                {
+                    id: 1,
+                    title: '防火墙拦截数',
+                    num: '350,78'
+                },
+                {
+                    id: 1,
+                    title: '保护资产个数',
+                    num: '350,42'
+                },
             ],
             config: {
                 centerPoint: [0.48, 0.35],
@@ -123,7 +123,7 @@ export default {
                     ['20.11.20 9:00', '2.5.2.6美国', '30Mbps'],
                     ['20.11.20 9:00', '2.5.2.6美国', '30Mbps'],
                     ['20.11.20 9:00', '2.5.2.6美国', '30Mbps'],
-                  
+
                 ]
             },
 
@@ -142,9 +142,13 @@ export default {
                 tooltip: {
                     trigger: 'item'
                 },
+
                 legend: {
                     top: '5%',
-                    left: 'center'
+                    left: 'center',
+                    textStyle: {
+                        color: '#fff'
+                    },
                 },
                 series: [
                     {
@@ -152,10 +156,11 @@ export default {
                         type: 'pie',
                         radius: ['40%', '70%'],
                         avoidLabelOverlap: false,
+                        textStyle: '#fff',
                         itemStyle: {
                             borderRadius: 10,
                             borderColor: '#fff',
-                            borderWidth: 2
+                            borderWidth: 2,
                         },
                         label: {
                             show: false,
@@ -193,17 +198,22 @@ export default {
 }
 </script>
 <style scoped>
-.map{
-    background: url('../../../assets/image/posationMap.png')no-repeat;
+.map {
+    background: url('../../../assets/image/posationMap.png') no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
 }
-.leak{
+
+.leak {
     width: 46rem;
     height: 32rem;
     margin: 0 auto;
 }
-.detail{
+
+.detail {
     height: 23rem;
 }
+
 .mat-20 {
     margin-top: 2rem;
 }
@@ -220,6 +230,7 @@ export default {
 
 .safety-box {
     color: #fff;
+    min-width: 1000px;
     height: 100vh;
     background-color: black;
     box-sizing: border-box;
@@ -304,5 +315,4 @@ export default {
 
 .item:nth-of-type(8) {
     grid-area: right-aside_2;
-} */
-</style>
+} */</style>
