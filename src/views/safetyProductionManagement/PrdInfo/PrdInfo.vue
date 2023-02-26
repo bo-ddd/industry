@@ -74,20 +74,13 @@
                             风险点统计
                         </div>
                         <el-carousel trigger="click" height="18rem">
-                            <el-carousel-item v-for="item in carouselData" :key="item.id">
+                            <el-carousel-item v-for="(item, index) in carouselData" :key="index">
                                 <div class="small jc-sa">
-                                    <div class="align-center">
-                                        <i class="fs-5 c-35cee9" :class="item.iconOnw"></i>
+                                    <div class="align-center" v-for="el in item" :key="el.id">
+                                        <i class="fs-5 c-35cee9" :class="el.icon"></i>
                                         <div class="text_center ml-1">
-                                            <div class="c-35cee9 fw-700 fs-2">{{ item.num }}</div>
-                                            <div class="fs-2">{{ item.text }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="align-center">
-                                        <i class="fs-5 c-35cee9" :class="item.iconTon"></i>
-                                        <div class="text_center ml-1">
-                                            <div class="c-35cee9 fw-700 fs-2">{{ item.num }}</div>
-                                            <div class="fs-2">{{ item.text }}</div>
+                                            <div class="c-35cee9 fw-700 fs-2">{{ el.num }}</div>
+                                            <div class="fs-2">{{ el.text }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -233,20 +226,34 @@ export default {
                 },
             ],
             carouselData: [
-                {
-                    id: 1,
-                    iconOnw: "el-icon-help",
-                    iconTon: "el-icon-s-home",
-                    num: 11,
-                    text: "高危工艺"
-                },
-                {
-                    id: 2,
-                    iconOnw: "el-icon-help",
-                    iconTon: "el-icon-s-home",
-                    num: 16,
-                    text: "储罐信息"
-                }
+                [
+                    {
+                        id: 1,
+                        icon: "el-icon-help",
+                        num: 11,
+                        text: "高危工艺"
+                    },
+                    {
+                        id: 2,
+                        icon: "el-icon-s-home",
+                        num: 16,
+                        text: "储罐信息"
+                    }
+                ],
+                [
+                    {
+                        id: 1,
+                        icon: "el-icon-help",
+                        num: 11,
+                        text: "高危工艺"
+                    },
+                    {
+                        id: 2,
+                        icon: "el-icon-s-home",
+                        num: 16,
+                        text: "储罐信息"
+                    }
+                ],
             ],
             isok: 5,// 1风险四色图  2危险作业分布图  3风险分布图   4风险清单   5两单三卡
             isActive: true,
