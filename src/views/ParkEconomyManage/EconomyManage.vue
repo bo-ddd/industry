@@ -380,7 +380,7 @@ export default {
 
 .box{
     background-color: #f3f3f3;
-    height: 95%;
+    height: 94.5%;
     overflow: scroll;
 }
 .sale-overview{
