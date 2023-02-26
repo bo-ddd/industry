@@ -54,7 +54,7 @@
             <div class="flex-center mtb-10">
                 <div class="second-title">事件记录</div>
                 <div>
-                    <el-button type="primary" size="small">增加</el-button>
+                    <el-button type="primary" size="small" @click="addData">增加</el-button>
                     <el-button type="primary" size="small">批量删除</el-button>
                     <el-button type="primary" size="small">批量导出</el-button>
                 </div>
@@ -89,7 +89,7 @@
                             <div>操作</div>
                         </template>
                         <template slot-scope="scope">
-                            <div class="flex-center">
+                            <div class="flex-around">
                                 <!-- 编辑按钮 -->
                                 <div class="operate-productinfo_btn">
                                     <i class="el-icon-edit icon"></i>
@@ -260,8 +260,13 @@ export default {
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
         },
+        //删除数据
         handleDelete(index,row){
             this.tableData.splice(index, 1);
+        },
+        //添加数据
+        addData(){
+
         }
     }
 }
@@ -336,9 +341,9 @@ export default {
     align-items: center;
 }
 
-.flex-between {
+.flex-around {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
