@@ -98,18 +98,20 @@
                                 <div class="operate-productinfo_btn">
                                     <i class="el-icon-delete icon" @click.stop="handleDelete(scope.$index, scope.row)"></i>
                                 </div>
-                                <!-- 添加按钮 -->
-                                <div class="operate-productinfo_btn">
-                                    <i class="el-icon-circle-plus-outline icon" @click.stop="handleAdd"></i>
-                                </div>
                             </div>
                         </template>
                     </el-table-column>
                 </el-table>
             </template>
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                :current-page="currentPage4" :page-sizes="[5, 10, 20, 30]" :page-size="5"
-                layout="total, sizes, prev, pager, next, jumper" :total="total">
+            <el-pagination 
+                @size-change="handleSizeChange" 
+                @current-change="handleCurrentChange"
+                :current-page="currentPage4" 
+                :page-sizes="[5, 10, 20, 30]" 
+                :page-size="5"
+                layout="total, sizes, prev, pager, next, jumper" 
+                :total="total"
+            >
             </el-pagination>
         </div>
     </div>
@@ -119,6 +121,46 @@ export default {
     data() {
         return {
             tableData: [{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
                     eventNumber: 'E202390090',
                     eventContent: '生活垃圾堆放',
                     pollutionSourseName: '',
@@ -217,6 +259,9 @@ export default {
         },
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
+        },
+        handleDelete(index,row){
+            this.tableData.splice(index, 1);
         }
     }
 }

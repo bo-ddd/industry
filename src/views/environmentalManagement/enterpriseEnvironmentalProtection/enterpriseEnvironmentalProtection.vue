@@ -69,7 +69,7 @@
                     </el-table-column>
                 </el-table>
             </div>
-            <a class="mt-20">submit</a>
+            <a class="mt-20 submit-btn">submit</a>
         </div>
         <el-dialog title="添加产品信息" :visible.sync="addProductInfodialogVisible" width="50%">
             <div>
@@ -210,7 +210,7 @@ export default {
             this.tableData.push(this.addProductInfoForm);
             // this.$set(this.tableData,index,updateContent);
             // this.addProductInfoForm = '';
-            this.addProductInfodialogVisible = false;
+            this.addProductInfodialogVisible = false; 
         },
         //删除一行表格数据方法
         handleDelete(index, row) {
@@ -232,7 +232,8 @@ export default {
 <style>
 .wrap {
     padding: 2rem;
-    width: 89vw;
+    /* width: 89vw; */
+    /* background-color: black; */
 }
 
 a {
@@ -271,6 +272,10 @@ a::before {
     /* 背景模糊 */
     filter: blur(20px);
     z-index: -1;
+}
+
+.submit-btn{
+    cursor: pointer;
 }
 
 /* 伪元素设置动画 */
