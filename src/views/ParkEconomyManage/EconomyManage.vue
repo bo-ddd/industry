@@ -380,7 +380,7 @@ export default {
 
 .box{
     background-color: #f3f3f3;
-    height: 91.5%;
+    height: 100vh;
     overflow: scroll;
 }
 .sale-overview{
@@ -455,5 +455,9 @@ export default {
 }
 .on-line_bj2{
     background-color: #1db3e5;
+}
+.sale-title{
+    font-size: 2rem;
+    font-weight: 700;
 }
 </style>
