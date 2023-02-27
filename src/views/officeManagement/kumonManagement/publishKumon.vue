@@ -335,7 +335,7 @@ export default {
           name: "员工补贴薪资参照单",
           time: "2023-02-24",
           extent: "通知",
-          unit: "管理部",
+          unit: "财务部",
           state: "未阅",
           type:"warning",
           massage: "王鹏程",
@@ -501,10 +501,10 @@ export default {
         })
       },
       toPage(id) {
-            this.$router.push({
-                name: "checkView",
-                params:{Id:id}
-            });
+            // this.$router.push({
+            //     name: "checkView",
+            //     params:{Id:id}
+            // });
         }
   }
 };
