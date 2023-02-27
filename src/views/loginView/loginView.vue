@@ -1,36 +1,37 @@
 <template>
-    <div class="main">
-        <dv-border-box-1 :color="['#245970','bule']">
-      <div class="title">
-        <div class=" fs-3 cl-white pd-2">浮山双新园区智能管控</div>
-        <dv-decoration-5 class="dv-5" dur="2"  style="width:80rem;height:10rem;" />
-      </div>
-            <div class="box-login">
-                <dv-border-box-13 class="dv-login">
-                    <dv-border-box-8 :reverse="true">
-                    <div>
-                        <div class="login ">登录</div>
-                        <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
-                    </div>
-                    <div class="box-inp">
-
-                        <div class="box">
-                            <div class="mr-2 cl-white">账户</div>
-                            <input class="inp" type="text" value="Admin">
-                        </div>
-                        <div class="box">
-                            <div class="mr-2 cl-white">密码</div>
-                            <input class="inp" type="password" value="">
-                        </div>
-
-                    </div>
-                    <div class="btn" @click="toPage()"><dv-decoration-9
+        <div class="main">
+            
+            <dv-border-box-1 :color="['#245970','bule']">
+                <div class="title">
+                    <div class=" fs-3 cl-white pd-2">浮山双新园区智能管控</div>
+                    <dv-decoration-5 class="dv-5" dur="2"  style="width:80rem;height:10rem;" />
+                </div>
+                <div class="box-login">
+                    <dv-border-box-13 class="dv-login">
+                        <dv-border-box-8 :reverse="true">
+                            <div>
+                                <div class="login ">登录</div>
+                                <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
+                            </div>
+                            <div class="box-inp">
+                                
+                                <div class="box">
+                                    <div class="mr-2 cl-white">账户</div>
+                                    <input class="inp" type="text" value="Admin">
+                                </div>
+                                <div class="box">
+                                    <div class="mr-2 cl-white">密码</div>
+                                    <input class="inp" type="password" value="">
+                                </div>
+                                
+                            </div>
+                            <div class="btn" @click="toPage()"><dv-decoration-9
                             style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
                         </dv-border-box-8>
                 </dv-border-box-13>
             </div>
-     
-
+            
+            
         </dv-border-box-1>
     </div>
 </template>
@@ -75,7 +76,7 @@ export default {
 .main {
     width: 100vw;
     height: 100vh;
-    background-image: url("../../assets/images/xk2.png");
+    background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/industry/images/xk2.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: #2e77f8;
