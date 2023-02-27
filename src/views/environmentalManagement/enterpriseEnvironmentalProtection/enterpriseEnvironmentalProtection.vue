@@ -69,6 +69,7 @@
                     </el-table-column>
                 </el-table>
             </div>
+            <a class="mt-20 submit-btn">submit</a>
         </div>
         <el-dialog title="添加产品信息" :visible.sync="addProductInfodialogVisible" width="50%">
             <div>
@@ -209,7 +210,7 @@ export default {
             this.tableData.push(this.addProductInfoForm);
             // this.$set(this.tableData,index,updateContent);
             // this.addProductInfoForm = '';
-            this.addProductInfodialogVisible = false;
+            this.addProductInfodialogVisible = false; 
         },
         //删除一行表格数据方法
         handleDelete(index, row) {
@@ -231,7 +232,55 @@ export default {
 <style>
 .wrap {
     padding: 2rem;
-    width: 89vw;
+    /* width: 89vw; */
+    /* background-color: black; */
+}
+
+a {
+    text-decoration: none;
+    font-size: 18px;
+    /* 角度渐变 */
+    background: linear-gradient(90deg,blue,rgb(4, 171, 255),purple,rgb(223, 9, 235),rgb(163, 97, 237));
+    background-size: 400%;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    /* 大写字母转换 */
+    text-transform: uppercase;
+    border-radius: 50px;
+    z-index: 1;
+}
+
+a:hover {
+    background-color: white;
+    animation: light 5s infinite;
+}
+
+@keyframes light {
+    100%{
+        background-position: -400% 0;
+    }
+}
+
+a::before {
+    content: "";
+    background: linear-gradient(90deg,blue,rgb(4, 171, 255),purple,rgb(223, 9, 235),rgb(163, 97, 237));
+    background-size: 400%;
+    border-radius: 50px;
+    /* 背景模糊 */
+    filter: blur(20px);
+    z-index: -1;
+}
+
+.submit-btn{
+    cursor: pointer;
+}
+
+/* 伪元素设置动画 */
+a:hover::before {
+    animation: light 5s infinite;
 }
 
 .mt-20 {
@@ -300,5 +349,8 @@ export default {
 
 .icon {
     font-size: 3rem;
+}
+.submit-btn{
+    font-size: 2rem;
 }
 </style>
