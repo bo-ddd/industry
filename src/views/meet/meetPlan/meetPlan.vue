@@ -27,7 +27,7 @@
             </template>
           </el-table-column>
           <el-table-column align="center" label="操作">
-            <template slot-scope="scope">
+            <template>
               <el-button type="text" size="small" @click="to('/meetPlandetail')">查看</el-button>
             </template>
           </el-table-column>
@@ -63,70 +63,70 @@ export default {
           date: "2016-05-01",
           name: "自然灾害应急预案",
           address: "自然灾害",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-04",
           name: "预防化工事故预案",
           address: "预防演练",
-          user: "李主任",
+          user: "耿磊",
           leve: "中",
         },
         {
           date: "2016-05-01",
           name: "发生火灾应急程序",
           address: "紧急事故",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-03",
           name: "安全演练流程预案",
           address: "预防演练",
-          user: "李主任",
+          user: "耿磊",
           leve: "中",
         },
         {
           date: "2016-05-03",
           name: "电力事故应急预案",
           address: "紧急事故",
-          user: "张队长",
+          user: "耿磊",
           leve: "中",
         },
         {
           date: "2016-05-03",
           name: "塌陷事故应急预案",
           address: "紧急事故",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-03",
           name: "地震事故应急预案",
           address: "自然灾害",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-03",
           name: "溺水事故应急预案",
           address: "自然灾害",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-03",
           name: "污染物泄露环保应急预案",
           address: "紧急事故",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
         {
           date: "2016-05-03",
           name: "核泄漏应急预案",
           address: "紧急事故",
-          user: "张队长",
+          user: "耿磊",
           leve: "高",
         },
       ],

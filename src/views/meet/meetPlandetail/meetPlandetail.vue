@@ -76,7 +76,6 @@
   .wrap-agreement {
     font-family: 等线;
     margin: 0 5rem;
-    // margin: 1.25rem 5rem 2rem 5rem;
     .title {
     }
     .body {
