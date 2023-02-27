@@ -456,4 +456,8 @@ export default {
 .on-line_bj2{
     background-color: #1db3e5;
 }
+.sale-title{
+    font-size: 2rem;
+    font-weight: 700;
+}
 </style>

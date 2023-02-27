@@ -33,9 +33,9 @@
           </el-table-column>
         </el-table>
       </div>
-      <div class="flex-center">
+      <div class="">
         <el-pagination
-          class="mt-3"
+          class="mt-2"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="currentPage4"

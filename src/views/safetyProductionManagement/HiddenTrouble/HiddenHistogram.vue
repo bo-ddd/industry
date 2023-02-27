@@ -37,7 +37,6 @@ export default {
 #main {
     width: 50rem;
     height: 30rem;
-    /* background-color: white; */
-    margin: 1rem auto ;
+    margin: 1rem auto;
 }
 </style>
