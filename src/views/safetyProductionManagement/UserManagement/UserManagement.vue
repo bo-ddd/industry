@@ -53,42 +53,43 @@
       prop="entryDate"
       label="入职日期"
       align = center
-      width="200">
+      width=auto>
     </el-table-column>
     <el-table-column
       prop="name"
       label="姓名"
       align = center
-      width="200">
+      width=auto>
     </el-table-column>
     <el-table-column
       prop="department"
       label="部门"
       align = center
-      width="200">
+      width=auto>
     </el-table-column>
     <el-table-column
       prop="position"
       label="职位"
       align = center
-      width="200">
+      width=auto>
     </el-table-column>
     <el-table-column
       prop="userType"
       label="员工类型"
       align = center
-      width="350">
+      width=auto>
     </el-table-column>
     <el-table-column
       prop="phoneNumber"
       label="手机号"
       align = center
-      width="350">
+      width=auto>
     </el-table-column>
     <el-table-column
       fixed="right"
       align = center
-      label="操作">
+      label="操作"
+      width="150">
       <template slot-scope="scope">
         <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
         <el-button type="text" size="small">编辑</el-button>
