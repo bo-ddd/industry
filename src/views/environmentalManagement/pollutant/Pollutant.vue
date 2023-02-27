@@ -61,7 +61,7 @@
             </div>
             <template>
                 <!--  :header-cell-style="{ background: '#00baff', color: 'white' }"  -->
-                <el-table :data="tableData" style="width: 100%">
+                <el-table :data="tableData" class="pullutant-table" style="width: 100%">
                     <el-table-column type="selection" width="55" align="center">
                     </el-table-column>
                     <el-table-column label="序号" type="index" align="center">
@@ -254,7 +254,6 @@ export default {
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    position: relative;
 }
 
 .title {
@@ -291,9 +290,15 @@ export default {
     align-items: center;
 }
 
+.el-table{
+    position: unset;
+}
+
+.pullutant-table{
+    height: 57rem;
+}
+
 .el-pagination {
     margin-top: 2rem;
-    position: absolute;
-    bottom: 4rem;
 }
 </style>
