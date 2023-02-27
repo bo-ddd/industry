@@ -110,7 +110,8 @@
                         <span>地理位置</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/map.png" alt="">
+                        <!-- <img src="@/assets/images/map.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -118,7 +119,8 @@
                         <span>事件图片</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/picture.png" alt="">
+                        <!-- <img src="@/assets/images/picture.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/picture.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -126,7 +128,8 @@
                         <span>事件视频</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/video.png" alt="">
+                        <!-- <img src="@/assets/images/video.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/video.png" alt="">
                     </div>
                 </div>
             </div>
