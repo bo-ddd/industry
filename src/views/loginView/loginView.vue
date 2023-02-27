@@ -76,7 +76,7 @@ export default {
 .main {
     width: 100vw;
     height: 100vh;
-    background-image: url("../../assets/images/xk2.png");
+    background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/industry/images/xk2.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: #2e77f8;
