@@ -1,8 +1,11 @@
 <!-- 风险分级管控 -->
 <template>
     <div class="risk-box">
-        <span class="title">安全隐患排查</span>
-        <dv-decoration-5 style="height:40px;" />
+        <div>
+            <div class="title">安全隐患排查</div>
+            <dv-decoration-5 style="height:40px;" />
+
+        </div>
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
@@ -198,7 +201,7 @@ export default {
                 },
                 xAxis: {
                     type: 'category',
-                     axisLabel: {
+                    axisLabel: {
                         show: true,
                         color: '#ffffff',
                         fontSize: 16
@@ -224,41 +227,39 @@ export default {
             var option;
 
             option = {
+                title: {
+                   
+                  
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
                 legend: {
-                    top: 'bottom',
+                    orient: 'vertical',
+                    left: 'left',
                     textStyle: {
                         color: '#fff'
                     },
                 },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        mark: { show: true },
-                        dataView: { show: false, readOnly: false },
-                        restore: { show: false },
-                        saveAsImage: { show: false }
-                    }
-                },
                 series: [
                     {
-                        name: 'Nightingale Chart',
+                        name: 'Access From',
                         type: 'pie',
-                        radius: [0, 60],
-                        center: ['50%', '50%'],
-                        roseType: 'area',
-                        itemStyle: {
-                            borderRadius: 5
-                        },
+                        radius: '50%',
                         data: [
-                            { value: 40, name: '' },
-                            { value: 38, name: '' },
-                            { value: 32, name: '' },
-                            { value: 30, name: '' },
-                            { value: 28, name: '' },
-                            { value: 26, name: '' },
-                            { value: 22, name: '' },
-                            { value: 18, name: '' }
-                        ]
+                            { value: 1048, name: '石油化工' },
+                            { value: 735, name: '基础化工' },
+                            { value: 580, name: '化学化纤' },
+                            { value: 484, name: '塑料化工' },
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
                     }
                 ]
             };
@@ -331,6 +332,9 @@ export default {
 }
 </script>
 <style scoped>
+.pad-20{
+    padding: 2rem 0;
+}
 .risk-num {
     margin: 0 auto;
 }
@@ -366,8 +370,8 @@ export default {
 }
 
 .distribute {
-    width: 26rem;
-    height: 14rem;
+    width: 50rem;
+    height:20rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
@@ -395,7 +399,7 @@ export default {
 }
 
 .title {
-
+   padding-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -465,4 +469,5 @@ export default {
 .risk-points {
     display: flex;
     justify-content: space-around;
-}</style>
+}
+</style>
