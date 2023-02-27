@@ -11,8 +11,8 @@ const routes = [
     component: LoginView,
   },
   {
-    path:"/home",
-    name:"Home",
+    path: "/home",
+    name: "Home",
     component: () => import("../views/home/Home.vue")
   },
   {
@@ -135,18 +135,18 @@ const routes = [
       component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue")
     },
     {
+      //园区应急管理 > 应急资源管理
+      path: '/meetResource',
+      name: 'meetResource',
+      component: () => import("../views/meet/meetResource/meetResource.vue")
+    },
+    {
       // 坏境管理  > 能源管理
       path: '/energyManagement',
       name: 'EnergyManagement',
       component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue")
-    }
+    },
     ]
-  },
-  {
-    //园区应急管理 > 应急资源管理
-    path: '/meetResource',
-    name: 'meetResource',
-    component: () => import("../views/meet/meetResource/meetResource.vue")
   },
 ]
 

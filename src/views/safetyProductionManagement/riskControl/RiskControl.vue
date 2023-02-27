@@ -1,8 +1,10 @@
 <!-- 风险分级管控 -->
 <template>
     <div class="risk-box">
+        <div class="risk-head">
             <div class="title">安全隐患排查</div>
             <dv-decoration-5 style="height:40px;" />
+        </div>
 
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
@@ -330,7 +332,15 @@ export default {
 }
 </script>
 <style scoped>
+.risk-head{
+    height: 10vh;
+}
 
+.risk-head .title{
+    position: relative;
+    top: 50%;
+    transform: translateY(-70%);
+}
 
 .risk-num {
     margin: 0 auto;
@@ -396,6 +406,7 @@ export default {
 }
 
 .title {
+  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -404,11 +415,11 @@ export default {
 }
 
 .risk-box {
-    min-width: 1000px;
+    min-width: 100rem;
     height: 100vh !important;
     background-color: black;
     color: #fff;
-    padding-top:2rem;
+    /* padding-top:2rem; */
     box-sizing: border-box;
 
 }

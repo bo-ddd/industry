@@ -110,6 +110,12 @@ export default {
                         }, {
                             url: "/transactionManagement",
                             title: "事务管理"
+                        },{
+                            url: "",
+                            title: "应急指挥调度"
+                        },{
+                            url: "",
+                            title: "应急辅助决策"
                         }, {
                             url: "",
                             title: "共享与交流管理"
