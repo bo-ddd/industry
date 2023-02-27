@@ -787,7 +787,8 @@ export default {
   text-align: center;
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
+  align-items: center;
+    height: 25vh;
 }
 
 .item .title {
