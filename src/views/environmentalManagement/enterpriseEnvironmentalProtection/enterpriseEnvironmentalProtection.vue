@@ -145,7 +145,7 @@
             <div class="flex-center">
                 <div></div>
                 <div>
-                    <img src="../../../assets/images/certificate.jpg" class="certificate-image" alt="">
+                    <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/certificate.jpg" class="certificate-image" alt="">
                 </div>
             </div>
             <span slot="footer" class="dialog-footer">
@@ -156,7 +156,7 @@
         <el-dialog title="监测报告" :visible.sync="monitoringReportDialogVisible" width="50%">
             <div class="flex-center">
                 <div></div>
-                <div><img src="../../../assets/images/jctp.png" class="certificate-image" alt=""></div>
+                <div><img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/jctp.png" class="certificate-image" alt=""></div>
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="monitoringReportDialogVisible = false">取 消</el-button>
