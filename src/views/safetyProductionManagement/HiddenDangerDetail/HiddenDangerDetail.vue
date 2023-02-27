@@ -84,19 +84,19 @@ export default {
             list: [
                 {
                     id: 1,
-                    imgUrl: require('../../../assets/image/icon-warn.png'),
+                    imgUrl: require('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-warn.png'),
                     text: '预警总数',
                     value: 169
                 },
                 {
                     id: 2,
-                    imgUrl: require('../../../assets/image/icon-city.png'),
+                    imgUrl: require('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-city.png'),
                     text: '接入企业数',
                     value: 3456
                 },
                 {
                     id: 3,
-                    imgUrl: require('../../../assets/image/icon-camera.png'),
+                    imgUrl: require('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-camera.png'),
                     text: '镜头总数',
                     value: 6921
                 }
