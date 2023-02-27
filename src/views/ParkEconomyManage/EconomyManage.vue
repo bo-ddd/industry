@@ -1,8 +1,11 @@
 <template>
     <dv-full-screen-container>
-    <div class="box">
-        <div class="box-content mg-15">
-            <!-- 销售总揽 -->
+        <div class="box">
+            <div class="box-content mg-15">
+            <el-page-header class="header" @back="toHome" content="">
+                <template #content><span class="header-title">园区经济管理</span></template>
+            </el-page-header>
+                <!-- 销售总揽 -->
             <div class="sale-overview mb-10">
                 <div class="sale-title mb-10">销售总揽</div>
                 <div class="df">
@@ -166,6 +169,7 @@
 </template>
 
 <script>
+import router from '@/router';
 import echartsView from './echartsView.vue';
 import jigsawPuzzleView from './jigsawPuzzleView.vue';
 export default {
@@ -272,6 +276,12 @@ export default {
     },
     // 方法
     methods:{
+        toHome(){
+            this.$router.push({
+                path:'/Home',
+                query:{},
+            })
+        },
         power(n){
             this.config.number[0] = Math.floor((Math.random() * n) + 1);
             this.config = {...this.config};//对象解构，更新props
@@ -459,5 +469,13 @@ export default {
 .sale-title{
     font-size: 2rem;
     font-weight: 700;
+}
+.header{
+    background-color: #fff;
+    padding: 2rem;
+}
+.header-title{
+    font-size: 2.6rem;
+    font-weight: 600;
 }
 </style>
