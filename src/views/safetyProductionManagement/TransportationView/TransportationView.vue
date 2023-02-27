@@ -1,4 +1,5 @@
 <template>
+    <dv-full-screen-container>
     <div class="outer-layer">
         <div class="header flex">
             <div class="to-be-delivered">
@@ -67,6 +68,7 @@
 
 
     </div>
+</dv-full-screen-container>
 </template>
 
 <script>
