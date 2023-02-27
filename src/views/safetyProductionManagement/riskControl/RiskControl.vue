@@ -389,8 +389,8 @@ export default {
 }
 
 .grade {
-    width: 30rem;
-    height: 30rem;
+    /* width: 30rem;
+    height: 30rem; */
     margin: 0 auto;
 }
 
@@ -411,7 +411,6 @@ export default {
 }
 
 .title {
-  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -428,7 +427,7 @@ export default {
 }
 
 .risk {
-    width: calc(100vw - 25rem -1px) !important;
+    /* width: 100%!important; */
     height: 90vh !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
