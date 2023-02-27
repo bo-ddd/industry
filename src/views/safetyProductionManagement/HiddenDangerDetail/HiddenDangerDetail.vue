@@ -1,63 +1,64 @@
 <template>
-    <div class="main">
-        <div class="item">
-            <dv-border-box-1 class="dv-box">
-                <div class="content pd-12">
-                    <dv-decoration-11 class="title" style="width:20rem;height:6rem;">预警类型比例</dv-decoration-11>
-                    <warning-type class="scale-9"></warning-type>
-                </div>
-            </dv-border-box-1>
-        </div>
-        <div class="item">
-            <dv-border-box-1 class="dv-box">
-                <div class="content pd-12">
-                    <dv-decoration-11 class="title" style="width:20rem;height:6rem;">预警类型趋势</dv-decoration-11>
-                    <warning-trend class="scale-9"></warning-trend>
-                </div>
-            </dv-border-box-1>
-        </div>
-        <div class="item">
-            <dv-border-box-8 class="dv-box">
-                <div class="content pd-12 flex-col">
-                    <div class="list">
-                        <div class="item-list" v-for="(item, index) in list" :key="index">
-                            <img class="icon-item" :src="item.imgUrl" alt="">
-                            <div class="text-item">
-                                <div class="fs-16">{{ item.text }}</div>
-                                <digital-flop :number="item.value"></digital-flop>
+    <dv-full-screen-container>
+        <div class="main">
+            <div class="item">
+                <dv-border-box-1 class="dv-box">
+                    <div class="content pd-12">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">预警类型比例</dv-decoration-11>
+                        <warning-type class="scale-9"></warning-type>
+                    </div>
+                </dv-border-box-1>
+            </div>
+            <div class="item">
+                <dv-border-box-1 class="dv-box">
+                    <div class="content pd-12">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">预警类型趋势</dv-decoration-11>
+                        <warning-trend class="scale-9"></warning-trend>
+                    </div>
+                </dv-border-box-1>
+            </div>
+            <div class="item">
+                <dv-border-box-8 class="dv-box">
+                    <div class="content pd-12 flex-col">
+                        <div class="list">
+                            <div class="item-list" v-for="(item, index) in list" :key="index">
+                                <img class="icon-item" :src="item.imgUrl" alt="">
+                                <div class="text-item">
+                                    <div class="fs-16">{{ item.text }}</div>
+                                    <digital-flop :number="item.value"></digital-flop>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </dv-border-box-8>
+                </dv-border-box-8>
+            </div>
+            <div class="item">
+                <dv-border-box-8 :reverse="true" class="dv-box">
+                    <div class="content pd-12">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">规划模型统计</dv-decoration-11>
+                        <ruleModel class="scale-9 mt-40"></ruleModel>
+                        <early-warning class="scale-9 mt-40"></early-warning>
+                    </div>
+                </dv-border-box-8>
+            </div>
+            <div class="item">
+                <dv-border-box-1 class="dv-box" :reverse="true">
+                    <div class="content">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">实时预警</dv-decoration-11>
+                        <scroll-board class="scale-9"></scroll-board>
+                    </div>
+                </dv-border-box-1>
+            </div>
+            <div class="item">
+                <dv-border-box-1 class="dv-box" :reverse="true">
+                    <div class="content">
+                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">历史预警</dv-decoration-11>
+                        <scroll-board class="scale-9"></scroll-board>
+                    </div>
+                </dv-border-box-1>
+            </div>
         </div>
-        <div class="item">
-            <dv-border-box-8 :reverse="true" class="dv-box">
-                <div class="content pd-12">
-                    <dv-decoration-11 class="title" style="width:20rem;height:6rem;">规划模型统计</dv-decoration-11>
-                    <ruleModel class="scale-9 mt-40"></ruleModel>
-                    <early-warning class="scale-9 mt-40"></early-warning>
-                </div>
-            </dv-border-box-8>
-        </div>
-        <div class="item">
-            <dv-border-box-1 class="dv-box" :reverse="true">
-                <div class="content pd-12">
-                    <dv-decoration-11 class="title" style="width:20rem;height:6rem;">实时预警</dv-decoration-11>
-                    <scroll-board class="scale-9"></scroll-board>
-                </div>
-            </dv-border-box-1>
-        </div>
-        <div class="item">
-            <dv-border-box-1 class="dv-box" :reverse="true">
-                <div class="content pd-12">
-                    <dv-decoration-11 class="title" style="width:20rem;height:6rem;">历史预警</dv-decoration-11>
-                    <scroll-board class="scale-9"></scroll-board>
-                </div>
-            </dv-border-box-1>
-        </div>
-
-    </div>
+    </dv-full-screen-container>
 </template>
 
 <script>
@@ -166,6 +167,7 @@ export default {
 
 .pd-12 {
     padding: 1.4rem;
+    box-sizing: border-box;
 }
 
 .scale-9 {
@@ -182,10 +184,6 @@ export default {
     align-items: center;
     gap: 13rem;
 
-}
-
-.mt-5 {
-    margin-top: 0.5rem;
 }
 
 .item-list {

@@ -1,84 +1,86 @@
 <template>
-    <div class="main">
-        <dv-border-box-11 class="dv-box" title="安全生产监督">
-            <el-row class="el-row" :gutter="20">
-                <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
-                    <dv-border-box-10 class="equipment">
-                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">设备</dv-decoration-11>
-                        <div class="container pd-10">
-                            <div class="rate flex-col" v-for="(item, index) in rateList" :key="index">
-                                <div class="subtitle">{{ item.title }}</div>
-                                <div class="content-rate flex-row">
-                                    <div class="icon-rate">
+    <dv-full-screen-container>
+        <div class="main">
+            <dv-border-box-11 class="dv-box" title="安全生产监督">
+                <el-row class="el-row" :gutter="20">
+                    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
+                        <dv-border-box-10 class="equipment">
+                            <dv-decoration-11 class="title" style="width:20rem;height:6rem;">设备</dv-decoration-11>
+                            <div class="container pd-10">
+                                <div class="rate flex-col" v-for="(item, index) in rateList" :key="index">
+                                    <div class="subtitle">{{ item.title }}</div>
+                                    <div class="content-rate flex-row">
+                                        <div class="icon-rate">
+                                        </div>
+                                        <div class="chart-rate font-white">
+                                            <dv-decoration-9 style="width:13rem;height:13rem;">{{ item.rateValue + '%'
+                                            }}</dv-decoration-9>
+                                        </div>
                                     </div>
-                                    <div class="chart-rate font-white">
-                                        <dv-decoration-9 style="width:13rem;height:13rem;">{{ item.rateValue + '%'
-                                        }}</dv-decoration-9>
+                                </div>
+                            </div>
+                        </dv-border-box-10>
+                    </el-col>
+                    <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                        <dv-border-box-10 class="command">
+                            <dv-decoration-11 class="title" style="width:20rem;height:6rem;">总指挥</dv-decoration-11>
+                            <div class="container flex-col">
+                                <div class="map scale-8">
+                                    <mapView></mapView>
+                                </div>
+                                <!-- <div class="overall-ratio flex-row_around">
+                                    <div class="ratio flex-col" v-for="(item, index) in ratioList" :key="index">
+                                        <div class="key-ratio font-white">
+                                            <dv-decoration-9 style="width:9rem;height:9rem;">{{ item.ratioValue + '%'
+                                            }}</dv-decoration-9>
+                                        </div>
+                                        <div class="name-ratio subtitle">{{ item.name }}</div>
+                                    </div>
+                                </div> -->
+                                <div class="yield-trend flex-col">
+                                    <div class="title-trend subtitle">产量趋势</div>
+                                    <div class="chart-trend">
+                                        <yield-trend></yield-trend>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </dv-border-box-10>
-                </el-col>
-                <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-                    <dv-border-box-10 class="command">
-                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">总指挥</dv-decoration-11>
-                        <div class="container flex-col">
-                            <div class="map scale-8">
-                              <mapView></mapView>
-                            </div>
-                            <!-- <div class="overall-ratio flex-row_around">
-                                <div class="ratio flex-col" v-for="(item, index) in ratioList" :key="index">
-                                    <div class="key-ratio font-white">
-                                        <dv-decoration-9 style="width:9rem;height:9rem;">{{ item.ratioValue + '%'
-                                        }}</dv-decoration-9>
+                        </dv-border-box-10>
+                    </el-col>
+                    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
+                        <dv-border-box-10 class="production">
+                            <dv-decoration-11 class="title" style="width:20rem;height:6rem;">精益生产</dv-decoration-11>
+                            <div class="container pd-10 flex-col">
+                                <div class="fit flex-row scale-8">
+                                    <div class="title-fit subtitle col-mode">首次合格率FIT</div>
+                                    <div class="chart-fit">
+                                        <fitView></fitView>
                                     </div>
-                                    <div class="name-ratio subtitle">{{ item.name }}</div>
                                 </div>
-                            </div> -->  
-                            <div class="yield-trend flex-col">
-                                <div class="title-trend subtitle">产量趋势</div>
-                                <div class="chart-trend">
-                                    <yield-trend></yield-trend>
+                                <div class="bts flex-row scale-8">
+                                    <div class="title-bts subtitle col-mode">计划制造完成率BTS</div>
+                                    <div class="chart-bts">
+                                        <btsView></btsView>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </dv-border-box-10>
-                </el-col>
-                <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
-                    <dv-border-box-10 class="production">
-                        <dv-decoration-11 class="title" style="width:20rem;height:6rem;">精益生产</dv-decoration-11>
-                        <div class="container pd-10 flex-col">
-                            <div class="fit flex-row scale-8">
-                                <div class="title-fit subtitle">首次合格率FIT</div>
-                                <div class="chart-fit">
-                                    <fitView></fitView>
+                                <div class="oee flex-row scale-8">
+                                    <div class="title-oee subtitle col-mode">设备总效率OEE</div>
+                                    <div class="chart-oee">
+                                        <oeeView></oeeView>
+                                    </div>
+                                </div>
+                                <div class="dtd flex-row scale-8">
+                                    <div class="title-dtd subtitle col-mode">物资转换时间DTD</div>
+                                    <div class="chart-dtd">
+                                        <dtdView></dtdView>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="bts flex-row scale-8">
-                                <div class="title-bts subtitle">计划制造完成率BTS</div>
-                                <div class="chart-bts">
-                                    <btsView></btsView>
-                                </div>
-                            </div>
-                            <div class="oee flex-row scale-8">
-                                <div class="title-oee subtitle">设备总效率OEE</div>
-                                <div class="chart-oee">
-                                    <oeeView></oeeView>
-                                </div>
-                            </div>
-                            <div class="dtd flex-row scale-8">
-                                <div class="title-dtd subtitle">物资转换时间DTD</div>
-                                <div class="chart-dtd">
-                                    <dtdView></dtdView>
-                                </div>
-                            </div>
-                        </div>
-                    </dv-border-box-10>
-                </el-col>
-            </el-row>
-        </dv-border-box-11>
-    </div>
+                        </dv-border-box-10>
+                    </el-col>
+                </el-row>
+            </dv-border-box-11>
+        </div>
+    </dv-full-screen-container>
 </template>
 
 <script>
@@ -211,13 +213,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:0.5rem;
+    gap: 0.5rem;
 }
 
 .flex-row_around {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .overall-ratio {
@@ -258,13 +261,6 @@ export default {
     transform: scale(0.8);
 }
 
-.scale-7 {
-    transform: scale(0.7);
-}
-.scale-4 {
-    transform: scale(0.4);
-}
-
 .yield-trend {
     width: 40rem;
     position: relative;
@@ -301,4 +297,10 @@ export default {
 .dtd {
     position: absolute;
     top: 58vh;
-}</style>
+}
+.col-mode{
+    width:4rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+</style>
