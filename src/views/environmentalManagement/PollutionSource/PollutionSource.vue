@@ -37,7 +37,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configDate"
-            style="width: 50rem; height: 23rem"
+            style="width: 25vw; height: 23rem"
           />
         </div>
       </dv-border-box-8>
@@ -53,7 +53,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configErrer"
-            style="width: 50rem; height: 23rem"
+            style="width: 25vw; height: 23rem"
           />
         </div>
       </dv-border-box-8>
@@ -789,6 +789,7 @@ export default {
   justify-content: space-around;
   align-items: center;
     height: 25vh;
+    width: 40vw;
 }
 
 .item .title {
