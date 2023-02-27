@@ -1,7 +1,7 @@
 <!-- 消防管理 -->
 <template>
     <div>
-        <img class="img" src="@/assets/images/xf.png" alt="">
+        <img class="img" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/xf.png" alt="">
     </div>
 </template>
   
