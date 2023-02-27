@@ -2,12 +2,12 @@
   <div class="pollution">
     <div class="header flex-ja-center">
       <dv-decoration-5
-        style="width: 40rem; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
       <span class="title">污染源实时监控系统</span>
       <dv-decoration-5
-        style="width: 40rem; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
     </div>
@@ -18,7 +18,7 @@
           <div class="title">重点站点</div>
           <dv-scroll-board
             :config="config"
-            style="width: 50rem; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -37,7 +37,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configDate"
-            style="width: 25vw; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -53,7 +53,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configErrer"
-            style="width: 25vw; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -479,7 +479,7 @@ export default {
           show: true,
         },
         k: 0.5,
-        bgImgSrc: "@/assets/images/3d.jpg",
+        bgImgSrc: "@/assets/images/posationMap.png",
       },
       // 设备在线率
       equipmentOnline: {
@@ -682,6 +682,7 @@ export default {
 }
 
 .header {
+  height: 6vh;
   gap: 3rem;
 }
 
@@ -692,7 +693,7 @@ export default {
 }
 
 .main {
-  height: 90vh;
+  /* height: 90vh; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);

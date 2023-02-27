@@ -1,4 +1,5 @@
 <template>
+  <dv-full-screen-container>
     <div class="user">
 
        <div class="header mtb-20">
@@ -13,55 +14,10 @@
 
        <div class="announcement">
        <div>
-        akjshdkashdkjashdkjashdkjlhaskjl 
-        <el-link class="ml-20" type="primary">暂时不知道些什么>></el-link>
+        工资条一对一发放至员工！安全可靠！ 
+        <el-link class="ml-20" type="primary">免费使用>></el-link>
        </div>
-        <i class="el-icon-close"></i>
-       </div>
-
-       <div class="user-info mtb-20">
-
-        <div class="user-type flex">
-            <div class="active flex">在职员工<span class="ml-20 four">4</span></div>
-            <div class="active-type flex">
-                <div class="active-type-child ">
-                    <div class="pb-10">全职</div>
-                    <div class="pt-10">2</div>
-                </div>
-                <div class="active-type-child ">
-                    <div class="pb-10">兼职</div>
-                    <div class="pt-10">5</div>
-                </div>
-                <div class="active-type-child ">
-                    <div class="pb-10">实习</div>
-                    <div class="pt-10">1</div>
-                </div>
-                <div class="active-type-child red">
-                    <div class="pb-10">无员工类型</div>
-                    <div class="pt-10">1</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="active-stats flex">
-                <div class="active-stats-child ">
-                    <div class="pb-10">试用期</div>
-                    <div class="pt-10">0</div>
-                </div>
-                <div class="active-type-child ">
-                    <div class="pb-10">正式</div>
-                    <div class="pt-10">5</div>
-                </div>
-                <div class="active-type-child ">
-                    <div class="pb-10">待离职</div>
-                    <div class="pt-10">0</div>
-                </div>
-                <div class="active-type-child ">
-                    <div class="pb-10">无状态</div>
-                    <div class="pt-10">1</div>
-                </div>
-            </div>
-
+        <i class="el-icon-close" @click="click"></i>
        </div>
 
        <div class="mtb-20">
@@ -148,6 +104,7 @@
 </el-pagination>
 
     </div>
+  </dv-full-screen-container>
 </template>
 
 <script>
@@ -174,73 +131,87 @@ export default {
             entryDate: '2016-05-02',
             name: '朱大壮',
             department:'呜啦啦实训组',
-            position:'班长',
+            position:'产品经理',
             userType: '全职',
             phoneNumber : '15921376125'
           }, {
             entryDate: '2016-05-04',
-            name: '柯梦',
+            name: '卫正阳',
             department:'呜啦啦码超组',
-            position:'小兵',
-            userType: '兼职',
-            phoneNumber : '15920866125'
+            position:'运营经理',
+            userType: '全职',
+            phoneNumber : '12783987789'
           }, {
             entryDate: '2016-05-01',
             name: '许鹏蒲',
             department:'呜啦啦菜鸡组',
-            position:'小兵',
+            position:'招商总监',
             userType: '实习',
-            phoneNumber : '15567376125'
+            phoneNumber : '13798620642'
           }, {
             entryDate: '2016-05-03',
-            name: '王胖胖',
+            name: '王鹏程',
             department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
+            position:'招商经理',
+            userType: '全职',
+            phoneNumber : '15523686431'
+          },
+          {
+            entryDate: '2016-05-03',
+            name: '侯鑫茹',
+            department:'呜啦啦实训组',
+            position:'工程副总',
+            userType: '全职',
+            phoneNumber : '17734793379'
+          },
+          {
+            entryDate: '2016-05-03',
+            name: '马格煊',
+            department:'呜啦啦实训组',
+            position:'区域经理',
+            userType: '实习',
+            phoneNumber : '15981933938'
+          },
+          {
+            entryDate: '2016-05-03',
+            name: '申少杰',
+            department:'呜啦啦实训组',
+            position:'城市总经理',
+            userType: '全职',
+            phoneNumber : '12769986756'
+          },
+          {
+            entryDate: '2016-05-03',
+            name: '刘伟博',
+            department:'呜啦啦实训组',
+            position:'招商经理',
+            userType: '实习',
+            phoneNumber : '14697470754'
+          },
+          {
+            entryDate: '2016-05-03',
+            name: '周永峰',
+            department:'呜啦啦实训组',
+            position:'运营总监',
+            userType: '实习',
             phoneNumber : '15921456725'
           },
           {
             entryDate: '2016-05-03',
-            name: '王胖胖',
+            name: '杨豪杰',
             department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
-            phoneNumber : '15921456725'
-          },
-          {
-            entryDate: '2016-05-03',
-            name: '王胖胖',
-            department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
-            phoneNumber : '15921456725'
-          },
-          {
-            entryDate: '2016-05-03',
-            name: '王胖胖',
-            department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
-            phoneNumber : '15921456725'
-          },
-          {
-            entryDate: '2016-05-03',
-            name: '王胖胖',
-            department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
-            phoneNumber : '15921456725'
-          },
-          {
-            entryDate: '2016-05-03',
-            name: '王胖胖',
-            department:'呜啦啦实训组',
-            position:'小兵',
-            userType: '兼职',
+            position:'副总经理',
+            userType: '实习',
             phoneNumber : '15921456725'
           }],
+        input:'',
         value: '',
         value1: '',
+      }
+    },
+    methods:{
+      click(e){
+        console.log(e);
       }
     }
 
@@ -307,8 +278,9 @@ export default {
     background-color: #E5F7FF;
 }
 .el-icon-close{
+    cursor: pointer;
     float: right;
-    margin-right: 3rem;
+    margin-right: 6rem;
 }
 .user-info{
     display: flex;

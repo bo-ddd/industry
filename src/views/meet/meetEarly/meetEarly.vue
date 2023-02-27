@@ -110,7 +110,8 @@
                         <span>地理位置</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/map.png" alt="">
+                        <!-- <img src="@/assets/images/map.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -118,7 +119,8 @@
                         <span>事件图片</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/picture.png" alt="">
+                        <!-- <img src="@/assets/images/picture.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/picture.png" alt="">
                     </div>
                 </div>
                 <div class="main-content">
@@ -126,7 +128,8 @@
                         <span>事件视频</span>
                     </div>
                     <div class="content-mains">
-                        <img src="@/assets/images/video.png" alt="">
+                        <!-- <img src="@/assets/images/video.png" alt=""> -->
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/video.png" alt="">
                     </div>
                 </div>
             </div>
@@ -171,12 +174,14 @@ export default {
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    height: calc(100vh - 7rem);
+    align-items: center;
+    /* justify-items: center; */
 }
 
 .main-content {
-    width: 99%;
-    height: 40vh;
+    width: 98%;
+    height: 44vh;
     background: #2a2d34;
     margin: 1rem 0;
     display: flex;

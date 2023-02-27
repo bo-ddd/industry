@@ -1,11 +1,11 @@
 <!-- 风险分级管控 -->
 <template>
     <div class="risk-box">
-        <div>
+        <div class="risk-head">
             <div class="title">安全隐患排查</div>
             <dv-decoration-5 style="height:40px;" />
-
         </div>
+
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
@@ -55,8 +55,8 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全隐患列举</div>
-                <div class="colo-ye" v-for="item in pitfallData" :key="item.id">
-                    <div class="colo-ye">{{ item.title }}</div>
+                <div class="danger colo-ye" v-for="item in pitfallData" :key="item.id">
+                    <div >{{ item.title }}</div>
                 </div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
@@ -332,9 +332,21 @@ export default {
 }
 </script>
 <style scoped>
-.pad-20{
-    padding: 2rem 0;
+.danger{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem 0;
 }
+.risk-head{
+    height: 10vh;
+}
+
+.risk-head .title{
+    position: relative;
+    top: 50%;
+    transform: translateY(-70%);
+}
+
 .risk-num {
     margin: 0 auto;
 }
@@ -351,7 +363,7 @@ export default {
     align-items: center;
 }
 
-.colo-ye {
+.danger  {
     color: rgb(241, 231, 140);
 }
 
@@ -371,7 +383,7 @@ export default {
 
 .distribute {
     width: 50rem;
-    height:20rem;
+    height:14rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
@@ -395,23 +407,25 @@ export default {
 }
 
 .title-t {
-    padding: 1rem;
+    padding: .5rem;
 }
 
 .title {
-   padding-top: 2rem;
+  
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
+    box-sizing: border-box;
 }
 
 .risk-box {
-    min-width: 1000px;
+    min-width: 100rem;
     height: 100vh !important;
     background-color: black;
-    box-sizing: border-box;
     color: #fff;
+    /* padding-top:2rem; */
+    box-sizing: border-box;
 
 }
 
