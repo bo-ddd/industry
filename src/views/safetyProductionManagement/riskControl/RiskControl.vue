@@ -1,11 +1,9 @@
 <!-- 风险分级管控 -->
 <template>
     <div class="risk-box">
-        <div>
             <div class="title">安全隐患排查</div>
             <dv-decoration-5 style="height:40px;" />
 
-        </div>
         <div class="risk">
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">风险数量比例</div>
@@ -332,9 +330,8 @@ export default {
 }
 </script>
 <style scoped>
-.pad-20{
-    padding: 2rem 0;
-}
+
+
 .risk-num {
     margin: 0 auto;
 }
@@ -399,19 +396,20 @@ export default {
 }
 
 .title {
-   padding-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
+    box-sizing: border-box;
 }
 
 .risk-box {
     min-width: 1000px;
     height: 100vh !important;
     background-color: black;
-    box-sizing: border-box;
     color: #fff;
+    padding-top:2rem;
+    box-sizing: border-box;
 
 }
 
