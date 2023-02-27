@@ -1,55 +1,57 @@
 <!-- 卡口管理 -->
 <template>
-    <div>
-        <div class="header">
-            <div class="time">
-                <span class="title">日期查询</span>
-                <el-date-picker v-model="value2" type="monthrange" align="right" unlink-panels range-separator="至"
-                    start-placeholder="开始月份" end-placeholder="结束月份" :picker-options="pickerOptions">
-                </el-date-picker>
+    <dv-full-screen-container>
+        <div>
+            <div class="header">
+                <div class="time">
+                    <span class="title">日期查询</span>
+                    <el-date-picker v-model="value2" type="monthrange" align="right" unlink-panels range-separator="至"
+                        start-placeholder="开始月份" end-placeholder="结束月份" :picker-options="pickerOptions">
+                    </el-date-picker>
+                </div>
+                <div class="visitorName">
+                    <span class="title">访客查询</span>
+                    <el-input v-model="input" placeholder="请输入访客姓名" clearable></el-input>
+                    <el-button class="btn-search" type="primary">查询</el-button>
+                </div>
             </div>
-            <div class="visitorName">
-                <span class="title">访客查询</span>
-                <el-input v-model="input" placeholder="请输入访客姓名" clearable></el-input>
-                <el-button class="btn-search" type="primary">查询</el-button>
+            <div class="table">
+                <el-table :data="tableData" border style="width: 100%">
+                    <el-table-column type="selection" align="center" width="55">
+                    </el-table-column>
+                    <el-table-column fixed prop="date" label="来访日期" align="center" width="150">
+                    </el-table-column>
+                    <el-table-column prop="name" label="姓名" align="center" width="120">
+                    </el-table-column>
+                    <el-table-column prop="department" label="来访部门" align="center" width="120">
+                    </el-table-column>
+                    <el-table-column prop="purpose" label="来访目的" align="center" width="120">
+                    </el-table-column>
+                    <el-table-column prop="peopleNum" label="来访人数" align="center" width="120">
+                    </el-table-column>
+                    <el-table-column prop="license" label="车牌号" align="center" width="160">
+                    </el-table-column>
+                    <el-table-column prop="phone" label="访客手机号" align="center" width="160">
+                    </el-table-column>
+                    <el-table-column prop="comeFrom" label="出发地" align="center" width="300">
+                    </el-table-column>
+                    <el-table-column label="操作" align="center">
+                        <template slot-scope="scope">
+                            <el-button class="btn-operate" @click="handleClick(scope.row)" type="text"
+                                size="small">查看</el-button>
+                            <el-button class="btn-operate" type="text" size="small">编辑</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
+            <div class="paging">
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                    :current-page="currentPage4" :page-sizes="[5, 10, 15, 20]" :page-size="10" background
+                    layout="total, sizes, prev, pager, next, jumper" :total="4">
+                </el-pagination>
             </div>
         </div>
-        <div class="table">
-            <el-table :data="tableData" border style="width: 100%">
-                <el-table-column type="selection" align="center" width="55">
-                </el-table-column>
-                <el-table-column fixed prop="date" label="来访日期" align="center" width="150">
-                </el-table-column>
-                <el-table-column prop="name" label="姓名" align="center" width="120">
-                </el-table-column>
-                <el-table-column prop="department" label="来访部门" align="center" width="120">
-                </el-table-column>
-                <el-table-column prop="purpose" label="来访目的" align="center" width="120">
-                </el-table-column>
-                <el-table-column prop="peopleNum" label="来访人数" align="center" width="120">
-                </el-table-column>
-                <el-table-column prop="license" label="车牌号" align="center" width="160">
-                </el-table-column>
-                <el-table-column prop="phone" label="访客手机号" align="center" width="160">
-                </el-table-column>
-                <el-table-column prop="comeFrom" label="出发地" align="center" width="300">
-                </el-table-column>
-                <el-table-column label="操作" align="center">
-                    <template slot-scope="scope">
-                        <el-button class="btn-operate" @click="handleClick(scope.row)" type="text"
-                            size="small">查看</el-button>
-                        <el-button class="btn-operate" type="text" size="small">编辑</el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </div>
-        <div class="paging">
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                :current-page="currentPage4" :page-sizes="[5, 10, 15, 20]" :page-size="10" background
-                layout="total, sizes, prev, pager, next, jumper" :total="4">
-            </el-pagination>
-        </div>
-    </div>
+    </dv-full-screen-container>
 </template>
 
 <script>
@@ -57,11 +59,19 @@ export default {
     methods: {
         handleClick(row) {
             console.log(row);
+        },
+        handleSizeChange(row){
+            console.log(row);
+        },
+        handleCurrentChange(row){
+            console.log(row);
         }
     },
 
     data() {
         return {
+            input:'',
+            currentPage4:1,
             tableData: [{
                 date: '2023-02-22',
                 name: '王小龙',
@@ -178,5 +188,4 @@ export default {
 .btn-operate {
     font-size: 1.6rem;
 }
-
 </style>
