@@ -36,7 +36,6 @@
           type="primary"
           size="small"
           @click="dialogFormVisible = true"
-          plain
           >发起事务</el-button
         >
         <el-dialog title="发起事务" class="" :visible.sync="dialogFormVisible">
@@ -122,8 +121,8 @@
               <el-input type="textarea" v-model="sizeForm.desc"></el-input>
             </el-form-item>
             <el-form-item size="large">
-              <el-button type="primary" @click="onSubmit">立即创建</el-button>
-              <el-button>取消</el-button>
+              <el-button type="primary" @click="success()">立即创建</el-button>
+              <el-button @click="open()">取消</el-button>
             </el-form-item>
           </el-form>
         </el-dialog>
@@ -338,6 +337,34 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
+    
+    async success() {
+       await this.$message({
+          message: '发布成功',
+          type: 'success'
+        });
+        this.dialogFormVisible = false
+      },
+      async warning() {
+       await this.$message({
+          message: '暂存成功',
+          type: 'warning'
+        });
+        this.dialogFormVisible = false
+      },
+    open() {
+        this.$confirm('是否确认取消', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '取消成功!'
+          });
+          this.dialogFormVisible = false
+        })
+      }
   },
 };
 </script>

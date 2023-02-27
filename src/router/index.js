@@ -99,6 +99,12 @@ const routes = [
       path: '/publishKumon',
       name: 'publishKumon',
       component: () => import("../views/officeManagement/kumonManagement/publishKumon.vue")
+    },
+    {
+      // 办公管理  > 公文 > 公文详情
+      path: '/checkView',
+      name: 'checkView',
+      component: () => import("../views/officeManagement/kumonManagement/checkView.vue")
     }, {
       // 办公管理  > 事务
       path: '/transactionManagement',
