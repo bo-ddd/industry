@@ -140,6 +140,56 @@ export default {
                     reportPerson: '周永峰',
                     acceptanceStatus: '受理通过',
                     patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
                 },
                 {
                     eventNumber: 'E202390090',
@@ -288,14 +338,6 @@ export default {
     display: flex;
     justify-content: start;
     align-items: center;
-}
-
-.el-table{
-    position: unset;
-}
-
-.pullutant-table{
-    height: 57rem;
 }
 
 .el-pagination {
