@@ -28,23 +28,22 @@
           </el-table-column>
           <el-table-column align="center" label="操作">
             <template slot-scope="scope">
-              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-              <el-button type="text" size="small">编辑</el-button>
+              <el-button type="text" size="small" @click="to('/meetPlandetail')">查看</el-button>
             </template>
           </el-table-column>
         </el-table>
       </div>
-      <div class="flex-center">
-      <el-pagination
-        class="mt-3"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage4"
-        :page-sizes="[10, 200, 300, 400]"
-        :page-size="10"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="400"
-      ></el-pagination>
+      <div class="">
+        <el-pagination
+          class="mt-2"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-sizes="[10, 200, 300, 400]"
+          :page-size="10"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="400"
+        ></el-pagination>
       </div>
     </div>
   </div>
@@ -61,11 +60,11 @@ export default {
       input: "",
       tableData: [
         {
-          date: "2016-05-02",
-          name: "公司失电应急程序",
-          address: "工程阻碍",
-          user: "李主任",
-          leve: "中",
+          date: "2016-05-01",
+          name: "自然灾害应急预案",
+          address: "自然灾害",
+          user: "张队长",
+          leve: "高",
         },
         {
           date: "2016-05-04",
@@ -140,6 +139,9 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    to(url) {
+      this.$router.push({ path: url });
+    },
   },
 };
 </script>
@@ -178,7 +180,7 @@ export default {
 .mt-1 {
   margin-top: 1rem;
 }
-.ml-2{
+.ml-2 {
   margin-left: 2rem;
 }
 .fs-2 {
@@ -188,7 +190,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.flex-center{
+.flex-center {
   display: flex;
   justify-content: center;
 }

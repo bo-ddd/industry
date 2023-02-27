@@ -294,7 +294,6 @@ export default {
             this.toDay = {...this.toDay};
         },
         orderTrend(e){
-            console.log('asdf');
             if (this.$refs.funs == undefined) {
                 return
             }else{
@@ -358,6 +357,8 @@ export default {
 .df-fd{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4rem;
 }
 .df{
@@ -379,7 +380,7 @@ export default {
 
 .box{
     background-color: #f3f3f3;
-    height: 95%;
+    height: 100vh;
     overflow: scroll;
 }
 .sale-overview{
@@ -454,5 +455,9 @@ export default {
 }
 .on-line_bj2{
     background-color: #1db3e5;
+}
+.sale-title{
+    font-size: 2rem;
+    font-weight: 700;
 }
 </style>

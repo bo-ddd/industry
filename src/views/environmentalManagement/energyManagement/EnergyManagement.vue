@@ -1,6 +1,8 @@
 <template>
     <div class="home">
-
+        <dv-full-screen-container>
+            
+        </dv-full-screen-container>
             <div class="header">能源管理
                 <div><dv-decoration-5 style="width:30rem;height:4rem;" /></div>
             </div>
@@ -24,7 +26,7 @@
                             <monitor></monitor>
                             <sataus></sataus>
                             <div class="table">
-                                <dv-scroll-board :config="config" style="width:30rem;height:100%" />
+                                <dv-scroll-board :config="config" style="width:40rem;height:100%" />
                             </div>
                         </div>
                     </div>
@@ -46,16 +48,13 @@ export default {
         return {
             config: {
                 data: [
-                    ['行1列1', '行1列2', '行1列3'],
-                    ['行2列1', '行2列2', '行2列3'],
-                    ['行3列1', '行3列2', '行3列3'],
-                    ['行4列1', '行4列2', '行4列3'],
-                    ['行5列1', '行5列2', '行5列3'],
-                    ['行6列1', '行6列2', '行6列3'],
-                    ['行7列1', '行7列2', '行7列3'],
-                    ['行8列1', '行8列2', '行8列3'],
-                    ['行9列1', '行9列2', '行9列3'],
-                    ['行10列1', '行10列2', '行10列3']
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2022.11.2.', '王小虎', '能源用完'],
                 ]
             },
             config1: {
@@ -105,7 +104,7 @@ export default {
     background-color: #0C1F34;
     height: calc(100vh - 4rem);
     color: white;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 .header {
@@ -116,10 +115,12 @@ export default {
   
 }
 
+.main{
+    width: 100%;
+}
+
 .monthly-statistics {
     display: flex;
-    gap: 2rem;
-    margin-left: 2rem;
     justify-content: center;
 }
 
@@ -137,7 +138,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 80vh;
+   
 }
 
 .main-bottom {
