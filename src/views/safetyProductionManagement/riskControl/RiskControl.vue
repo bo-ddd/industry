@@ -391,7 +391,7 @@ export default {
 }
 
 .echarts {
-    width: 80rem;
+    width: 80%;
     height: 40rem;
     margin: 0 auto;
 }
