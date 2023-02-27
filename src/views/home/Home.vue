@@ -53,6 +53,9 @@ export default {
                         }, {
                             url: "/transportationView",
                             title: "运输管理"
+                        }, {
+                            url: "/hiddenDangerDetail",
+                            title: "隐患详情"
                         }
                     ]
                 },

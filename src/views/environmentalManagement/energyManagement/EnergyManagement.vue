@@ -1,6 +1,8 @@
 <template>
     <div class="home">
-
+        <dv-full-screen-container>
+            
+        </dv-full-screen-container>
             <div class="header">能源管理
                 <div><dv-decoration-5 style="width:30rem;height:4rem;" /></div>
             </div>
@@ -102,7 +104,7 @@ export default {
     background-color: #0C1F34;
     height: calc(100vh - 4rem);
     color: white;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 .header {
@@ -113,10 +115,12 @@ export default {
   
 }
 
+.main{
+    width: 100%;
+}
+
 .monthly-statistics {
     display: flex;
-    gap: 2rem;
-    margin-left: 2rem;
     justify-content: center;
 }
 

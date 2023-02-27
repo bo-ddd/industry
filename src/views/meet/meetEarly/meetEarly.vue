@@ -6,76 +6,79 @@
                 <div class="sidebar-header">
                     <dv-decoration-11 style="width:200px;height:60px;">事件列表</dv-decoration-11>
                 </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconA">A</div>
-                        <div>
-                            <p class="colorA">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+                <div class="sidebar-left">
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconA">A</div>
+                            <div>
+                                <p class="colorA">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
+                        </div>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
                         </div>
                     </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
-                    </div>
-                </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconA">A</div>
-                        <div>
-                            <p class="colorA">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconA">A</div>
+                            <div>
+                                <p class="colorA">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
+                        </div>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
                         </div>
                     </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
-                    </div>
-                </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconB">B</div>
-                        <div>
-                            <p class="colorB">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconB">B</div>
+                            <div>
+                                <p class="colorB">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
+                        </div>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
                         </div>
                     </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
-                    </div>
-                </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconB">B</div>
-                        <div>
-                            <p class="colorB">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconB">B</div>
+                            <div>
+                                <p class="colorB">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
+                        </div>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
                         </div>
                     </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
-                    </div>
-                </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconC">C</div>
-                        <div>
-                            <p class="colorC">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconC">C</div>
+                            <div>
+                                <p class="colorC">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
+                        </div>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
                         </div>
                     </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
-                    </div>
-                </div>
-                <div class="sidebar-main">
-                    <div class="sidebar-main_left">
-                        <div class="iconD">D</div>
-                        <div>
-                            <p class="colorD">入侵报警</p>
-                            <p>XXX厂区西北角</p>
+                    <div class="sidebar-main">
+                        <div class="sidebar-main_left">
+                            <div class="iconD">D</div>
+                            <div>
+                                <p class="colorD">入侵报警</p>
+                                <p>XXX厂区西北角</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="sidebar-main_right">
-                        <p>11:01:20</p>
+                        <div class="sidebar-main_right">
+                            <p>11:01:20</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,8 +138,8 @@
 export default {
     data() {
         return {
-            checked:true,
-            value1:true
+            checked: true,
+            value1: true
         }
     },
     mounted: {
@@ -160,20 +163,27 @@ export default {
     padding: 2rem;
 }
 
+.sidebar-left {
+    overflow: scroll;
+    height: 80vh;
+}
+
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    height: calc(100vh - 7rem);
+    align-items: center;
+    /* justify-items: center; */
 }
 
 .main-content {
-    width: 99%;
-    height: 40vh;
+    width: 98%;
+    height: 44vh;
     background: #2a2d34;
     margin: 1rem 0;
     display: flex;
     flex-direction: column;
-    overflow :scroll;
+    overflow: scroll;
 }
 
 .content-header {
@@ -188,24 +198,20 @@ export default {
     color: #fff;
     padding: 2rem 3rem;
     overflow: scroll;
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .content-main p {
-    padding: .2rem 0;
+    padding: .7rem 0;
 }
 
-
-.content-mains{
+.content-mains {
     overflow: scroll;
 }
+
 .content-mains img {
     width: 100%;
     height: 40vh;
-    /* object-fit: cover; */
     object-fit: cover;
-    
 }
 
 .sidebar {
@@ -226,35 +232,41 @@ export default {
     display: flex;
     justify-content: center;
 }
-.sidebar-main{
+
+.sidebar-main {
     background: #212429;
     display: flex;
     justify-content: space-around;
     margin: 1rem 0;
-
 }
-.sidebar-main_left{
+
+.sidebar-main_left {
     display: flex;
     align-items: center;
     padding: .5rem 0;
     color: #fff;
 }
-.sidebar-main_left p{
+
+.sidebar-main_left p {
     padding: .5rem 0;
     margin: 0 1rem;
 }
-.sidebar-main_left img{
+
+.sidebar-main_left img {
     width: 5.5rem;
 }
-.sidebar-main_right{
+
+.sidebar-main_right {
     color: #fff;
     padding-top: 1rem;
 }
-.right{
+
+.right {
     width: 100%;
     max-height: 80vh;
 }
-.iconA{
+
+.iconA {
     width: 4rem;
     height: 4rem;
     background: red;
@@ -266,7 +278,8 @@ export default {
     font-size: 2.2rem;
     font-weight: 600;
 }
-.iconB{
+
+.iconB {
     width: 4rem;
     height: 4rem;
     background: #d99045;
@@ -278,7 +291,8 @@ export default {
     font-size: 2.2rem;
     font-weight: 600;
 }
-.iconC{
+
+.iconC {
     width: 4rem;
     height: 4rem;
     background: #cbba6c;
@@ -290,7 +304,8 @@ export default {
     font-size: 2.2rem;
     font-weight: 600;
 }
-.iconD{
+
+.iconD {
     width: 4rem;
     height: 4rem;
     background: #0192cb;
@@ -302,16 +317,20 @@ export default {
     font-size: 2.2rem;
     font-weight: 600;
 }
-.colorA{
+
+.colorA {
     color: #ff0000;
 }
-.colorB{
+
+.colorB {
     color: #d99045;
 }
-.colorC{
+
+.colorC {
     color: #cbba6c;
 }
-.colorD{
+
+.colorD {
     color: #0192cb;
 }
 </style>
