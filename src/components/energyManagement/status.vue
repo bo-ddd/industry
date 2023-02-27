@@ -34,9 +34,9 @@
                         type: 'pie',
                         radius: '50%',
                         data: [
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' }
+                            { value: 580, name: '故障' },
+                            { value: 484, name: '正常' },
+                            { value: 200, name: '损坏' },
                         ],
                         emphasis: {
                             itemStyle: {
