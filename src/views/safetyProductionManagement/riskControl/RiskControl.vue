@@ -23,24 +23,25 @@
                         <div class="co-gre">管控任务数</div>
                     </div>
                 </div>
-                <div>
-                    <div class="echarts mat-20" ref="echart"></div>
+                <div class="task">
+                    <div class="echarts" ref="echart"></div>
 
-                </div>
-                <div class="progress mat-40">
-                    <div>
-                        <el-progress type="circle" :percentage="25"></el-progress>
-                        <div>管控覆盖率</div>
-                    </div>
-                    <div>
-                        <el-progress type="circle" :percentage="50"></el-progress>
-                        <div>风险失控率</div>
-                    </div>
-                    <div>
-                        <el-progress type="circle" :percentage="80"></el-progress>
-                        <div>按期执行率</div>
-                    </div>
 
+                    <div class="progress">
+                        <div>
+                            <el-progress type="circle" :percentage="25"></el-progress>
+                            <div>管控覆盖率</div>
+                        </div>
+                        <div>
+                            <el-progress type="circle" :percentage="50"></el-progress>
+                            <div>风险失控率</div>
+                        </div>
+                        <div>
+                            <el-progress type="circle" :percentage="80"></el-progress>
+                            <div>按期执行率</div>
+                        </div>
+
+                    </div>
                 </div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
@@ -56,7 +57,7 @@
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全隐患列举</div>
                 <div class="danger colo-ye" v-for="item in pitfallData" :key="item.id">
-                    <div >{{ item.title }}</div>
+                    <div>{{ item.title }}</div>
                 </div>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
@@ -228,8 +229,8 @@ export default {
 
             option = {
                 title: {
-                   
-                  
+
+
                     left: 'center'
                 },
                 tooltip: {
@@ -332,16 +333,30 @@ export default {
 }
 </script>
 <style scoped>
-.danger{
+.risk-box {
+    min-width: 1100px;
+    height: 100vh !important;
+    background-color: black;
+    color: #fff;
+    box-sizing: border-box;
+}
+.task{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.danger {
     display: flex;
     flex-direction: column;
     gap: 2rem 0;
 }
-.risk-head{
+
+.risk-head {
     height: 10vh;
 }
 
-.risk-head .title{
+.risk-head .title {
     position: relative;
     top: 50%;
     transform: translateY(-70%);
@@ -363,7 +378,7 @@ export default {
     align-items: center;
 }
 
-.danger  {
+.danger {
     color: rgb(241, 231, 140);
 }
 
@@ -376,21 +391,21 @@ export default {
 }
 
 .echarts {
-    width: 80rem;
+    width: 80%;
     height: 40rem;
     margin: 0 auto;
 }
 
 .distribute {
     width: 50rem;
-    height:14rem;
+    height: 14rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
 
 .grade {
     width: 30rem;
-     height: 30rem;
+    height: 30rem;
     margin: 0 auto;
 }
 
@@ -418,16 +433,9 @@ export default {
     box-sizing: border-box;
 }
 
-.risk-box {
-    /* min-width: 100rem; */
-    height: 100vh !important;
-    background-color: black;
-    color: #fff;
-    box-sizing: border-box;
-}
+
 
 .risk {
-    /* width: 100%!important; */
     height: 90vh !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
