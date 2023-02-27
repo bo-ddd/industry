@@ -171,12 +171,14 @@ export default {
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    height: calc(100vh - 7rem);
+    align-items: center;
+    /* justify-items: center; */
 }
 
 .main-content {
-    width: 99%;
-    height: 40vh;
+    width: 98%;
+    height: 44vh;
     background: #2a2d34;
     margin: 1rem 0;
     display: flex;
