@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-
             <div class="header">能源管理
                 <div><dv-decoration-5 style="width:30rem;height:4rem;" /></div>
             </div>
@@ -46,35 +45,34 @@ export default {
         return {
             config: {
                 data: [
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
-                    ['2022.11.2.', '王小虎', '能源用完'],
+                    ['2023.11.2.', '一号水管', '爆管'],
+                    ['2023.11.2.', '二号机电', '电路故障'],
+                    ['2023.11.2.', '四号机水管', '漏水'],
+                    ['2023.11.2.', '一号水管', '爆管'],
+                    ['2023.11.2.', '二号机电', '电路故障'],
+                    ['2023.11.2.', '四号机水管', '漏水'],
                 ]
             },
             config1: {
                 data: [
                     {
-                        name: '南阳',
+                        name: '1号机',
                         value: 167
                     },
                     {
-                        name: '周口',
+                        name: '2号机',
                         value: 67
                     },
                     {
-                        name: '漯河',
+                        name: '3号机',
                         value: 123
                     },
                     {
-                        name: '郑州',
+                        name: '4号机',
                         value: 55
                     },
                     {
-                        name: '西峡',
+                        name: '5号机',
                         value: 98
                     }
                 ]
@@ -102,7 +100,7 @@ export default {
     background-color: #0C1F34;
     height: calc(100vh - 4rem);
     color: white;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 .header {
@@ -113,10 +111,12 @@ export default {
   
 }
 
+.main{
+    width: 100%;
+}
+
 .monthly-statistics {
     display: flex;
-    gap: 2rem;
-    margin-left: 2rem;
     justify-content: center;
 }
 

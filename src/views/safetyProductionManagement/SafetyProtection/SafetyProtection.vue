@@ -1,7 +1,7 @@
 <template>
     <dv-full-screen-container>
     <div class="safety-box">
-        <span class="title">安全监管</span>
+        <span class="title">安全防护管理</span>
         <dv-decoration-5 style="height:40px;" />
         <div class="header">
             <div class="header-item" v-for="item in headerData" :key="item.id">
@@ -19,7 +19,11 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">已发现漏洞类型排名</div>
+               <div class="flex-center">
                 <dv-capsule-chart :config="leakConfig" class="leak" />
+
+               </div>
+                
 
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
@@ -27,7 +31,7 @@
                 <hazardLevel></hazardLevel>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
-                <div class="title-t">实时攻防详情</div>
+                <div class="title-t pab-10">实时攻防详情</div>
                 <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail" />
             </dv-border-box-8>
 
@@ -138,6 +142,10 @@ export default {
 }
 </script>
 <style scoped>
+.pab-10{
+  padding-bottom: 1rem;
+}
+
 .map {
     background: url('../../../assets/image/posationMap.png') no-repeat;
     background-size: 100% 100%;
@@ -146,13 +154,16 @@ export default {
 
 .leak {
     width: 46rem;
-    height: 32rem;
+     height: 30rem;
     margin: 0 auto;
 }
 
 .detail {
-    height: 23rem;
+    height: 22rem;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mat-20 {
@@ -173,6 +184,7 @@ export default {
 }
 
 .title {
+    padding-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,6 +241,10 @@ export default {
 
 .item:nth-of-type(3) {
     grid-area: right-aside_1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .item:nth-of-type(4) {
@@ -237,5 +253,11 @@ export default {
 
 .item:nth-of-type(5) {
     grid-area: right-aside_2;
+}
+.flex-center{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

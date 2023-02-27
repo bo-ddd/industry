@@ -114,14 +114,14 @@
                 ],
                 series: [
                     {
-                        name: 'Dynamic Bar',
+                        name: '正常比例',
                         type: 'bar',
                         xAxisIndex: 1,
                         yAxisIndex: 1,
                         data: data
                     },
                     {
-                        name: 'Dynamic Line',
+                        name: '异常比例',
                         type: 'line',
                         data: data2
                     }

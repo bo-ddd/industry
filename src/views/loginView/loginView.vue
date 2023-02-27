@@ -1,32 +1,38 @@
 <template>
-    <div class="main">
-        <dv-border-box-11 title="乌拉拉工业园区平台" titleHeight="500" class="dv-box">
-            <div class="box-login">
-                <dv-border-box-13 class="dv-login">
-                    <dv-border-box-8 :reverse="true">
-                    <div>
-                        <div class="login ">登录</div>
-                        <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
-                    </div>
-                    <div class="box-inp">
-
-                        <div class="box">
-                            <div class="mr-2 cl-white">账户</div>
-                            <input class="inp" type="text" value="Admin">
-                        </div>
-                        <div class="box">
-                            <div class="mr-2 cl-white">密码</div>
-                            <input class="inp" type="password" value="">
-                        </div>
-
-                    </div>
-                    <div class="btn" @click="toPage()"><dv-decoration-9
+        <div class="main">
+            
+            <dv-border-box-1 :color="['#245970','bule']">
+                <div class="title">
+                    <div class=" fs-3 cl-white pd-2">浮山双新园区智能管控</div>
+                    <dv-decoration-5 class="dv-5" dur="2"  style="width:80rem;height:10rem;" />
+                </div>
+                <div class="box-login">
+                    <dv-border-box-13 class="dv-login">
+                        <dv-border-box-8 :reverse="true">
+                            <div>
+                                <div class="login ">登录</div>
+                                <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
+                            </div>
+                            <div class="box-inp">
+                                
+                                <div class="box">
+                                    <div class="mr-2 cl-white">账户</div>
+                                    <input class="inp" type="text" value="Admin">
+                                </div>
+                                <div class="box">
+                                    <div class="mr-2 cl-white">密码</div>
+                                    <input class="inp" type="password" value="">
+                                </div>
+                                
+                            </div>
+                            <div class="btn" @click="toPage()"><dv-decoration-9
                             style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
                         </dv-border-box-8>
                 </dv-border-box-13>
             </div>
-        </dv-border-box-11>
-
+            
+            
+        </dv-border-box-1>
     </div>
 </template>
 
@@ -56,7 +62,17 @@ export default {
     display: flex;
     align-items: center;
 }
-
+.title{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.dv-5{
+    position: absolute;
+    top: 20%;
+}
 .main {
     width: 100vw;
     height: 100vh;
@@ -121,6 +137,9 @@ export default {
 .cl-white{
     color: white;
 }
+.fs-3{
+    font-size: 3rem;
+}
 .inp {
     font-size: 2rem;
     text-indent: 2em;
@@ -131,7 +150,9 @@ export default {
     outline: none;
     border-bottom: 1px solid #ccc;
 }
-
+.pd-2{
+    padding: 2rem;
+}
 .btn {
     color: white;
     font-size: 2rem;
