@@ -37,7 +37,7 @@
           type="primary"
           size="small"
           @click="dialogFormVisible = true"
-          plain
+        
           >发文拟稿</el-button
         >
 
@@ -175,9 +175,9 @@
             </div>
           </div>
           <div class="box-btn mt-2">
-            <el-button type="primary" size="small" plain>暂存草稿</el-button>
-            <el-button type="success" size="small" plain>确认发布</el-button>
-            <el-button type="danger" size="small" plain>确认取消</el-button>
+            <el-button type="primary" size="small" @click="warning()">暂存草稿</el-button>
+            <el-button type="success" size="small" @click="success()">确认发布</el-button>
+            <el-button type="danger" size="small" @click="open()">确认取消</el-button>
           </div>
         </el-dialog>
 
@@ -227,12 +227,12 @@
         </el-table-column>
         <el-table-column prop="operate" align="center" label="操作">
           <template slot-scope="scope">
-            <span>{{ scope.row.operate }}</span>
+            <span @click="toPage(scope.row.id)" class="cl-bule"><i class="el-icon-document-copy"></i>{{ scope.row.operate }}</span>
           </template>
         </el-table-column>
       </el-table>
       <el-pagination
-        class="pagination mt-2"
+        class=" mt-2"
         background
         layout="prev, pager, next"
         :total="1000"
@@ -319,6 +319,8 @@ export default {
       value: "",
       tableData: [
         {
+          
+          id: 1,
           name: "园区新区施工警示",
           time: "2023-02-24",
           extent: "通告",
@@ -329,6 +331,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 2,
           name: "员工补贴薪资参照单",
           time: "2023-02-24",
           extent: "通知",
@@ -339,6 +342,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 3,
           name: "园区月度优秀员工申请",
           time: "2023-02-23",
           extent: "通告",
@@ -349,6 +353,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 4,
           name: "园区工时修改通告",
           time: "2023-02-21",
           extent: "通告",
@@ -359,6 +364,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 5,
           name: "04号流水线设备更新决议",
           time: "2023-02-21",
           extent: "决议",
@@ -369,6 +375,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 6,
           name: "园区环境清洁规划决议",
           time: "2023-02-20",
           extent: "决议",
@@ -379,6 +386,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 7,
           name: "园区季度发展规划",
           time: "2023-02-20",
           extent: "决定",
@@ -389,6 +397,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 8,
           name: "化工运输03车维修停工请示",
           time: "2023-02-17",
           extent: "请示",
@@ -399,6 +408,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 9,
           name: "拓展部招新请示",
           time: "2023-02-13",
           extent: "请示",
@@ -409,6 +419,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 10,
           name: "拓展部新业务线考察报告",
           time: "2023-02-10",
           extent: "报告",
@@ -419,6 +430,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 11,
           name: "化工用器故障检测报告",
           time: "2023-02-05",
           extent: "报告",
@@ -429,6 +441,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 12,
           name: "运输部车辆检测报告",
           time: "2023-02-04",
           extent: "报告",
@@ -439,6 +452,7 @@ export default {
           operate: "查看",
         },
         {
+          id: 13,
           name: "服务部门23年整改议案",
           time: "2023-01-24",
           extent: "议案",
@@ -457,7 +471,41 @@ export default {
   methods:{
     goBack(){
       this.$router.go(-1)
-    }
+    },
+   
+    async success() {
+       await this.$message({
+          message: '发布成功',
+          type: 'success'
+        });
+        this.dialogFormVisible = false
+      },
+      async warning() {
+       await this.$message({
+          message: '暂存成功',
+          type: 'warning'
+        });
+        this.dialogFormVisible = false
+      },
+    open() {
+        this.$confirm('是否确认取消', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '取消成功!'
+          });
+          this.dialogFormVisible = false
+        })
+      },
+      toPage(id) {
+            this.$router.push({
+                name: "checkView",
+                params:{Id:id}
+            });
+        }
   }
 };
 </script>
@@ -521,6 +569,10 @@ element.style {
 }
 .ml-5 {
   margin-left: 5rem;
+}
+.cl-bule{
+  color: #409EFF;
+  cursor:pointer;
 }
 .ml-4 {
   margin-left: 4.5rem;

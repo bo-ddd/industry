@@ -2,12 +2,12 @@
   <div class="pollution">
     <div class="header flex-ja-center">
       <dv-decoration-5
-        style="width: 40rem; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
       <span class="title">污染源实时监控系统</span>
       <dv-decoration-5
-        style="width: 40rem; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
     </div>
@@ -18,7 +18,7 @@
           <div class="title">重点站点</div>
           <dv-scroll-board
             :config="config"
-            style="width: 50rem; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -37,7 +37,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configDate"
-            style="width: 50rem; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -53,7 +53,7 @@
           <div class="title">数据排名</div>
           <dv-scroll-board
             :config="configErrer"
-            style="width: 50rem; height: 23rem"
+            style="width: 26vw; height: 25vh"
           />
         </div>
       </dv-border-box-8>
@@ -95,6 +95,8 @@
 
 
 <script>
+import * as echarts from 'echarts';
+
 import Charts from "@jiaminghi/charts";
 import { changeDefaultConfig } from "@jiaminghi/charts";
 
@@ -653,15 +655,15 @@ export default {
     };
   },
   mounted() {
-    this.echarts("linechart", this.linechartOption);
-    this.echarts("keypollutants", this.keyPollutants);
-    this.echarts("equipment-online", this.equipmentOnline);
-    this.echarts("equipment-warn", this.equipmentWarn);
-    this.echarts("equipment-datavalid", this.equipmentDatavalid);
-    this.echarts("monitor-preview", this.monitorPreview);
+    this.dataVcharts("linechart", this.linechartOption);
+    this.dataVcharts("keypollutants", this.keyPollutants);
+    this.dataVcharts("equipment-online", this.equipmentOnline);
+    this.dataVcharts("equipment-warn", this.equipmentWarn);
+    this.dataVcharts("equipment-datavalid", this.equipmentDatavalid);
+    this.dataVcharts("monitor-preview", this.monitorPreview);
   },
   methods: {
-    echarts(e, options) {
+    dataVcharts(e, options) {
       this.$nextTick(() => {
         const chart = document.getElementById(e);
         const myChart = new Charts(chart);
@@ -680,6 +682,7 @@ export default {
 }
 
 .header {
+  height: 6vh;
   gap: 3rem;
 }
 
@@ -690,7 +693,7 @@ export default {
 }
 
 .main {
-  height: 90vh;
+  /* height: 90vh; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -763,7 +766,7 @@ export default {
 #keypollutants,
 #monitor-preview {
   width: 100%;
-  height: 25rem;
+  height: 28.5vh;
 }
 #keypollutants {
   position: relative;
@@ -778,14 +781,16 @@ export default {
 #equipment-warn,
 #equipment-datavalid {
   width: 20rem;
-  height: 20rem;
+  height: 20vh;
 }
 
 .equipment {
   text-align: center;
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
+  align-items: center;
+    height: 25vh;
+    width: 40vw;
 }
 
 .item .title {

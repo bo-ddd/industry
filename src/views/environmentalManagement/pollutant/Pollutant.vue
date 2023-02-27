@@ -6,42 +6,42 @@
             <div class="flex-start header">
                 <div class="flex-center mtb-10">
                     <label class="third-title">事件内容：</label>
-                    <el-input v-model="input" size="mini" class="text-kuang" label-width="100px"></el-input>
+                    <el-input v-model="eventContent" size="mini" class="text-kuang" label-width="100px"></el-input>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">事件来源：</label>
-                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="value" placeholder="请选择">
+                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="eventSourse.value" placeholder="请选择">
                         <el-option v-for="item in eventSourse" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">开始时间：</label>
-                    <el-date-picker v-model="value1" type="datetime" size="mini" class="text-kuang" placeholder="选择日期时间">
+                    <el-date-picker v-model="startTime" type="datetime" size="mini" class="text-kuang" placeholder="选择日期时间">
                     </el-date-picker>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">结束时间：</label>
-                    <el-date-picker v-model="value1" type="datetime" size="mini" class="text-kuang" placeholder="选择日期时间">
+                    <el-date-picker v-model="endTime" type="datetime" size="mini" class="text-kuang" placeholder="选择日期时间">
                     </el-date-picker>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">受理状态：</label>
-                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="value" placeholder="请选择">
-                        <el-option v-for="item in eventSourse" :key="item.value" :label="item.label" :value="item.value">
+                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="acceptanceStatus.value" placeholder="请选择">
+                        <el-option v-for="item in acceptanceStatus" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">所属网格：</label>
-                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="value" placeholder="请选择">
+                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="belongGrid.value" placeholder="请选择">
                         <el-option v-for="item in belongGrid" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </div>
                 <div class="flex-center  mtb-10">
                     <label class="third-title">污染类型：</label>
-                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="value" placeholder="请选择">
+                    <el-select class="text-kuang" size="mini" label-width="100px" v-model="pollutionType.value" placeholder="请选择">
                         <el-option v-for="item in pollutionType" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
@@ -60,8 +60,7 @@
                 </div>
             </div>
             <template>
-                <!--  :header-cell-style="{ background: '#00baff', color: 'white' }"  -->
-                <el-table :data="tableData" style="width: 100%">
+                <el-table :data="tableData" class="pullutant-table" style="width: 100%">
                     <el-table-column type="selection" width="55" align="center">
                     </el-table-column>
                     <el-table-column label="序号" type="index" align="center">
@@ -140,6 +139,56 @@ export default {
                     reportPerson: '周永峰',
                     acceptanceStatus: '受理通过',
                     patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
                 },
                 {
                     eventNumber: 'E202390090',
@@ -152,6 +201,9 @@ export default {
                     acceptanceStatus: '受理通过',
                     patrolTime: '2023-02-28 14:31'
             }],
+            eventContent:'',
+            startTime:'',
+            endTime:'',
             eventSourse: [{
                     value: '选项1',
                     label: '黄金糕'
@@ -254,7 +306,6 @@ export default {
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    position: relative;
 }
 
 .title {
@@ -293,7 +344,5 @@ export default {
 
 .el-pagination {
     margin-top: 2rem;
-    position: absolute;
-    bottom: 4rem;
 }
 </style>
