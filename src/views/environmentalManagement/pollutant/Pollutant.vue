@@ -60,8 +60,8 @@
                 </div>
             </div>
             <template>
-                <el-table :header-cell-style="{ background: '#00baff', color: 'white' }" :data="tableData"
-                    style="width: 100%">
+                <!--  :header-cell-style="{ background: '#00baff', color: 'white' }"  -->
+                <el-table :data="tableData" style="width: 100%">
                     <el-table-column type="selection" width="55" align="center">
                     </el-table-column>
                     <el-table-column label="序号" type="index" align="center">
@@ -103,17 +103,17 @@
                     </el-table-column>
                 </el-table>
             </template>
-            <el-pagination 
-                @size-change="handleSizeChange" 
-                @current-change="handleCurrentChange"
-                :current-page="currentPage4" 
-                :page-sizes="[5, 10, 20, 30]" 
-                :page-size="5"
-                layout="total, sizes, prev, pager, next, jumper" 
-                :total="total"
-            >
-            </el-pagination>
         </div>
+        <el-pagination 
+            @size-change="handleSizeChange" 
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4" 
+            :page-sizes="[5, 10, 20, 30]" 
+            :page-size="5"
+            layout="total, sizes, prev, pager, next, jumper" 
+            :total="total"
+        >
+        </el-pagination>
     </div>
 </template>
 <script>
@@ -131,47 +131,6 @@ export default {
                     acceptanceStatus: '受理通过',
                     patrolTime: '2023-02-28 14:31'
                 },{
-                    eventNumber: 'E202390090',
-                    eventContent: '生活垃圾堆放',
-                    pollutionSourseName: '',
-                    eventSourse: '网格员上报',
-                    pollutionType: '垃圾堆放',
-                    belongGrid: '人和镇',
-                    reportPerson: '周永峰',
-                    acceptanceStatus: '受理通过',
-                    patrolTime: '2023-02-28 14:31'
-                },{
-                    eventNumber: 'E202390090',
-                    eventContent: '生活垃圾堆放',
-                    pollutionSourseName: '',
-                    eventSourse: '网格员上报',
-                    pollutionType: '垃圾堆放',
-                    belongGrid: '人和镇',
-                    reportPerson: '周永峰',
-                    acceptanceStatus: '受理通过',
-                    patrolTime: '2023-02-28 14:31'
-                },{
-                    eventNumber: 'E202390090',
-                    eventContent: '生活垃圾堆放',
-                    pollutionSourseName: '',
-                    eventSourse: '网格员上报',
-                    pollutionType: '垃圾堆放',
-                    belongGrid: '人和镇',
-                    reportPerson: '周永峰',
-                    acceptanceStatus: '受理通过',
-                    patrolTime: '2023-02-28 14:31'
-                },{
-                    eventNumber: 'E202390090',
-                    eventContent: '生活垃圾堆放',
-                    pollutionSourseName: '',
-                    eventSourse: '网格员上报',
-                    pollutionType: '垃圾堆放',
-                    belongGrid: '人和镇',
-                    reportPerson: '周永峰',
-                    acceptanceStatus: '受理通过',
-                    patrolTime: '2023-02-28 14:31'
-                },
-                {
                     eventNumber: 'E202390090',
                     eventContent: '生活垃圾堆放',
                     pollutionSourseName: '',
@@ -271,7 +230,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .wrap {
     padding: 2rem;
 }
@@ -283,26 +242,6 @@ export default {
     flex-wrap: wrap;
 }
 
-.el-table {
-    color: white;
-}
-
-.el-table tbody tr:hover>td {
-    background-color: #003b51 !important;
-}
-
-.el-table .warning-row {
-    background: oldlace;
-}
-
-.el-table .success-row {
-    background: red;
-}
-
-.el-table tr {
-    background-color: #0a2732;
-}
-
 .mtb-10 {
     margin: 1rem 1rem;
 }
@@ -312,11 +251,10 @@ export default {
 }
 
 .pollutant-box {
-    background-color: black;
-    color: white;
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
+    position: relative;
 }
 
 .title {
@@ -355,5 +293,7 @@ export default {
 
 .el-pagination {
     margin-top: 2rem;
+    position: absolute;
+    bottom: 4rem;
 }
 </style>
