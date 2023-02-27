@@ -420,13 +420,11 @@ export default {
 }
 
 .risk-box {
-    min-width: 100rem;
+    /* min-width: 100rem; */
     height: 100vh !important;
     background-color: black;
     color: #fff;
-    /* padding-top:2rem; */
     box-sizing: border-box;
-
 }
 
 .risk {

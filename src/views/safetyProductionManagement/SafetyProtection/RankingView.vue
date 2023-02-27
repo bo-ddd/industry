@@ -41,9 +41,7 @@ export default{
 </script>
 <style scoped>
 #ranking{
-    width: 55rem;
-    height: 40rem;
-    margin: 0 auto;
+    height: 100%;
 }
 
 </style>

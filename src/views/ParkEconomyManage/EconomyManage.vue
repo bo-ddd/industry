@@ -7,28 +7,28 @@
                 <div class="sale-title mb-10">销售总揽</div>
                 <div class="df">
                     <div class="sale-content bj-1">
-                        <img src="../../assets/image/icon-order.png" alt="">
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-order.png" alt="">
                         <div class="sale-num ml-20">
                             <dv-digital-flop :config="config" style="width: 10rem;height: 5rem;font-size: 1.8rem;" />
                             <div class="sale-text">今日订单总数</div>
                         </div>
                     </div>
                     <div class="sale-content bj-2">
-                        <img src="../../assets/image/today-money.png" alt="">
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/today-money.png" alt="">
                         <div class="sale-num ml-20">
                             <dv-digital-flop :config="config1" style="width: 10rem;height: 5rem;font-size: 1.8rem;" />
                             <div class="sale-text">今日销售总额</div>
                         </div>
                     </div>
                     <div class="sale-content bj-3">
-                        <img src="../../assets/image/yesterday-money.png" alt="">
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/yesterday-money.png" alt="">
                         <div class="sale-num ml-20">
                             <dv-digital-flop :config="config2" style="width: 10rem;height: 5rem;font-size: 1.8rem;" />
                             <div class="sale-text">昨日销售总额</div>
                         </div>
                     </div>
                     <div class="sale-content bj-4">
-                        <img src="../../assets/image/icon-wallet.png" alt="">
+                        <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-wallet.png" alt="">
                         <div class="sale-num ml-20">
                             <dv-digital-flop :config="config3" style="width: 10rem;height: 5rem;font-size: 1.8rem;" />
                             <div class="sale-text">近7天销售总额</div>
@@ -80,14 +80,14 @@
                 <div class="df-sb">
                     <div class="order-trend df-fd">
                         <div class="order-trend-num df-c">
-                            <img src="../../assets/image/icon-apply.png" alt="">
+                            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-apply.png" alt="">
                             <div class="num ml-10">
                                 <dv-digital-flop :config="orderTrendNum" style="width: 10rem;height: 3rem;font-size: 1.8rem;" />
                                 <div class="text">本月订单总数</div>
                                 <div class="df-c">
                                     <!-- 盈利 -->
                                     <div class="profit df-c">
-                                        <img class="curve" src="../../assets/image/icon-top.png" alt="">
+                                        <img class="curve" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-top.png" alt="">
                                         10%
                                     </div>
                                     <div class="ml-5">{{orderText}}</div>
@@ -96,14 +96,14 @@
                         </div>
                         <dv-decoration-6 style="width:20rem;height:2rem; margin: 2rem 0;" />
                         <div class="order-trend-num df-c">
-                            <img src="../../assets/image/icon-television.png" alt="">
+                            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-television.png" alt="">
                             <div class="num ml-10">
                                 <dv-digital-flop :config="orderLossNum" style="width: 10rem;height: 3rem;font-size: 1.8rem;" />
                                 <div class="text">本月订单总数</div>
                                 <div class="df-c">
                                     <!-- 亏损 -->
                                     <div class="loss df-c">
-                                        <img class="curve" src="../../assets/image/icon-bottom.png" alt="">
+                                        <img class="curve" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-bottom.png" alt="">
                                         3%
                                     </div>
                                     <div class="ml-5">{{orderText}}</div>
@@ -126,14 +126,14 @@
                 <div class="df-sb">
                     <div class="order-trend df-fd">
                         <div class="order-trend-num df-c">
-                            <img src="../../assets/image/icon-apply.png" alt="">
+                            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-apply.png" alt="">
                             <div class="num ml-10">
                                 <dv-digital-flop :config="sellProfitNum" style="width: 10.5rem;height: 3rem;font-size: 1.8rem;" />
                                 <div class="text">本月销售总额</div>
                                 <div class="df-c">
                                     <!-- 盈利 -->
                                     <div class="profit df-c">
-                                        <img class="curve" src="../../assets/image/icon-top.png" alt="">
+                                        <img class="curve" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-top.png" alt="">
                                         10%
                                     </div>
                                     <div class="ml-5">{{lossText}}</div>
@@ -142,14 +142,14 @@
                         </div>
                         <dv-decoration-3 style="width:20rem;height:2rem; margin: 2rem 0;" />
                         <div class="order-trend-num df-c">
-                            <img src="../../assets/image/icon-television.png" alt="">
+                            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-television.png" alt="">
                             <div class="num ml-10">
                                 <dv-digital-flop :config="sellLossNum" style="width: 10.5rem;height: 3rem;font-size: 1.8rem;" />
                                 <div class="text">本月销售总额</div>
                                 <div class="df-c">
                                     <!-- 亏损 -->
                                     <div class="loss df-c">
-                                        <img class="curve" src="../../assets/image/icon-bottom.png" alt="">
+                                        <img class="curve" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-bottom.png" alt="">
                                         3%
                                     </div>
                                     <div class="ml-5">{{lossText}}</div>

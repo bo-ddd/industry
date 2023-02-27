@@ -79,6 +79,10 @@ a {
   display: inline-block;
 }
 
+.center{
+  margin: 0 auto;
+}
+
 
 .flex-ja-center {
   display: flex;

@@ -1,8 +1,10 @@
 <template>
-    <dv-full-screen-container>
+    <!-- <dv-full-screen-container> -->
     <div class="safety-box">
-        <span class="title">安全防护管理</span>
-        <dv-decoration-5 style="height:40px;" />
+        <div class="title">
+            <span >安全防护管理</span>
+            <dv-decoration-5 />
+        </div>
         <div class="header">
             <div class="header-item" v-for="item in headerData" :key="item.id">
                 <div class="item-title">{{ item.title }}</div>
@@ -19,25 +21,22 @@
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">已发现漏洞类型排名</div>
-               <div class="flex-center">
-                <dv-capsule-chart :config="leakConfig" class="leak" />
-
-               </div>
-                
-
+                <dv-capsule-chart class="flex-center leaf" :config="leakConfig" />
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
                 <div class="title-t">安全危险等级</div>
                 <hazardLevel></hazardLevel>
             </dv-border-box-8>
             <dv-border-box-8 :reverse="true" class="item">
-                <div class="title-t pab-10">实时攻防详情</div>
-                <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail" />
+                <div class="title-t">实时攻防详情</div>
+                <div class="container">
+                    <dv-scroll-board :config="detailConfig" style="width:400px;" class="detail" />
+                </div>
             </dv-border-box-8>
 
         </div>
     </div>
-</dv-full-screen-container>
+<!-- </dv-full-screen-container> -->
 </template>
 <script>
 import rankingView from "../SafetyProtection/RankingView.vue";
@@ -118,7 +117,8 @@ export default {
                     },
                 ],
                 colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
-                unit: '单位'
+                unit: '单位',
+
             },
             ///实时攻防详情
             detailConfig: {
@@ -147,15 +147,9 @@ export default {
 }
 
 .map {
-    background: url('../../../assets/image/posationMap.png') no-repeat;
+    background: url('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/posationMap.png') no-repeat;
     background-size: 100% 100%;
     z-index: 1;
-}
-
-.leak {
-    width: 46rem;
-     height: 30rem;
-    margin: 0 auto;
 }
 
 .detail {
@@ -178,17 +172,27 @@ export default {
 .safety-box {
     color: #fff;
     min-width: 1000px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: black;
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+.dv-capsule-chart.leaf{
+    height: 80%!important;
 }
 
 .title {
-    padding-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 8rem;
     font-size: 3rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.title span{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);    
 }
 
 .header {
@@ -198,6 +202,7 @@ export default {
 }
 
 .title-t {
+    padding: 1rem;
     font-size: 1.8rem;
 }
 
@@ -218,17 +223,20 @@ export default {
 .safety {
     height: 80vh !important;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 40% 1fr;
+    grid-template-rows: repeat(auto-fit, minmax(40%, 1fr)) ;
     grid-template-areas:
-        "left-aside_1 left-aside_1 center center center right-aside_1"
-        "left-aside_2 left-aside_2 center center center right-aside_2"
-        "left-aside_2 left-aside_2 center center center right-aside_2"
+        "left-aside_1 center right-aside_1"
+        "left-aside_2 center right-aside_2"
+        "left-aside_2 center right-aside_2"
 }
 
-.item {
-    padding: 1rem;
-    box-sizing: border-box;
+.item .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100% - 3.8rem);
 }
 
 .item:nth-of-type(1) {
@@ -241,10 +249,7 @@ export default {
 
 .item:nth-of-type(3) {
     grid-area: right-aside_1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+
 }
 
 .item:nth-of-type(4) {
