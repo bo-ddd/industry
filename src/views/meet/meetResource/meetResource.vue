@@ -35,28 +35,28 @@
         </div>
         <div class="grid">
           <div class="item">
-            <img src="@/assets/image/icon-goodsAllocation.png" alt />
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-goodsAllocation.png" alt />
             <div class="content">
               <div class="num-25">6041</div>
               <div class="fs-15">可用单位</div>
             </div>
           </div>
           <div class="item">
-            <img src="@/assets/image/icon-goodsAllocation.png" alt />
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-goodsAllocation.png " alt />
             <div class="content">
               <div class="num-25">6041</div>
               <div class="fs-15">可用单位</div>
             </div>
           </div>
           <div class="item">
-            <img src="@/assets/image/icon-gearWheel.png" alt />
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-gearWheel.png" alt />
             <div class="content">
               <div class="num-25">6041</div>
               <div class="fs-15">使用率</div>
             </div>
           </div>
           <div class="item">
-            <img src="@/assets/image/icon-gearWheel.png" alt />
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-gearWheel.png" alt />
             <div class="content">
               <div class="num-25">6041</div>
               <div class="fs-15">使用率</div>
@@ -76,7 +76,7 @@
         <div class="classBox flex-between">
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>
@@ -88,7 +88,7 @@
           </div>
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>
@@ -100,7 +100,7 @@
           </div>
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>
@@ -112,7 +112,7 @@
           </div>
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>
@@ -134,7 +134,7 @@
         <div class="classBox flex-between">
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>
@@ -146,7 +146,7 @@
           </div>
           <div class="item">
             <div>
-              <img src="@/assets/image/icon-storeHouse.png" alt />
+              <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-storeHouse.png" alt />
             </div>
             <div>
               <div class="title">库存品类</div>

@@ -169,7 +169,7 @@
         </el-table-column>
       </el-table>
       <el-pagination
-        class="pagination mt-2"
+        class=" mt-2"
         background
         layout="prev, pager, next"
         :total="1000"

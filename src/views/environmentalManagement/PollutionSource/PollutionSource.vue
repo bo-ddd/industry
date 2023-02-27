@@ -479,7 +479,7 @@ export default {
           show: true,
         },
         k: 0.5,
-        bgImgSrc: "@/assets/images/3d.jpg",
+        bgImgSrc: "https://unier.oss-cn-beijing.aliyuncs.com/industry/images/posationMap.png",
       },
       // 设备在线率
       equipmentOnline: {

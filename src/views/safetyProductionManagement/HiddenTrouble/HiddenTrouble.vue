@@ -13,14 +13,14 @@
                         <dv-capsule-chart :config="config" style="width:50rem;height:20rem" />
                     </dv-border-box-11>
                 </div>
-                <div class="operation-process mt-2">
+                <div class="operation-process mt-2 mb-2">
                     <dv-border-box-11 title="安全走势图">
                         <div class="flex left-bottom">
                             <Line-chart></Line-chart>
                         </div>
                     </dv-border-box-11>
                 </div>
-                <div class="middle mt-4">
+                <div class="middle mt-6">
                     <dv-border-box-12 class="flex-col">
                         <p class="title">风险分布</p>
                         <div class="top">
@@ -29,11 +29,10 @@
                         </div>
                         <Histogram></Histogram>
                         <div class="img">
-                            <img class="icon-map" src="@/assets/images/map.png" alt="">
+                            <img class="icon-map" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png" alt="">
                         </div>
                     </dv-border-box-12>
                 </div>
-
                 <div class="hidden-treatment mt-2">
                     <dv-border-box-11 title="隐患排查治理">
                         <div class="right right-top">
@@ -41,7 +40,7 @@
                         </div>
                     </dv-border-box-11>
                 </div>
-                <div class="hidden-type mt-2">
+                <div class="hidden-type mt-2 mb-2">
                     <dv-border-box-11 title="隐患类型">
                         <div class="right flex right-bottom">
                             <dv-conical-column-chart :config="column" style="width:50rem;height:30rem;" />
@@ -187,8 +186,8 @@ export default {
 .box {
     display: grid;
     height: 100vh;
-    grid-template-rows: repeat(2, 48%);
-    grid-template-columns: repeat(3, 33.3333%);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "security-risk  middle  hidden-treatment"
         "operation-process  middle  hidden-type";
 }
@@ -197,8 +196,11 @@ export default {
     margin-top: 2rem;
 }
 
-.mt-4 {
-    margin-top: 4rem;
+.mt-6 {
+    margin-top: 6rem;
+}
+.mb-2{
+    margin-bottom: 2rem;
 }
 
 .security-risk {
@@ -261,7 +263,10 @@ export default {
 }
 
 .right-top {
-    padding: 12rem 2.4rem 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex {
@@ -287,6 +292,7 @@ export default {
 :deep(.dv-full-screen-container){
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 :deep(.dv-border-box-9) {
     width: 100%;

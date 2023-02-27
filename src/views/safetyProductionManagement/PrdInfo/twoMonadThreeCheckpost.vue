@@ -1,19 +1,19 @@
 <template>
     <div class="twoMonadThreeCheckpost">
         <div class="banner">
-            <img src="@/assets/images/prdInfo-banner1.png" alt="">
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/prdInfo-banner1.png" alt="">
         </div>
         <div class="banner">
-            <img src="@/assets/images/prdInfo-banner2.png" alt="">
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/prdInfo-banner2.png" alt="">
         </div>
         <div class="banner">
-            <img src="@/assets/images/prdInfo-banner3.png" alt="">
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/prdInfo-banner3.png" alt="">
         </div>
         <div class="banner">
-            <img src="@/assets/images/prdInfo-banner4.png" alt="">
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/prdInfo-banner4.png" alt="">
         </div>
         <div class="banner">
-            <img src="@/assets/images/prdInfo-banner5.png" alt="">
+            <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/prdInfo-banner5.png" alt="">
         </div>
     </div>
 </template>
