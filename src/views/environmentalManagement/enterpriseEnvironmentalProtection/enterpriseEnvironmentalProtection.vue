@@ -69,7 +69,10 @@
                     </el-table-column>
                 </el-table>
             </div>
-            <el-button type="primary" class="mt-20 submit-btn">提交</el-button>
+            <div class="flex-center_btn">
+                <el-button type="primary" class="mt-20 submit-btn">提交</el-button>
+                <div></div>
+            </div>
         </div>
         <el-dialog title="添加产品信息" :visible.sync="addProductInfodialogVisible" width="50%">
             <div>
@@ -238,6 +241,7 @@ export default {
     width: 20rem;
     cursor: pointer;
     font-size: 1.8rem;
+
 }
 
 .mt-20 {
@@ -288,7 +292,12 @@ export default {
     align-items: center;
     gap: 1rem;
 }
-
+.flex-center_btn{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .certificate-image {
     width: 40rem;
 }
