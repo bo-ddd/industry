@@ -5,6 +5,7 @@
             <!-- 销售总揽 -->
             <div class="sale-overview mb-10">
                 <div class="sale-title mb-10">销售总揽</div>
+                <dv-decoration-7 class="sale-title mb-10">销售总揽</dv-decoration-7>
                 <div class="df">
                     <div class="sale-content bj-1">
                         <img src="../../assets/image/icon-order.png" alt="">
