@@ -127,7 +127,7 @@ export default {
 </script>
 <style>
 #main{
-    width: 130rem;
+    min-width: 100rem;
     height: 35rem;
 }
 </style>

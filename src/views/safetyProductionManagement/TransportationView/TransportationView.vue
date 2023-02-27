@@ -1,5 +1,4 @@
 <template>
-    <dv-full-screen-container>
         <div class="outer-layer">
             <div class="header flex">
                 <div class="to-be-delivered">
@@ -61,12 +60,11 @@
                 </div>
             </div>
 
-            <div class="flex">
+            <div class="flex assembly">
                 <pit-chart></pit-chart>
                 <Histogram></Histogram>
             </div>
         </div>
-    </dv-full-screen-container>
 </template>
 
 <script>
@@ -151,6 +149,9 @@ export default {
 
 .dispatching {
     width: 55rem;
+}
+.assembly{
+    justify-content: space-between;
 }
 
 .unusual {
