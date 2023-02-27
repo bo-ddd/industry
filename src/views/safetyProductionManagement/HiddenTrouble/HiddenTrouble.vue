@@ -281,13 +281,13 @@ export default {
 
 .img {
     width: 90%;
-    height: 44vh;
+    height: 40vh;
     margin: 0 auto;
 }
 
 .icon-map {
     width: 100%;
-    height: 44vh;
+    height: 40vh;
 }
 :deep(.dv-full-screen-container){
     width: 100vw;
