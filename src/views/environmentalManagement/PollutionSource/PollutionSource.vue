@@ -682,6 +682,7 @@ export default {
 }
 
 .header {
+  height: 5vh;
   gap: 3rem;
 }
 
