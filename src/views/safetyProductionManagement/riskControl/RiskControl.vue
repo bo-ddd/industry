@@ -389,8 +389,8 @@ export default {
 }
 
 .grade {
-    /* width: 30rem;
-    height: 30rem; */
+    width: 30rem;
+     height: 30rem;
     margin: 0 auto;
 }
 
