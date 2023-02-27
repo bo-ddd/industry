@@ -61,7 +61,7 @@
             </div>
             <template>
                 <!--  :header-cell-style="{ background: '#00baff', color: 'white' }"  -->
-                <el-table :data="tableData" style="width: 100%">
+                <el-table :data="tableData" class="pullutant-table" style="width: 100%">
                     <el-table-column type="selection" width="55" align="center">
                     </el-table-column>
                     <el-table-column label="序号" type="index" align="center">
@@ -121,6 +121,56 @@ export default {
     data() {
         return {
             tableData: [{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
+                    eventNumber: 'E202390090',
+                    eventContent: '生活垃圾堆放',
+                    pollutionSourseName: '',
+                    eventSourse: '网格员上报',
+                    pollutionType: '垃圾堆放',
+                    belongGrid: '人和镇',
+                    reportPerson: '周永峰',
+                    acceptanceStatus: '受理通过',
+                    patrolTime: '2023-02-28 14:31'
+                },{
                     eventNumber: 'E202390090',
                     eventContent: '生活垃圾堆放',
                     pollutionSourseName: '',
@@ -254,7 +304,6 @@ export default {
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    position: relative;
 }
 
 .title {
@@ -293,7 +342,5 @@ export default {
 
 .el-pagination {
     margin-top: 2rem;
-    position: absolute;
-    bottom: 4rem;
 }
 </style>
