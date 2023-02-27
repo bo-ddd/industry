@@ -4,7 +4,7 @@
             <div class="header flex">
                 <div class="to-be-delivered">
                     <div class="to-delivered-logo flex">
-                        <div><img class="icon-to-transit" src="@/assets/image/icon-in-transit.png" alt=""></div>
+                        <div><img class="icon-to-transit" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-in-transit.png" alt=""></div>
                         <div class="fs-30">待派送</div>
                     </div>
                     <div class="to-delivered-detail">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="dispatching">
                     <div class="dispatching-logo flex">
-                        <div><img class="icon-to-transit" src="@/assets/image/icon-in-transit.png" alt=""></div>
+                        <div><img class="icon-to-transit" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-in-transit.png" alt=""></div>
                         <div class="fs-30">派送中</div>
                     </div>
                     <div class="dispatching-datail">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="unusual">
                     <div class="unusual-logo flex">
-                        <div><img class="icon-unusual" src="@/assets/image/icon-unusual.png" alt=""></div>
+                        <div><img class="icon-unusual" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/icon-unusual.png" alt=""></div>
                         <div class="fs-30">异常</div>
                     </div>
                     <div class="unusual-detail">
@@ -65,8 +65,6 @@
                 <pit-chart></pit-chart>
                 <Histogram></Histogram>
             </div>
-
-
         </div>
     </dv-full-screen-container>
 </template>

@@ -3,7 +3,7 @@
     <dv-full-screen-container>
         <dv-border-box-9 class="border">
             <div class="box">
-                <div class="security-risk mt-2">
+                <div class="security-risk">
                     <dv-border-box-11 title="安全风险监管">
                         <div class="flex left-top">
                             <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" />
@@ -13,14 +13,14 @@
                         <dv-capsule-chart :config="config" style="width:50rem;height:20rem" />
                     </dv-border-box-11>
                 </div>
-                <div class="operation-process mt-2">
+                <div class="operation-process">
                     <dv-border-box-11 title="安全走势图">
                         <div class="flex left-bottom">
                             <Line-chart></Line-chart>
                         </div>
                     </dv-border-box-11>
                 </div>
-                <div class="middle mt-4">
+                <div class="middle">
                     <dv-border-box-12 class="flex-col">
                         <p class="title">风险分布</p>
                         <div class="top">
@@ -29,19 +29,18 @@
                         </div>
                         <Histogram></Histogram>
                         <div class="img">
-                            <img class="icon-map" src="@/assets/images/map.png" alt="">
+                            <img class="icon-map" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png" alt="">
                         </div>
                     </dv-border-box-12>
                 </div>
-
-                <div class="hidden-treatment mt-2">
+                <div class="hidden-treatment">
                     <dv-border-box-11 title="隐患排查治理">
                         <div class="right right-top">
                             <dv-scroll-board :config="row" style="width:55rem;height:28rem" />
                         </div>
                     </dv-border-box-11>
                 </div>
-                <div class="hidden-type mt-2">
+                <div class="hidden-type">
                     <dv-border-box-11 title="隐患类型">
                         <div class="right flex right-bottom">
                             <dv-conical-column-chart :config="column" style="width:50rem;height:30rem;" />
@@ -183,12 +182,15 @@ export default {
     }
 }
 </script>
+
 <style scoped>
 .box {
     display: grid;
     height: 100vh;
-    grid-template-rows: repeat(2, 48%);
-    grid-template-columns: repeat(3, 33.3333%);
+    box-sizing: border-box;
+    padding: 3rem 1rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "security-risk  middle  hidden-treatment"
         "operation-process  middle  hidden-type";
 }
@@ -197,8 +199,11 @@ export default {
     margin-top: 2rem;
 }
 
-.mt-4 {
-    margin-top: 4rem;
+.mt-6 {
+    margin-top: 6rem;
+}
+.mb-2{
+    margin-bottom: 2rem;
 }
 
 .security-risk {
@@ -223,7 +228,9 @@ export default {
 
 .middle {
     grid-area: middle;
-    height: 90vh;
+    text-align: center;
+    margin-top: 1rem;
+    height: calc(100vh - 10rem);
 }
 
 .middle .lable {
@@ -261,7 +268,10 @@ export default {
 }
 
 .right-top {
-    padding: 12rem 2.4rem 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex {
@@ -275,18 +285,18 @@ export default {
 }
 
 .img {
-    width: 90%;
-    height: 44vh;
-    margin: 0 auto;
+    display: inline-block;
+    width: 50rem;
 }
 
 .icon-map {
     width: 100%;
-    height: 44vh;
+    height: 40vh;
 }
 :deep(.dv-full-screen-container){
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 :deep(.dv-border-box-9) {
     width: 100%;
