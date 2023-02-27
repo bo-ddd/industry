@@ -2,12 +2,12 @@
   <div class="pollution">
     <div class="header flex-ja-center">
       <dv-decoration-5
-        style="width: 40vw; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
       <span class="title">污染源实时监控系统</span>
       <dv-decoration-5
-        style="width: 40vw; height: 4rem"
+        style="width: 40vw; height: 4vh"
         :color="['#01c0d5']"
       />
     </div>
