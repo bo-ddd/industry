@@ -87,7 +87,7 @@ export default {
                     title: "园区应急管理",
                     children: [
                         {
-                            url: "",
+                            url: "/meetDrill",
                             title: "应急模拟演练"
                         }, {
                             url: "/meetEarly",
@@ -101,10 +101,7 @@ export default {
                         }, {
                             url: "/EconomyManage",
                             title: "园区经济管理"
-                        }, {
-                            url: "",
-                            title: "园区招商管理"
-                        }, {
+                        },{
                             url: "/publishKumon",
                             title: "公文管理"
                         }, {

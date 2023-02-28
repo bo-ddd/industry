@@ -51,7 +51,7 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <el-table :data="tableData" stripe style=" width: 100%">
+            <el-table size="small" :data="tableData" style="width: 100%">
                 <el-table-column prop="date" label="时间" width="180">
                 </el-table-column>
                 <el-table-column prop="subject" label="演练科目" width="180">
@@ -153,6 +153,22 @@ export default {
                 commander: '尚宇豪',
                 createby: '朱鑫鹏',
                 qualified: '是',
+            },{
+                date: '2016-05-02',
+                content: '应急避震',
+                subject: '防震',
+                personnel: '全体员工',
+                commander: '普肖帅',
+                createby: '李帅',
+                qualified: '是',
+            },{
+                date: '2016-05-04',
+                content: '应急避火',
+                subject: '防火',
+                personnel: 'A区员工',
+                commander: '周永峰',
+                createby: '申少杰',
+                qualified: '是',
             }],
             dialogFormVisible: false,
             dialogFormVisibles: false,
@@ -216,6 +232,8 @@ export default {
 .header {
     padding: 2rem;
     background: #fff;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .form {
@@ -239,6 +257,7 @@ export default {
 
 .el-table {
     margin: 2rem;
+    /* overflow: scroll; */
 }
 
 .block {
@@ -252,14 +271,10 @@ export default {
     display: grid;
     box-sizing: border-box;
     grid-template-rows: min-content auto;
-
-    height: 90vh;
+    height: calc(100vh - 9rem);
     width: 100%;
     min-height: 40vh;
     
-}
-.el-table{
-    overflow: scroll;
 }
 
 .el-form-item {
