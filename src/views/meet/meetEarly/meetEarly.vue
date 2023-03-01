@@ -118,7 +118,7 @@
                     <div class="content-header">
                         <span>事件图片</span>
                     </div>
-                    <div class="content-mains">
+                    <div class="content-mainss">
                         <!-- <img src="@/assets/images/picture.png" alt=""> -->
                         <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/picture.png" alt="">
                     </div>
@@ -127,7 +127,7 @@
                     <div class="content-header">
                         <span>事件视频</span>
                     </div>
-                    <div class="content-mains">
+                    <div class="content-mainss">
                         <!-- <img src="@/assets/images/video.png" alt=""> -->
                         <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/video.png" alt="">
                     </div>
@@ -210,11 +210,19 @@ export default {
 .content-mains {
     overflow: scroll;
 }
+.content-mainss {
+    overflow: scroll;
+}
 
 .content-mains img {
     width: 100%;
-    height: 40vh;
-    object-fit: cover;
+    /* height: 100%; */
+    /* object-fit: cover; */
+}
+.content-mainss img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
 }
 
 .sidebar {
