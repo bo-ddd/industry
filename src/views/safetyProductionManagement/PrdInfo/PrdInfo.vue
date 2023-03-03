@@ -2,7 +2,11 @@
     <div class="prd_info">
         <div class="header">
             <div>
-                <div class="ml-5">2019年12月30日 晴：高温12℃~-1℃</div>
+                <div class="ml-5">
+                    <!-- 2019年12月30日 晴：高温12℃~-1℃ -->
+                    {{ date }}
+                    {{ time }}
+                </div>
                 <dv-decoration-8 style="width:100%;height:3rem;display: inline-block; text-align: left;" />
             </div>
             <div>
@@ -288,7 +292,9 @@ export default {
                     nav: 5,
                     isActive: false,
                 },
-            ]
+            ],
+            date: '',
+            time: ''
         };
     },
     created() {
@@ -297,6 +303,7 @@ export default {
                 item.isActive = !item.isActive
             }
         })
+        this.getDate()
     },
     components: {
         pieChart,
@@ -317,6 +324,36 @@ export default {
                 }
             });
         },
+        getDate() {
+            this.newDate()
+        },
+        newDate() {
+            let T = new Date();//创建一个日期对象
+            let n = T.getFullYear();//获取当前年份
+            let y = T.getMonth() + 1;//获取当前月份，月份从0开始计算，0代表1月份；
+            let r = T.getDate();//获取当前是几号
+            // let day = T.getDay();//获取当前是星期几，返回的其实是国内第几天0代表周日
+            let h = T.getHours();//获取当前的小时
+            let m = T.getMinutes();//获取当前的分钟
+            let s = T.getSeconds();//获取当前的秒钟
+            y = this.checkTime(y);
+            r = this.checkTime(r);
+            m = this.checkTime(m);
+            s = this.checkTime(s)
+            let date = n + '年' + y + '月' + r + '日';
+            let time = h + ':' + m + ':' + s;
+            this.date = date;
+            this.time = time;
+            setTimeout(() => {
+                this.newDate();
+            }, 1000)
+        },
+        checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
     }
 }
 </script>
