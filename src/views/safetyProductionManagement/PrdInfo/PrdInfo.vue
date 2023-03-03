@@ -303,7 +303,7 @@ export default {
                 item.isActive = !item.isActive
             }
         })
-        this.getDate()
+        this.newDate()
     },
     components: {
         pieChart,
@@ -323,9 +323,6 @@ export default {
                     el.isActive = true
                 }
             });
-        },
-        getDate() {
-            this.newDate()
         },
         newDate() {
             let T = new Date();//创建一个日期对象
