@@ -12,7 +12,7 @@
                             <div class="iconA">A</div>
                             <div>
                                 <p class="colorA">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -24,7 +24,7 @@
                             <div class="iconA">A</div>
                             <div>
                                 <p class="colorA">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -36,7 +36,7 @@
                             <div class="iconB">B</div>
                             <div>
                                 <p class="colorB">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -49,7 +49,7 @@
                             <div class="iconB">B</div>
                             <div>
                                 <p class="colorB">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -61,7 +61,7 @@
                             <div class="iconC">C</div>
                             <div>
                                 <p class="colorC">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -73,7 +73,7 @@
                             <div class="iconD">D</div>
                             <div>
                                 <p class="colorD">入侵报警</p>
-                                <p>XXX厂区西北角</p>
+                                <p>厂区西北角</p>
                             </div>
                         </div>
                         <div class="sidebar-main_right">
@@ -98,11 +98,11 @@
                         <p>类型：<span class="colorA">入侵报警</span></p>
                         <p>级别：<span class="colorA">A级警告</span></p>
                         <p>时间：<span>2022-03-12 13:03:21</span></p>
-                        <p>位置：<span>xx省xx市xx区xx路xx号楼1-4-101</span></p>
-                        <p>内容：<span>xx摄像机在xx监控区域发现入侵对象</span></p>
-                        <p>客户：<span>xxx科技有限公司</span></p>
-                        <p>单位：<span>xxx应急产业园</span></p>
-                        <p>站点：<span>xxx测试站点</span></p>
+                        <p>位置：<span>山西省临汾市浮山县双新产业园区</span></p>
+                        <p>内容：<span>01摄像机在02监控区域发现入侵对象</span></p>
+                        <p>客户：<span>浮山双新产业园区</span></p>
+                        <p>单位：<span>浮山双新产业园区</span></p>
+                        <p>站点：<span>浮山双新产业园区</span></p>
                     </div>
                 </div>
                 <div class="main-content">
@@ -118,7 +118,7 @@
                     <div class="content-header">
                         <span>事件图片</span>
                     </div>
-                    <div class="content-mains">
+                    <div class="content-mainss">
                         <!-- <img src="@/assets/images/picture.png" alt=""> -->
                         <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/picture.png" alt="">
                     </div>
@@ -127,7 +127,7 @@
                     <div class="content-header">
                         <span>事件视频</span>
                     </div>
-                    <div class="content-mains">
+                    <div class="content-mainss">
                         <!-- <img src="@/assets/images/video.png" alt=""> -->
                         <img src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/video.png" alt="">
                     </div>
@@ -210,11 +210,19 @@ export default {
 .content-mains {
     overflow: scroll;
 }
+.content-mainss {
+    overflow: scroll;
+}
 
 .content-mains img {
     width: 100%;
-    height: 40vh;
-    object-fit: cover;
+    /* height: 100%; */
+    /* object-fit: cover; */
+}
+.content-mainss img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
 }
 
 .sidebar {

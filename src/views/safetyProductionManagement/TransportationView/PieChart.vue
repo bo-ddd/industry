@@ -58,7 +58,7 @@ export default {
 </script>
 <style>
 #pie-chart {
-    width: 50rem;
+    min-width: 70rem;
     height: 35rem;
 }
 </style>

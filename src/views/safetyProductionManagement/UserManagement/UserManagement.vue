@@ -1,27 +1,11 @@
 <template>
-  <dv-full-screen-container>
     <div class="user">
 
-       <div class="header mtb-20">
-        <el-link type="primary">已离职员工</el-link>
-        <span class="shu">|</span>
-        <el-link type="primary">历史员工</el-link>
-       </div>
+      
 
-       <div class="add-user mtb-20">
-        <el-button type="primary">添加员工</el-button>
-       </div>
-
-       <div class="announcement">
-       <div>
-        工资条一对一发放至员工！安全可靠！ 
-        <el-link class="ml-20" type="primary">免费使用>></el-link>
-       </div>
-        <i class="el-icon-close" @click="click"></i>
-       </div>
-
-       <div class="mtb-20">
-        <el-input class="search" v-model="input" placeholder="搜索员工"></el-input>
+       <div class="select mtb-20 flex">
+        <div>
+          <el-input class="search" v-model="input" placeholder="搜索员工"></el-input>
 
         <el-select class="ml-20" v-model="value" placeholder="请选择">
     <el-option
@@ -41,8 +25,21 @@
     </el-date-picker>
 
     <el-button class="ml-20" type="primary">搜索</el-button>
+        </div>
+
+    <div class="add-user mtb-20">
+        <el-button type="primary">添加员工</el-button>
+       </div>
 
     </div>
+
+    <div class="announcement mb-40">
+       <div>
+        工资条一对一发放至员工！安全可靠！ 
+        <el-link class="ml-20" type="primary">免费使用>></el-link>
+       </div>
+        <i class="el-icon-close" @click="click"></i>
+       </div>
 
     <el-table
     :data="tableData"
@@ -105,7 +102,6 @@
 </el-pagination>
 
     </div>
-  </dv-full-screen-container>
 </template>
 
 <script>
@@ -229,6 +225,9 @@ export default {
 .mtb-20{
     margin: 2rem 0;
 }
+.mb-40{
+  margin-bottom: 4rem;
+}
 .mt-10{
     margin-top: 1rem;
 }
@@ -254,18 +253,9 @@ export default {
     width: 180rem;
     margin: 0 auto;
 }
-.header{
-    display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
-}
 .shu{
     color: #ccc;
     font-size: 1.3rem;
-}
-.add-user{
-    display: flex;
-    justify-content: flex-end;
 }
 .announcement{
     display: flex;
@@ -314,6 +304,10 @@ text-align: center;
     border-radius: 1rem;
     align-items: center;
     justify-content: space-around;
+}
+.select{
+  justify-content: space-between;
+  align-items: center;
 }
 .active-stats-child{
 text-align: center;

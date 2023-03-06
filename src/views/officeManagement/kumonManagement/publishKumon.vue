@@ -385,19 +385,9 @@ export default {
           massage: "秦明哲",
           operate: "查看",
         },
+       
         {
           id: 7,
-          name: "园区季度发展规划",
-          time: "2023-02-20",
-          extent: "决定",
-          unit: "管理部",
-          state: "已阅",
-          type:"success",
-          massage: "耿磊",
-          operate: "查看",
-        },
-        {
-          id: 8,
           name: "化工运输03车维修停工请示",
           time: "2023-02-17",
           extent: "请示",
@@ -408,7 +398,7 @@ export default {
           operate: "查看",
         },
         {
-          id: 9,
+          id: 8,
           name: "拓展部招新请示",
           time: "2023-02-13",
           extent: "请示",
@@ -418,19 +408,9 @@ export default {
           massage: "朱鑫鹏",
           operate: "查看",
         },
+       
         {
-          id: 10,
-          name: "拓展部新业务线考察报告",
-          time: "2023-02-10",
-          extent: "报告",
-          unit: "拓展部",
-          state: "已阅",
-          type:"success",
-          massage: "侯心如",
-          operate: "查看",
-        },
-        {
-          id: 11,
+          id: 9,
           name: "化工用器故障检测报告",
           time: "2023-02-05",
           extent: "报告",
@@ -441,7 +421,7 @@ export default {
           operate: "查看",
         },
         {
-          id: 12,
+          id: 10,
           name: "运输部车辆检测报告",
           time: "2023-02-04",
           extent: "报告",
@@ -451,17 +431,7 @@ export default {
           massage: "周永峰",
           operate: "查看",
         },
-        {
-          id: 13,
-          name: "服务部门23年整改议案",
-          time: "2023-01-24",
-          extent: "议案",
-          unit: "服务部",
-          state: "已阅",
-          type:"success",
-          massage: "卫正阳",
-          operate: "查看",
-        },
+        
     
         
       ],
@@ -507,7 +477,7 @@ export default {
             // });
         }
   }
-};
+}
 </script>
 <style scoped>
 .box-select{
