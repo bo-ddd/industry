@@ -6,27 +6,27 @@ const instance = axios.create({
     headers:{'content-type' : 'application/json'}
 })
 
-
+const getPostConfig = function () {
+  return {
+    headers: {
+      contentType: "application/json",
+      Authorization: sessionStorage.getItem('token'),
+    }
+  }
+}
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
-    if(config.headers){
-      config.headers.token = sessionStorage.getItem('token');
-    }
+    // if(config.headers){
+      config.headers.Authorization = sessionStorage.getItem('token');
+    
     
   return config;
 }, function (error) {
   return Promise.reject(error);
 })
 
-const getPostConfig = function () {
-  return {
-    headers: {
-      contentType: "application/json",
-      token: sessionStorage.getItem('token'),
-    }
-  }
-}
+
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
