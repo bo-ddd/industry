@@ -44,6 +44,6 @@ instance.interceptors.response.use(function (response) {
     return instance.post('/auth/login', payload ,getPostConfig())
   }
   //获取用户信息
-  export const getUserInfoApi = function (payload = {}) {
+  export const getUserListApi = function (payload = {}) {
     return instance.get('/user', payload ,getPostConfig())
   }
