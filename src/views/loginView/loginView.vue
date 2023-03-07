@@ -4,7 +4,7 @@
             <dv-border-box-1 :color="['#245970','bule']">
                 <div class="title">
                     <div class=" fs-3 cl-white pd-2">浮山双新园区智能管控</div>
-                    <dv-decoration-5 class="dv-5" dur="2"  style="width:80rem;height:10rem;" />
+                    <dv-decoration-5 class="dv-5"   style="width:80rem;height:10rem;" />
                 </div>
                 <div class="box-login">
                     <dv-border-box-13 class="dv-login">
@@ -13,19 +13,19 @@
                                 <div class="login ">登录</div>
                                 <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
                             </div>
-                            <div class="box-inp">
+                            <div class="box-inp" :v-model="input">
                                 
                                 <div class="box">
-                                    <div class="mr-2 cl-white">账户</div>
-                                    <input class="inp" type="text" value="Admin">
+                                    <div class="width mr-2 cl-white">账户</div>
+                                    <el-input class="inp" v-model="input.username" placeholder="请输入账号"></el-input>
                                 </div>
                                 <div class="box">
-                                    <div class="mr-2 cl-white">密码</div>
-                                    <input class="inp" type="password" value="">
+                                    <div class="width mr-2 cl-white">密码</div>
+                                    <el-input placeholder="请输入密码" class="inp" v-model="input.password" show-password></el-input>
                                 </div>
                                 
                             </div>
-                            <div class="btn" @click="toPage()"><dv-decoration-9
+                            <div class="btn" @click="login()"><dv-decoration-9
                             style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
                         </dv-border-box-8>
                 </dv-border-box-13>
@@ -37,20 +37,60 @@
 </template>
 
 <script>
-
+import { loginApi } from '@/api/api'
 export default {
 
     data() {
         return {
-
+           input :{
+            username:'',
+            password:''
+           }
         }
     },
     methods: {
+        loginMessage(text,type) {
+        this.$message({
+          showClose: true,
+          message: text,
+          type: type,
+          duration:1500
+        });
+       
+      },
+    
         toPage() {
             this.$router.push({
                 name: "Home",
             });
+        },
+        login() {
+        console.log(this.input);
+        if (!this.input.username) {
+            this.loginMessage("用户名不能为空",'warning')
+        }else if(!this.input.password){
+            this.loginMessage("密码不能为空",'warning')
+        }else {
+            loginApi({
+              username: this.input.username,
+              password: this.input.password,
+            }).then(res => {
+
+                if (res.status == 201) {
+                    sessionStorage.setItem("token", res.data.data.access_token);
+                    this.loginMessage("登录成功",'success')
+                    setTimeout(() => {
+                        this.toPage()
+                    }, 1500);
+                }
+              }).catch(res => {
+               if (res.response.status == 401) {
+                this.loginMessage("账号未授权",'error')
+                   
+               }
+            })
         }
+    },
     }
 };
 </script>
@@ -87,6 +127,10 @@ export default {
 }
 .mr-2 {
     margin-right: 2rem;
+   
+}
+.width{
+    width: 5rem;
 }
 
 .box-login {
@@ -105,7 +149,7 @@ export default {
     justify-content: space-evenly;
     position: absolute;
     top: 20%;
-    left: 16%;
+    left: 15%;
 }
 
 .dv-box {
@@ -140,16 +184,7 @@ export default {
 .fs-3{
     font-size: 3rem;
 }
-.inp {
-    font-size: 2rem;
-    text-indent: 2em;
-    color: white;
-    width: 30rem;
-    height: 4rem;
-    background: none;
-    outline: none;
-    border-bottom: 1px solid #ccc;
-}
+
 .pd-2{
     padding: 2rem;
 }
