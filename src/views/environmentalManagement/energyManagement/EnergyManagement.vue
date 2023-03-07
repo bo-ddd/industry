@@ -118,6 +118,7 @@ export default {
 .monthly-statistics {
     display: flex;
     justify-content: center;
+    gap: 0 3rem;
 }
 
 
