@@ -77,6 +77,7 @@ export default {
             }).then(res => {
 
                 if (res.status == 201) {
+                    console.log(res);
                     sessionStorage.setItem("token", res.data.data.access_token);
                     this.loginMessage("登录成功",'success')
                     setTimeout(() => {

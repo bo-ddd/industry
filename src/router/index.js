@@ -157,15 +157,18 @@ const router = new VueRouter({
 })
 
 //导航守卫
-// router.beforeEach( (to,next)=>{
- 
-//   let token = sessionStorage.getItem('token');
-//   if (to.name == 'login' ) {
-//     next();
-//   }else if (to.name != 'login' && !token) {
-//     next('login');
-//   }
-// })
+router.beforeEach( (to,from,next)=>{
+ console.log(to);
+  let token = sessionStorage.getItem('token');
+  if (to.name == 'login' ) {
+    next();
+  }else if (to.name != 'login' && !token) {
+    console.log(1);
+    next({ path:'/' });
+  }else{
+    next();
+  }
+})
 
 
 
