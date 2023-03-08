@@ -5,13 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    token:'',
+    time:0
   },
   getters: {
   },
   mutations: {
+     
   },
   actions: {
+    
   },
   modules: {
   }
+  
 })

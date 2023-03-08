@@ -42,6 +42,7 @@ export default {
 
     data() {
         return {
+            //登录inp.value
            input :{
             username:'',
             password:''
@@ -49,6 +50,7 @@ export default {
         }
     },
     methods: {
+        //封装消息提示方法
         loginMessage(text,type) {
         this.$message({
           showClose: true,
@@ -58,27 +60,63 @@ export default {
         });
        
       },
-    
+      //延迟获取时间
+      getHourDate(n){
+                    var myDate = new Date(); //实例一个时间对象；                    
+                    //延长时间
+                    myDate.setMinutes(myDate.getMinutes()+n);
+                    var year = myDate.getFullYear();
+                    var month = myDate.getMonth();
+                    var day = myDate.getDate();
+                    var hour=myDate.getHours(); //获取时，
+                    var min=myDate.getMinutes(); //分                    
+                    var seconds="00"; //秒
+                //    console.log("获取时="+hour+"=分="+min+"=秒="+seconds);
+                    if (hour<10) {
+                        hour= "0"+hour;
+                    }
+                    if(min<10){
+                        min="0"+min;
+                    }
+                    if(month<10){
+                        month="0"+month;
+                    }
+                    if(day<10){
+                        day="0"+day;
+                    }
+                    var mytime=year+"-"+month+"-"+day+" "+hour+":"+min+":"+seconds;  
+                    //console.log("返回的时分秒="+mytime);
+                    return mytime;
+                },
+
+      //跳转home页面
         toPage() {
             this.$router.push({
                 name: "Home",
             });
         },
+        //登录方法
         login() {
-        console.log(this.input);
+            //前端校验
+           
+            console.log( );
+
         if (!this.input.username) {
             this.loginMessage("用户名不能为空",'warning')
         }else if(!this.input.password){
             this.loginMessage("密码不能为空",'warning')
         }else {
+            //调取登录接口
             loginApi({
               username: this.input.username,
               password: this.input.password,
             }).then(res => {
 
                 if (res.status == 201) {
-                    console.log(res);
+                    this.$store.state.time = new Date(this.getHourDate(8)).getTime()
+                    this.$store.state.token = res.data.data.access_token
                     sessionStorage.setItem("token", res.data.data.access_token);
+                    sessionStorage.setItem("time", new Date(this.getHourDate(8)).getTime());
                     this.loginMessage("登录成功",'success')
                     setTimeout(() => {
                         this.toPage()
@@ -88,7 +126,7 @@ export default {
                 }
               }).catch(res => {
                if (res.response.status == 401) {
-                this.loginMessage("账号未授权",'error')
+                    this.loginMessage("账号未授权",'error')
                }else{
                     this.loginMessage("服务器忙",'error')
                 }

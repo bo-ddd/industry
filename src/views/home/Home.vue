@@ -122,9 +122,7 @@ export default {
             ],
         }
     },
-    created(){
-       this.getUserListApi()
-    },
+    
     methods:{
         to(url){
             if(!url){
@@ -134,16 +132,7 @@ export default {
             console.log(url);
             this.$router.push({path: url})
         },
-        getUserListApi(){
-            console.log(1);
-            getUserListApi({
-        }).then(res =>{
-            console.log(res);
-        }).catch(res =>{
-            console.log(res
-            );
-        })
-        }
+    
     }
 }
 </script>
