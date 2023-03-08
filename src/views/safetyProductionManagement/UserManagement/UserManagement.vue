@@ -30,11 +30,11 @@
     </div>
 
     <el-table :data="currentList" border style="width: 100%">
-      <el-table-column fixed prop="entryDate" label="入职日期" align=center width=auto>
+      <el-table-column fixed prop="id" label="入职日期" align=center width=auto>
       </el-table-column>
-      <el-table-column prop="name" label="姓名" align=center width=auto>
+      <el-table-column prop="avatarName" label="姓名" align=center width=auto>
       </el-table-column>
-      <el-table-column prop="department" label="部门" align=center width=auto>
+      <el-table-column prop="deptNo" label="部门" align=center width=auto>
       </el-table-column>
       <el-table-column prop="position" label="职位" align=center width=auto>
       </el-table-column>
@@ -81,48 +81,8 @@ export default {
       }],
       pageNum: 1,
       pageSize: 5,
-      total: 0,
-      currentList: [],
-      startIndex: 0,
-      endIndex: 0,
-      userData: [
-        {
-        id:1,
-        name:'shui',
-        department:'小猴组'
-      },
-        {
-        id:2,
-        name:'马',
-        department:'小猴组'
-      },
-        {
-        id:3,
-        name:'shui',
-        department:'小猴组'
-      },
-        {
-        id:4,
-        name:'王',
-        department:'小猴组'
-      },
-        {
-        id:5,
-        name:'朱',
-        department:'小猴组'
-      },
-        {
-        id:6,
-        name:'李',
-        department:'小猴组'
-      },
-        {
-        id:7,
-        name:'耿',
-        department:'小猴组'
-      },
-    ],///用户列表
-      searchUserData:[],///搜索后用户列表
+      userData: [],///用户列表
+      searchUserData: [],///搜索后用户列表
       userName: '',
       department: '',
       date: '',
@@ -132,21 +92,14 @@ export default {
     click(e) {
       console.log(e);
     },
+
     getUserList() {
       getUserListApi().then(res => {
         if (res.status == 200) {
-          console.log(res.data);
-          // this.userData = res.data.data
+          this.searchUserData = res.data.data
+          this.userData=this.searchUserData
           console.log('列表渲染成功');
-          // console.log(this.userData);
-          //分页总条数
-          this.total = computed(() => this.userData.length)
-          //当前每页列表数据
-          this.currentList = computed(() => this.userData.slice(this.startIndex, this.endIndex))
-          // //开始下标
-          this.startIndex = computed(() => (this.pageNum - 1) * this.pageSize)
-          //结束下标
-          this.endIndex = computed(() => this.pageNum * this.pageSize)
+          console.log(this.userData);
         } else {
           console.log('失败');
         }
@@ -160,28 +113,38 @@ export default {
       this.pageNum = val
       console.log(`当前页: ${val}`);
     },
-    searchUser(){
-      if(this.userName==''){
-       this.searchUserData=JSON.parse(JSON.stringify(this.userData))
+    //点击搜索按钮
+    searchUser() {
+      console.log('搜索');
+      // userData =>   // searchUserData;
+      if(this.userName == ''){
+        this.searchUserData = JSON.parse(JSON.stringify(this.userData));
       }else{
-       this.searchUserData=JSON.parse(JSON.stringify(this.userData))
-        this.searchUserData.forEach(item => {
-           if(item.name.includes(this.userName)){
-            this.searchUserData=[]
-             this.searchUserData.push(item)
-           }
-           this.userData=this.searchUserData 
-        });
+        // 根据用户名查询用户信息；
+        this.searchUserData = this.userData.filter(user => user.avatarName == this.userName);
+        console.log(this.searchUserData);
+        // 模糊查询
+        this.searchUserData = this.userData.filter(user => new RegExp(this.userName).test(user.avatarName))
       }
     }
-    
+  },
+  computed:{
+    total(){
+       return this.userData.length
+    },
+    currentList(){
+       return this.searchUserData.slice(this.startIndex, this.endIndex)
+    },
+    startIndex(){
+       return  (this.pageNum - 1) * this.pageSize
+    },
+    endIndex(){
+       return this.pageNum * this.pageSize
+    }
   },
   created() {
     this.getUserList()
   },
-  // watch: {
-    
-  // }
 
 }
 </script>
