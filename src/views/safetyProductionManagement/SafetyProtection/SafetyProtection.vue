@@ -147,7 +147,7 @@ export default {
 }
 
 .map {
-    background: url('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/posationMap.png') no-repeat;
+    background: url('https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png') no-repeat;
     background-size: 100% 100%;
     z-index: 1;
 }

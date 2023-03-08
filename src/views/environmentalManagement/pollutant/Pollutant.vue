@@ -309,7 +309,9 @@ export default {
 }
 
 .title {
-    font-size: 2.6rem;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 .second-title {

@@ -20,7 +20,7 @@
 
 <script>
 import { Message } from 'element-ui';
-
+import { getUserListApi } from '@/api/api'
 
 export default {
     data() {
@@ -87,7 +87,7 @@ export default {
                     title: "园区应急管理",
                     children: [
                         {
-                            url: "",
+                            url: "/meetDrill",
                             title: "应急模拟演练"
                         }, {
                             url: "/meetEarly",
@@ -101,10 +101,7 @@ export default {
                         }, {
                             url: "/EconomyManage",
                             title: "园区经济管理"
-                        }, {
-                            url: "",
-                            title: "园区招商管理"
-                        }, {
+                        },{
                             url: "/publishKumon",
                             title: "公文管理"
                         }, {
@@ -125,6 +122,9 @@ export default {
             ],
         }
     },
+    created(){
+       this.getUserListApi()
+    },
     methods:{
         to(url){
             if(!url){
@@ -133,6 +133,16 @@ export default {
             }
             console.log(url);
             this.$router.push({path: url})
+        },
+        getUserListApi(){
+            console.log(1);
+            getUserListApi({
+        }).then(res =>{
+            console.log(res);
+        }).catch(res =>{
+            console.log(res
+            );
+        })
         }
     }
 }

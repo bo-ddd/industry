@@ -238,9 +238,10 @@ export default {
 }
 
 .submit-btn{
-    width: 20rem;
+    /* width: 10rem; */
+    padding: 2rem 5rem;
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 2rem;
 
 }
 
