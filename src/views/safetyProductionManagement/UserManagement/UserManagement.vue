@@ -12,7 +12,7 @@
         <el-date-picker class="ml-20" v-model="date" type="date" placeholder="选择入职日期">
         </el-date-picker>
 
-        <el-button class="ml-20" type="primary">搜索</el-button>
+        <el-button class="ml-20" type="primary" @click="searchUser">搜索</el-button>
       </div>
 
       <div class="add-user mtb-20">
@@ -59,6 +59,7 @@
 
 <script>
 import { getUserListApi } from '@/api/api'
+import { computed } from 'vue'
 export default {
   data() {
     return {
@@ -78,14 +79,50 @@ export default {
         value: '选项5',
         label: '北京烤鸭'
       }],
-      pageNum: 5,
-      pageSize: 1,
+      pageNum: 1,
+      pageSize: 5,
       total: 0,
       currentList: [],
       startIndex: 0,
       endIndex: 0,
-      userData: [],///用户列表
-      searchUserData: [],///搜索用户列表
+      userData: [
+        {
+        id:1,
+        name:'shui',
+        department:'小猴组'
+      },
+        {
+        id:2,
+        name:'马',
+        department:'小猴组'
+      },
+        {
+        id:3,
+        name:'shui',
+        department:'小猴组'
+      },
+        {
+        id:4,
+        name:'王',
+        department:'小猴组'
+      },
+        {
+        id:5,
+        name:'朱',
+        department:'小猴组'
+      },
+        {
+        id:6,
+        name:'李',
+        department:'小猴组'
+      },
+        {
+        id:7,
+        name:'耿',
+        department:'小猴组'
+      },
+    ],///用户列表
+      searchUserData:[],///搜索后用户列表
       userName: '',
       department: '',
       date: '',
@@ -97,15 +134,16 @@ export default {
     },
     getUserList() {
       getUserListApi().then(res => {
-        console.log(res);
         if (res.status == 200) {
-          this.userData = res.data
+          console.log(res.data);
+          // this.userData = res.data.data
           console.log('列表渲染成功');
+          // console.log(this.userData);
           //分页总条数
           this.total = computed(() => this.userData.length)
           //当前每页列表数据
           this.currentList = computed(() => this.userData.slice(this.startIndex, this.endIndex))
-          //开始下标
+          // //开始下标
           this.startIndex = computed(() => (this.pageNum - 1) * this.pageSize)
           //结束下标
           this.endIndex = computed(() => this.pageNum * this.pageSize)
@@ -115,21 +153,35 @@ export default {
       })
     },
     handleSizeChange(val) {
-      this.pageNum = val
+      this.pageSize = val
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
-      this.pageSize = val
+      this.pageNum = val
       console.log(`当前页: ${val}`);
+    },
+    searchUser(){
+      if(this.userName==''){
+       this.searchUserData=JSON.parse(JSON.stringify(this.userData))
+      }else{
+       this.searchUserData=JSON.parse(JSON.stringify(this.userData))
+        this.searchUserData.forEach(item => {
+           if(item.name.includes(this.userName)){
+            this.searchUserData=[]
+             this.searchUserData.push(item)
+           }
+           this.userData=this.searchUserData 
+        });
+      }
     }
+    
   },
   created() {
     this.getUserList()
-    console.log('开始');
   },
-  watch: {
-
-  }
+  // watch: {
+    
+  // }
 
 }
 </script>
