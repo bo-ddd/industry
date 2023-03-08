@@ -83,12 +83,15 @@ export default {
                     setTimeout(() => {
                         this.toPage()
                     }, 1500);
+                }else{
+                    this.loginMessage("服务器忙",'error')
                 }
               }).catch(res => {
                if (res.response.status == 401) {
                 this.loginMessage("账号未授权",'error')
-                   
-               }
+               }else{
+                    this.loginMessage("服务器忙",'error')
+                }
             })
         }
     },
