@@ -66,3 +66,8 @@ export const registerUserApi = function (payload = {}) {
 export const queryUserProfileApi = function (payload = {}) {
   return instance.post('/auth/profile', payload)
 }
+//查询当前的登录用户信息
+export const editUserInfoApi = function (userId, payload = {}) {
+  return instance.patch('/user/'+ userId , payload,getPostConfig())
+}
+
