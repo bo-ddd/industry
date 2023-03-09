@@ -61,17 +61,18 @@ export default {
        
       },
       //延迟获取时间
-      getHourDate(n){
-                    var myDate = new Date(); //实例一个时间对象；                    
+      getHourDate(n,a){
+                      var myDate = a == null ? new Date():a
+                    console.log(typeof(myDate));
+                    console.log(a);
                     //延长时间
                     myDate.setMinutes(myDate.getMinutes()+n);
                     var year = myDate.getFullYear();
-                    var month = myDate.getMonth();
+                    var month = myDate.getMonth()+1;
                     var day = myDate.getDate();
                     var hour=myDate.getHours(); //获取时，
                     var min=myDate.getMinutes(); //分                    
-                    var seconds="00"; //秒
-                //    console.log("获取时="+hour+"=分="+min+"=秒="+seconds);
+                    var seconds=myDate.getMinutes(); //秒
                     if (hour<10) {
                         hour= "0"+hour;
                     }
@@ -84,11 +85,13 @@ export default {
                     if(day<10){
                         day="0"+day;
                     }
+                    if(seconds<10){
+                        seconds="0"+seconds;
+                    }
                     var mytime=year+"-"+month+"-"+day+" "+hour+":"+min+":"+seconds;  
                     //console.log("返回的时分秒="+mytime);
                     return mytime;
                 },
-
       //跳转home页面
         toPage() {
             this.$router.push({
@@ -99,7 +102,6 @@ export default {
         login() {
             //前端校验
            
-            console.log( );
 
         if (!this.input.username) {
             this.loginMessage("用户名不能为空",'warning')
@@ -113,10 +115,10 @@ export default {
             }).then(res => {
 
                 if (res.status == 201) {
-                    this.$store.state.time = new Date(this.getHourDate(8)).getTime()
+                    this.$store.state.time = new Date().getTime()
                     this.$store.state.token = res.data.data.access_token
                     sessionStorage.setItem("token", res.data.data.access_token);
-                    sessionStorage.setItem("time", new Date(this.getHourDate(8)).getTime());
+                    sessionStorage.setItem("time", new Date().getTime());
                     this.loginMessage("登录成功",'success')
                     setTimeout(() => {
                         this.toPage()
