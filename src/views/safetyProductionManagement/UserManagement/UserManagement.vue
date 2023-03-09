@@ -77,6 +77,9 @@
 
 <script>
 import { getUserListApi, registerUserApi } from '@/api/api'
+import rolesList from '@/config/roles'
+import navStore from '@/store/nav'
+
 export default {
   data() {
     return {
@@ -135,8 +138,8 @@ export default {
       if (value === '') {
         return callback(new Error('用户名不能为空'));
       }
-      if (value.length < 4 || value.length > 8) {
-        callback(new Error('用户名长度为4-8位'));
+      if (value.length < 4 || value.length > 16) {
+        callback(new Error('用户名长度为4-16位'));
       }
     },
     validatePass(rule, value, callback) {
@@ -216,6 +219,9 @@ export default {
         }
       })
     }
+  },
+  mounted() {
+    console.log(this.$store.dispatch(navStore.getUserInfo));
   },
   computed: {
     total() {

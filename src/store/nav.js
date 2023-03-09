@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import roles from '../../src/config/roles'
+import rolesList from '@/config/roles'
+import { queryUserProfileApi } from '@/api/api'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,7 +16,9 @@ export default new Vuex.Store({
     },
     actions: {
         getUserInfo() {
-
+            queryUserProfileApi().then(res => {
+                console.log(res);
+            })
         }
     },
     modules: {
