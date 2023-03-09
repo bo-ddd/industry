@@ -18,6 +18,7 @@ const getPostConfig = function () {
 instance.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   // if(config.headers){
+  console.log(1);
   config.headers.Authorization = sessionStorage.getItem('token');
 
 
@@ -30,11 +31,17 @@ instance.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
-  if (response.data.status == 401) {
-    this.$router.push('/')
-  }
+  console.log('--------------------')
+  console.log(response)
+  // if (response.data.status == 401) {
+  //   window.location.href = '/'
+  // }
   return response;
 }, function (error) {
+  console.log('------------------')
+  if (error.response.status == 401) {
+    window.location.href = '/'
+  }
   return Promise.reject(error);
 })
 
@@ -46,6 +53,10 @@ export const loginApi = function (payload = {}) {
 //获取用户信息
 export const getUserListApi = function (payload = {}) {
   return instance.get('/user', payload)
+}
+//隐式登录
+export const getToken = function (payload = {}) {
+  return instance.post('/auth/token', payload, getPostConfig())
 }
 //用户注册
 export const registerUserApi = function (payload = {}) {
