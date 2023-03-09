@@ -2,21 +2,21 @@
   <div class="user">
     <div class="select flex">
       <div>
-        <el-input class="search" v-model="userName" placeholder="搜索员工"></el-input>
+        <el-input class="search" v-model="userName" size="small" placeholder="搜索员工"></el-input>
 
-        <el-select class="ml-20" v-model="department" placeholder="请选择部门">
+        <el-select class="ml-20" v-model="department" size="small" placeholder="请选择部门">
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
         </el-select>
 
-        <el-date-picker class="ml-20" v-model="date" type="date" placeholder="选择入职日期">
+        <el-date-picker class="ml-20" v-model="date" type="date" size="small" placeholder="选择入职日期">
         </el-date-picker>
 
-        <el-button class="ml-20" type="primary" @click="searchUser">搜索</el-button>
+        <el-button class="ml-20" type="primary" size="small" @click="searchUser">搜索</el-button>
       </div>
 
       <div class="add-user mtb-20">
-        <el-button type="primary">添加员工</el-button>
+        <el-button @click="dialogFormVisible = true" size="small" type="primary">添加员工</el-button>
       </div>
 
     </div>
@@ -49,6 +49,24 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- 点击添加员工后的弹窗 -->
+    <el-dialog title="添加员工" :visible.sync="dialogFormVisible">
+      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="用户名称" prop="useName">
+          <el-input v-model="ruleForm.useName" placeholder="请输入4-8位的用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="psw">
+          <el-input type="password" v-model="ruleForm.psw" autocomplete="off" placeholder="请输入6-10位密码"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="checkPsw">
+          <el-input type="password" v-model="ruleForm.checkPsw" autocomplete="off" placeholder="请再次输入密码"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false, addUser()">确 定</el-button>
+      </div>
+    </el-dialog>
 
     <el-pagination class="mt-10" @size-change="handleSizeChange" @current-change="handleCurrentChange"
       :current-page="pageNum" :page-sizes="[5, 15, 20, 25]" :page-size="pageSize"
@@ -58,8 +76,7 @@
 </template>
 
 <script>
-import { getUserListApi } from '@/api/api'
-import { computed } from 'vue'
+import { getUserListApi, registerUserApi } from '@/api/api'
 export default {
   data() {
     return {
@@ -86,9 +103,64 @@ export default {
       userName: '',
       department: '',
       date: '',
+      dialogFormVisible: false,
+      ruleForm: {
+        useName: '',
+        psw: '',
+        checkPsw: ''
+      },
+      formLabelWidth: '120px',
+      rules: {
+        psw: [
+          { validator: this.validatePass, trigger: 'blur' }
+        ],
+        checkPsw: [
+          { validator: this.validatePass2, trigger: 'blur' }
+        ],
+        useName: [
+          { validator: this.checkUserName, trigger: 'blur' }
+        ]
+      }
     }
   },
+
   methods: {
+    tips(type, text) {
+      this.$message({
+        message: text,
+        type: type
+      });
+    },
+    checkUserName(rule, value, callback) {
+      if (value === '') {
+        return callback(new Error('用户名不能为空'));
+      }
+      if (value.length < 4 || value.length > 8) {
+        callback(new Error('用户名长度为4-8位'));
+      }
+    },
+    validatePass(rule, value, callback) {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else if (value.length < 6 || value.length > 10) {
+        callback(new Error('密码名长度为6-10位'));
+      }
+      else {
+        if (this.ruleForm.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPsw');
+        }
+        callback();
+      }
+    },
+    validatePass2(rule, value, callback) {
+      if (value === '') {
+        callback(new Error('请再次输入密码'));
+      } else if (value !== this.ruleForm.psw) {
+        callback(new Error('两次输入密码不一致!'));
+      } else {
+        callback();
+      }
+    },
     click(e) {
       console.log(e);
     },
@@ -97,7 +169,7 @@ export default {
       getUserListApi().then(res => {
         if (res.status == 200) {
           this.searchUserData = res.data.data
-          this.userData=this.searchUserData
+          this.userData = this.searchUserData
           console.log('列表渲染成功');
           console.log(this.userData);
         } else {
@@ -117,29 +189,46 @@ export default {
     searchUser() {
       console.log('搜索');
       // userData =>   // searchUserData;
-      if(this.userName == ''){
+      if (this.userName == '') {
         this.searchUserData = JSON.parse(JSON.stringify(this.userData));
-      }else{
+      } else {
         // 根据用户名查询用户信息；
         this.searchUserData = this.userData.filter(user => user.avatarName == this.userName);
         console.log(this.searchUserData);
         // 模糊查询
         this.searchUserData = this.userData.filter(user => new RegExp(this.userName).test(user.avatarName))
       }
+    },
+    // 添加员工
+    addUser() {
+      registerUserApi({
+        username: this.ruleForm.useName,
+        password: this.ruleForm.psw
+      }).then(res => {
+        if (res.statusCode == 200) {
+          console.log(res);
+          this.tips(success, '添加成功')
+          this.ruleForm.useName = '',
+            this.ruleForm.psw = '',
+            this.ruleForm.checkPsw = ''
+        } else {
+          this.$message.error(res.message);
+        }
+      })
     }
   },
-  computed:{
-    total(){
-       return this.userData.length
+  computed: {
+    total() {
+      return this.userData.length
     },
-    currentList(){
-       return this.searchUserData.slice(this.startIndex, this.endIndex)
+    currentList() {
+      return this.searchUserData.slice(this.startIndex, this.endIndex)
     },
-    startIndex(){
-       return  (this.pageNum - 1) * this.pageSize
+    startIndex() {
+      return (this.pageNum - 1) * this.pageSize
     },
-    endIndex(){
-       return this.pageNum * this.pageSize
+    endIndex() {
+      return this.pageNum * this.pageSize
     }
   },
   created() {
