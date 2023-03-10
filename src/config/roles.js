@@ -175,10 +175,10 @@ const deptNoList = [
             },
         ]
     },
-    {
-        roleId: 1,
-        roleName: '管理员',
-        permissions: [5]
-    }
+    // {
+    //     roleId: 1,
+    //     roleName: '管理员',
+    //     permissions: [5]
+    // }
 ]
 export default deptNoList

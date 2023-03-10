@@ -236,9 +236,9 @@ router.beforeEach((to, from, next) => {
   } else if (to.name != 'login' && !token) {
     next({ path: '/' });
   } else {
-    this.$store.dispatch("getUserInfo")
-    let userInfo = this.$store.state.userInfo
-    console.log(userInfo);
+    // this.$store.dispatch("getUserInfo")
+    // let userInfo = this.$store.state.userInfo
+    // console.log(userInfo);
     next();
   }
 })
