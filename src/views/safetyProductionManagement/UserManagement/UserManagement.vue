@@ -28,7 +28,6 @@
       </div>
       <i class="el-icon-close" @click="click"></i>
     </div>
-
     <el-table :data="currentList" border style="width: 100%">
       <el-table-column fixed prop="id" label="入职日期" align=center width=auto>
       </el-table-column>
@@ -78,8 +77,6 @@
 <script>
 import { getUserListApi, registerUserApi } from '@/api/api'
 import rolesList from '@/config/roles'
-import navStore from '@/store/nav'
-
 export default {
   data() {
     return {
@@ -221,7 +218,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.dispatch(navStore.getUserInfo));
+    // let res = store.dispatch("getUserInfo")
+    // console.log(res);
   },
   computed: {
     total() {
