@@ -11,71 +11,40 @@ export default {
     return {};
   },
   methods: {
-    getHourDate(n, a) {
-      var myDate = a == null ? new Date() : a;
-      //延长时间
-      myDate.setMinutes(myDate.getMinutes() + n);
-      var year = myDate.getFullYear();
-      var month = myDate.getMonth() + 1;
-      var day = myDate.getDate();
-      var hour = myDate.getHours(); //获取时，
-      var min = myDate.getMinutes(); //分
-      var seconds = myDate.getMinutes(); //秒
-      if (hour < 10) {
-        hour = "0" + hour;
+    timeIntervalToString(timeInterval) {
+      var totalMinute = parseInt(timeInterval / 60); //总分钟数
+      var day = parseInt(parseInt(totalMinute / 60) / 24);
+      var hour = parseInt((totalMinute - day * 24 * 60) / 60);
+      var minute = totalMinute - day * 24 * 60 - hour * 60;
+      var retData = "";
+      if (day != 0) {
+        retData += day + "天";
       }
-      if (min < 10) {
-        min = "0" + min;
+      if (hour != 0) {
+        retData += hour + "小时";
       }
-      if (month < 10) {
-        month = "0" + month;
+      if (minute != 0) {
+        retData += minute + "分";
       }
-      if (day < 10) {
-        day = "0" + day;
+      if (minute == 0) {
+        retData += "1分钟内";
       }
-      if (seconds < 10) {
-        seconds = "0" + seconds;
-      }
-      var mytime =
-        year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + seconds;
-      //console.log("返回的时分秒="+mytime);
-      return mytime;
+      return retData;
     },
+
     //刷新页面时判断token是否失效
     ifToken() {
-      let time = sessionStorage.getItem("time")
-      console.log(Number(time)+488000);
-      
+      let time = sessionStorage.getItem("time");
+
       if (time == null) {
         console.log("第一次打开");
       } else {
-        let nowTime = new Date().getTime()
-        console.log(nowTime);
-        
-console.log(Number(time)+488000);
-        if (Number(time)+488000 < nowTime ) {
-          console.log("刷新页面时token失效");
-          this.$router.push({
-            name: "login",
-          });
-        } else {
-          getToken({}).then((res) => {
-            this.$store.state.token = res.data.data.access_token;
-            sessionStorage.setItem("token", res.data.data.access_token);
-            this.$store.state.time = new Date().getTime();
-            console.log(res.data.data.access_token);
-          });
-          console.log("刷新页面时token未失效");
-        }
+       this.$store.dispatch('refresh')
       }
-      // console.log(new Date(nowTime).getTime());
     },
+    // console.log(new Date(nowTime).getTime());
   },
-  computed: {
-    Token() {
-      return this.$store.state.token;
-    },
-  },
+
   created() {
     //进入页面第一时间调用
     this.ifToken();
@@ -83,17 +52,12 @@ console.log(Number(time)+488000);
   //监听
   watch: {
     // 监听vuex中的token的变化
-    Token(newName, oldName) {
+    "$store.state.token":function(newName, oldName) {
       //倒计时八分钟获取新token
-
       setTimeout(() => {
-        console.log("重新获取token");
-        getToken({}).then((res) => {
-          this.$store.state.token = res.data.data.access_token;
-          this.$store.state.time = new Date(this.getHourDate(0)).getTime();
-          sessionStorage.setItem("token", res.data.data.access_token);
-        });
-      }, 480000);
+
+        this.$store.dispatch("refresh");
+        }, 480000)
     },
   },
 };

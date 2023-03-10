@@ -56,42 +56,11 @@ export default {
           showClose: true,
           message: text,
           type: type,
-          duration:1500
+          duration:1000
         });
        
       },
-      //延迟获取时间
-      getHourDate(n,a){
-                      var myDate = a == null ? new Date():a
-                    console.log(typeof(myDate));
-                    console.log(a);
-                    //延长时间
-                    myDate.setMinutes(myDate.getMinutes()+n);
-                    var year = myDate.getFullYear();
-                    var month = myDate.getMonth()+1;
-                    var day = myDate.getDate();
-                    var hour=myDate.getHours(); //获取时，
-                    var min=myDate.getMinutes(); //分                    
-                    var seconds=myDate.getMinutes(); //秒
-                    if (hour<10) {
-                        hour= "0"+hour;
-                    }
-                    if(min<10){
-                        min="0"+min;
-                    }
-                    if(month<10){
-                        month="0"+month;
-                    }
-                    if(day<10){
-                        day="0"+day;
-                    }
-                    if(seconds<10){
-                        seconds="0"+seconds;
-                    }
-                    var mytime=year+"-"+month+"-"+day+" "+hour+":"+min+":"+seconds;  
-                    //console.log("返回的时分秒="+mytime);
-                    return mytime;
-                },
+      
       //跳转home页面
         toPage() {
             this.$router.push({
@@ -99,30 +68,24 @@ export default {
             });
         },
         //登录方法
-        login() {
+      async  login() {
             //前端校验
-           
-
         if (!this.input.username) {
             this.loginMessage("用户名不能为空",'warning')
         }else if(!this.input.password){
             this.loginMessage("密码不能为空",'warning')
         }else {
             //调取登录接口
-            loginApi({
-              username: this.input.username,
-              password: this.input.password,
-            }).then(res => {
-
+         await this.$store.dispatch("login",this.input).then(res => {
                 if (res.status == 201) {
-                    this.$store.state.time = new Date().getTime()
-                    this.$store.state.token = res.data.data.access_token
+                    this.$store.commit('newDate')
+                    this.$store.commit('setToken',res.data.data.access_token)
                     sessionStorage.setItem("token", res.data.data.access_token);
                     sessionStorage.setItem("time", new Date().getTime());
                     this.loginMessage("登录成功",'success')
                     setTimeout(() => {
                         this.toPage()
-                    }, 1500);
+                    }, 1000);
                 }else{
                     this.loginMessage("服务器忙",'error')
                 }
