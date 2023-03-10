@@ -45,7 +45,7 @@
       <el-table-column fixed="right" align=center label="操作" width="150">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button @click="edit = true,handleEditClick(scope.row)" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -67,6 +67,27 @@
         <el-button type="primary" @click="dialogFormVisible = false, addUser()">确 定</el-button>
       </div>
     </el-dialog>
+    <!-- 点击编辑弹出框 -->
+    <el-dialog title="编辑信息" :visible.sync="edit">
+      <el-form :model="editUserInfo" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="部门" prop="department">
+          <el-input v-model="editUserInfo.department" placeholder="请输入要更改的部门"></el-input>
+        </el-form-item>
+        <el-form-item label="职位" prop="position">
+          <el-input v-model="editUserInfo.position" autocomplete="off" placeholder="请输入要更换的职位"></el-input>
+        </el-form-item>
+        <el-form-item label="员工类型" prop="employeeType">
+          <el-input v-model="editUserInfo.employeeType" autocomplete="off" placeholder="请输入更换的员工类型"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" prop="phoneNumber">
+          <el-input v-model="editUserInfo.phoneNumber" autocomplete="off" placeholder="请输入要更换的手机号"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="edit = false">取 消</el-button>
+        <el-button type="primary" @click="edit = false, editInfo()">确 定</el-button>
+      </div>
+    </el-dialog>
 
     <el-pagination class="mt-10" @size-change="handleSizeChange" @current-change="handleCurrentChange"
       :current-page="pageNum" :page-sizes="[5, 15, 20, 25]" :page-size="pageSize"
@@ -77,6 +98,9 @@
 
 <script>
 import { getUserListApi, registerUserApi } from '@/api/api'
+import rolesList from '@/config/roles'
+import navStore from '@/store/nav'
+
 export default {
   data() {
     return {
@@ -104,11 +128,19 @@ export default {
       department: '',
       date: '',
       dialogFormVisible: false,
+      edit : false,
       ruleForm: {
         useName: '',
         psw: '',
         checkPsw: ''
       },
+      editUserInfo :{
+        department :'',
+        position :'',
+        employeeType :'',
+        phoneNumber :''
+      },
+      editId: '',
       formLabelWidth: '120px',
       rules: {
         psw: [
@@ -125,7 +157,7 @@ export default {
   },
 
   methods: {
-    tips(type, text) {
+     tips(type, text) {
       this.$message({
         message: text,
         type: type
@@ -135,8 +167,8 @@ export default {
       if (value === '') {
         return callback(new Error('用户名不能为空'));
       }
-      if (value.length < 4 || value.length > 8) {
-        callback(new Error('用户名长度为4-8位'));
+      if (value.length < 4 || value.length > 16) {
+        callback(new Error('用户名长度为4-16位'));
       }
     },
     validatePass(rule, value, callback) {
@@ -169,6 +201,37 @@ export default {
       getUserListApi().then(res => {
         if (res.status == 200) {
           this.searchUserData = res.data.data
+          res.data.data.forEach(item => {
+            console.log(item);
+            switch (item.deptNo) {
+              case 1:
+                item.deptNo = '总经理办公室'
+                break;
+              case 2:
+                item.deptNo = '行政部门'
+                break;
+              case 3:
+                item.deptNo = '人力资源部'
+                break;
+              case 4:
+                item.deptNo = '财务部'
+                break;
+              case 5:
+                item.deptNo = '生产技术部'
+                break;
+              case 6:
+                item.deptNo = '安全监察部'
+                break;
+              case 7:
+                item.deptNo = '保卫部'
+                break;
+              case 8:
+                item.deptNo = '环保部门'
+                break;
+              default:
+                break;
+            }
+          })
           this.userData = this.searchUserData
           console.log('列表渲染成功');
           console.log(this.userData);
@@ -215,7 +278,17 @@ export default {
           this.$message.error(res.message);
         }
       })
+    },
+    //编辑用户信息
+    handleEditClick(e){
+      this.editId = e.id
+    },  
+    editInfo(){
+      console.log(this.editId);
     }
+  },
+  mounted() {
+    console.log(this.$store.dispatch(navStore.getUserInfo));
   },
   computed: {
     total() {

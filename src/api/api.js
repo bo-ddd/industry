@@ -43,3 +43,12 @@ export const getToken = function (payload = {}) {
 export const registerUserApi = function (payload = {}) {
   return instance.post('/auth/register', payload)
 }
+//查询当前的登录用户信息
+export const queryUserProfileApi = function (payload = {}) {
+  return instance.post('/auth/profile', payload)
+}
+//查询当前的登录用户信息
+export const editUserInfoApi = function (userId, payload = {}) {
+  return instance.patch('/user/'+ userId , payload,getPostConfig())
+}
+
