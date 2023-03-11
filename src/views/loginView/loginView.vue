@@ -78,8 +78,8 @@ export default {
             //调取登录接口
          await this.$store.dispatch("login",this.input).then(res => {
                 if (res.status == 201) {
-                    this.$store.commit('newDate')
-                    this.$store.commit('setToken',res.data.data.access_token)
+                    this.$store.commit('NEW_TOKEN')
+                    this.$store.commit('SET_TOKEN',res.data.data.access_token)
                     sessionStorage.setItem("token", res.data.data.access_token);
                     sessionStorage.setItem("time", new Date().getTime());
                     this.loginMessage("登录成功",'success')
