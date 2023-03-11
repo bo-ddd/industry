@@ -31,7 +31,7 @@ export default {
   created() {
     console.log(this.$route.path);
     if(this.$route.path == '/'){
-
+   sessionStorage.clear()
     }else{
 
       //进入页面第一时间调用
