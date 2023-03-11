@@ -87,7 +87,6 @@
     </el-dialog>
     <!-- 点击编辑弹出框 -->
     <el-dialog title="编辑信息" :visible.sync="edit" @close="closeDialog">
-      <!-- {{selectUser}} -->
       <el-form
         :model="selectUser"
         status-icon
@@ -96,8 +95,11 @@
         label-width="100px"
         class="demo-ruleForm"
       >
-        <el-form-item label="部门" prop="deptId">
-          <el-select v-model="selectUser.deptId" placeholder="请选择">
+        <el-form-item label="用户名" prop="avatarName">
+          <el-input class="iphone-input" v-model="selectUser.avatarName" placeholder="输入用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="部门" prop="deptNo">
+          <el-select v-model="selectUser.deptNo" placeholder="请选择">
             <el-option
               v-for="item in deptArr"
               :key="item.deptId"
@@ -106,8 +108,8 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="职位" prop="roleId">
-          <el-select v-model="selectUser.roleId" placeholder="请选择">
+        <el-form-item label="职位" prop="roles">
+          <el-select v-model="selectUser.roles" placeholder="请选择">
             <el-option
               v-for="item in roleArr"
               :key="item.roleId"
@@ -147,7 +149,7 @@
 </template>
 
 <script>
-import { getUserListApi, registerUserApi } from "@/api/api";
+import { getUserListApi, registerUserApi, editUserInfoApi } from "@/api/api";
 import rolesList from "@/config/roles";
 export default {
   data() {
@@ -204,21 +206,48 @@ export default {
         useName: [{ validator: this.checkUserName, trigger: "blur" }],
       },
       rulesUserInfo: {
-        deptId: [{ validator: this.varDept, trigger: "blur" }],
-        roleId: [{ validator: this.varPosition, trigger: "blur" }],
+        deptNo: [{ validator: this.varDept, trigger: "blur" }],
+        roles: [{ validator: this.varPosition, trigger: "blur" }],
         phoneNumber: [{ validator: this.varPhone, trigger: "blur" }],
+        avatarName: [{ validator: this.varName, trigger: "blur" }],
       },
     };
   },
 
   methods: {
-    addUserInfo() {},
-    updateUserInfo() {},
+    // async addUserInfo() {
+    //   let res=await
+    // },
+    async updateUserInfo() {
+      let { id, avatarName, phoneNumber,deptNo,roles  } = this.selectUser;
+      let res = await editUserInfoApi(id, {
+        avatarName,
+        roles,
+        deptNo,
+        phoneNumber,
+      });
+      console.log(res);
+      if (res.status == 200) {
+        this.$message({
+          showClose: true,
+          message: "修改成功",
+          type: "success",
+        });
+      } else {
+        this.$message({
+          showClose: true,
+          message: "修改失败",
+          type: "error",
+        });
+      }
+      this.getUserList()
+      this.edit = false;
+      this.closeDialog();
+    },
     closeAddDialog() {
       this.resetForm("ruleForm");
     },
     closeDialog() {
-      console.log("关闭");
       this.resetForm("editUserInfo");
       this.selectUser = {};
     },
@@ -257,6 +286,7 @@ export default {
     },
     //部门不能为空
     varDept(rule, value, callback) {
+      console.log(value);
       if (!value) {
         callback(new Error("部门不能为空"));
       } else {
@@ -265,6 +295,7 @@ export default {
     },
     //职位不能为空
     varPosition(rule, value, callback) {
+      console.log(value);
       if (!value) {
         callback(new Error("职位不能为空"));
       } else {
@@ -286,6 +317,13 @@ export default {
         callback();
       }
     },
+    varName(rule, value, callback) {
+      if (!value) {
+        callback(new Error("用户名不能为空"));
+      } else {
+        callback();
+      }
+    },
     click(e) {
       console.log(e);
     },
@@ -294,17 +332,25 @@ export default {
       let res = await getUserListApi();
       if (res.data.statusCode == 200) {
         this.userData = res.data.data.map((user) => {
+          console.log(user.roles);
           return {
             ...user,
+            roles: user.roles ? Number(user.roles) : "",
             phoneNumber: user.phoneNumber,
             deptName: rolesList.find((role) => {
-              role.deptId == user.deptNo;
+              return role.deptId == user.deptNo;
             })?.name,
-            position: rolesList.find((role) => {
-              role.roleId == user.roles;
-            })?.name,
+            position: rolesList
+              .find((role) => {
+                return role.deptId == user.deptNo;
+              })
+              ?.roles.find((item) => {
+                return item.roleId == user.roles;
+              })?.roleName,
+            deptNo: user.deptNo ? user.deptNo : "",
           };
         });
+        console.log(this.userData);
       } else {
         console.log("失败");
       }
@@ -365,11 +411,8 @@ export default {
     },
     //表单校验
     validateFrom(formName, callback) {
-      console.log(2222);
       this.$refs[formName].validate((valid) => {
-        console.log(valid);
         if (valid) {
-          alert("submit!");
           callback();
         } else {
           console.log("error submit!!");
@@ -404,8 +447,9 @@ export default {
       });
     },
     roleArr() {
+      console.log("监听变化" + this.selectUser);
       return this.selectUser
-        ? rolesList.find((item) => item.deptId == this.selectUser.deptId)?.roles
+        ? rolesList.find((item) => item.deptId == this.selectUser.deptNo)?.roles
         : [];
     },
     // phone(){
