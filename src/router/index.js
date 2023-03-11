@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '../views/layout/Layout.vue'
 import LoginView from "../views/loginView/loginView.vue"
+import vuex from "../store/index";
 Vue.use(VueRouter)
 
 const routes = [
@@ -236,6 +237,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.name != 'login' && !token) {
     next({ path: '/' });
   } else {
+    // vuex
     // this.$store.dispatch("getUserInfo")
     // let userInfo = this.$store.state.userInfo
     // console.log(userInfo);
