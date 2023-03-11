@@ -11,14 +11,17 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: '',
-    time: 0
+    time: 0,
+    ifGetInfo:true,
+    userInfo:{},
+    menuFlag:true
   },
   getters: {
   },
   mutations: {
     setUserInfo(state, payload) {
-      // state.userInfo = payload
-      Object.assign(state.userInfo, payload)
+      state.userInfo = payload;
+      state.ifGetInfo=false;
       console.log(state.userInfo);
     },
     newDate(state, payload) {
@@ -27,10 +30,14 @@ export default new Vuex.Store({
     setToken(state, payload) {
       state.token = payload
     },
+    setMenuFlag(state, payload){
+      state.menuFlag=payload
+    }
   },
   actions: {
     getUserInfo({ commit }) {
-      queryUserProfileApi().then(res => {
+     return queryUserProfileApi().then(res => {
+      
         commit("setUserInfo", res.data)
       })
     },

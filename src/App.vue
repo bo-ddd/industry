@@ -53,6 +53,7 @@ export default {
   watch: {
     // 监听vuex中的token的变化
     "$store.state.token":function(newName, oldName) {
+      console.log('开始');
       //倒计时八分钟获取新token
       setTimeout(() => {
 

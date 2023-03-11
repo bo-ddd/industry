@@ -21,7 +21,7 @@
 <script>
 import { Message } from 'element-ui';
 import { getUserListApi } from '@/api/api'
-
+// import router from '@/router/index'
 export default {
     data() {
         return {
@@ -122,7 +122,9 @@ export default {
             ],
         }
     },
-    
+    created(){
+        // console.log(router);
+    },
     methods:{
         to(url){
             if(!url){
