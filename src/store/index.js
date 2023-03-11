@@ -19,6 +19,13 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+     NEW_TOKEN(state,payload){
+       state.time =payload
+    },
+     SET_TOKEN(state,payload){
+      state.token = payload
+
+     },
     setUserInfo(state, payload) {
       state.userInfo = payload;
       state.ifGetInfo=false;
@@ -40,30 +47,31 @@ export default new Vuex.Store({
       
         commit("setUserInfo", res.data)
       })
+      },
+      //刷新方法
+      refresh(ctx,payload){
+      return getToken({}).then((res) => {
+        ctx.commit('NEW_TOKEN', new Date().getTime())
+        ctx.commit('SET_TOKEN',res.data.data.access_token)
+         return res
+       });
+      },
+      login(ctx, payload) {
+        return loginApi({
+          username: payload.username,
+          password: payload.password,
+        }).then(res => {
+          console.log(res);
+          return res
+  
+        }).catch(res => {
+          return res
+        })
+      },
     },
     //登录
-    login(ctx, payload) {
-      return loginApi({
-        username: payload.username,
-        password: payload.password,
-      }).then(res => {
-        console.log(res);
-        return res
-
-      }).catch(res => {
-        return res
-      })
-    },
     //刷新方法
-    refresh(ctx, payload) {
-      getToken({}).then((res) => {
-        ctx.commit('newDate')
-        ctx.commit('setToken', res.data.data.access_token)
-        sessionStorage.setItem("token", res.data.data.access_token);
-        sessionStorage.setItem("time", new Date().getTime());
-      });
-    }
-  },
+    
   modules: {
   }
 
