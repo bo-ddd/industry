@@ -21,7 +21,15 @@ const routes = [
     path: '/layout',
     name: 'layout',
     component: Layout,
-    children: [
+    children: [ {
+      // 安全生产管理  > 人员管理
+      path: '/userManagement',
+      name: 'UserManagement',
+      component: () => import("../views/safetyProductionManagement/UserManagement/UserManagement.vue"),
+      mate: {
+        permissiont: 5
+      }
+    },
     ]
   },
 ]
@@ -39,6 +47,7 @@ router.beforeEach(async (to, from, next) => {
     next();
   } else if (to.name != 'login' && !token) {
     next({ path: '/' });
+    // next()
   }
   else {
     if (!vuex.state.menuFlag) {
@@ -47,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
       next();
     } else {
       console.log('无信');
-      vuex.commit('SET_MENULIST');
+      // vuex.commit('SET_MENULIST');
       // let user = vuex.state.userInfo;
       // let userPower;
       // if (user.deptNo) {

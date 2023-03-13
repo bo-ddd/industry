@@ -307,7 +307,7 @@ export default {
       console.log(this.selectUser);
       let reg = /^1[3-9]\d{9}$/;
       console.log(value);
-      if (value === "" && !value) {
+      if (!value) {
         callback(new Error("请填写手机号"));
       } else if (value.length != 11) {
         callback(new Error("手机号不足11位"));
@@ -331,17 +331,16 @@ export default {
     async getUserList() {
       let res = await getUserListApi();
       if (res.data.statusCode == 200) {
-        this.userData = res.data.data.map((user) => {
+        if (res.data.data.length) this.userData = res.data.data.map((user) => {
           console.log(user.roles);
           return {
             ...user,
             roles: user.roles ? Number(user.roles) : "",
             phoneNumber: user.phoneNumber,
-            deptName: rolesList.find((role) => {
+            deptName: rolesList?.find((role) => {
               return role.deptId == user.deptNo;
             })?.name,
-            position: rolesList
-              .find((role) => {
+            position: rolesList?.find((role) => {
                 return role.deptId == user.deptNo;
               })
               ?.roles.find((item) => {
@@ -439,7 +438,7 @@ export default {
       return this.pageNum * this.pageSize;
     },
     deptArr() {
-      return rolesList.map((role) => {
+      return rolesList?.map((role) => {
         return {
           deptId: role.deptId,
           name: role.name,
@@ -449,7 +448,7 @@ export default {
     roleArr() {
       console.log("监听变化" + this.selectUser);
       return this.selectUser
-        ? rolesList.find((item) => item.deptId == this.selectUser.deptNo)?.roles
+        ? rolesList?.find((item) => item.deptId == this.selectUser.deptNo)?.roles
         : [];
     },
     // phone(){

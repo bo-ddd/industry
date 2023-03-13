@@ -218,14 +218,6 @@ export const layoutRoutes = [{
       permissiont: 8
     }
   }, {
-    // 安全生产管理  > 人员管理
-    path: '/userManagement',
-    name: 'UserManagement',
-    component: () => import("../views/safetyProductionManagement/UserManagement/UserManagement.vue"),
-    mate: {
-      permissiont: 5
-    }
-  }, {
     // 安全生产管理  > 安全生产信息
     path: '/prdInfo',
     name: 'PrdInfo',

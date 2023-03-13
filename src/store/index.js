@@ -20,6 +20,7 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+    //获取角色对应的所有路由
     SET_MENULIST(state,payload){
       let user = state.userInfo;
       let userPower;
@@ -45,7 +46,6 @@ export default new Vuex.Store({
     },
     SET_TOKEN(state, payload) {
       state.token = payload
-
     },
     setUserInfo(state, payload) {
       state.userInfo = payload;
@@ -71,7 +71,6 @@ export default new Vuex.Store({
 
       })
     },
-    //获取角色对应的所有路由
     //刷新方法
     refresh(ctx, payload) {
       return getToken({}).then((res) => {
