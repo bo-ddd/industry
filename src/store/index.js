@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getToken, loginApi } from "@/api/api";
-import {deptNoList,layoutRoutes} from '@/config/roles'
+import { deptNoList, layoutRoutes } from '@/config/roles'
 import { queryUserProfileApi } from '@/api/api'
 Vue.use(Vuex)
 
@@ -15,30 +15,13 @@ export default new Vuex.Store({
     ifGetInfo: true,
     userInfo: {},
     menuFlag: true,
-    menuList:[]
+    menuList: []
   },
   getters: {
   },
   mutations: {
-    //获取角色对应的所有路由
     SET_MENULIST(state,payload){
-      let user = state.userInfo;
-      let userPower;
-      let menu;
-      if (user.deptNo) {
-        userPower = deptNoList.find(dept => {
-          return dept.deptId == user.deptNo
-        })?.roles.find(role => {
-          return role.roleId == user.roles
-        })
-      }
-      if(userPower)menu= layoutRoutes.filter(route=>{
-        return userPower.includes(route.mate.permissiont)
-      })
-      console.log('路由列表');
-      console.log(user);
-      console.log(userPower);
-      console.log(menu);
+      state.menuList=payload;
       state.menuFlag=false;
     },
     NEW_TOKEN(state, payload) {
@@ -50,7 +33,6 @@ export default new Vuex.Store({
     setUserInfo(state, payload) {
       state.userInfo = payload;
       state.ifGetInfo = false;
-      console.log(state.userInfo);
     },
     newDate(state, payload) {
       state.time = new Date().getTime()
@@ -64,11 +46,32 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //获取角色对应的所有路由
+    getMenuList({state,commit,dispatch}, payload) {
+      let user = state.userInfo;
+      let userPower;
+      let menu;
+      if (user.deptNo) {
+        userPower = deptNoList.find(dept => {
+          return dept.deptId == user.deptNo
+        })?.roles.find(role => {
+          return role.roleId == user.roles
+        })
+      }
+      if (userPower.permissions.length) {
+        menu = layoutRoutes.filter(route => {
+          return userPower.permissions.includes(route.mate.permissiont)
+        })
+      }
+      commit('SET_MENULIST',menu)
+      console.log('路由列表');
+      console.log(menu);
+      console.log(menu);
+      console.log(menu);
+    },
     getUserInfo({ commit }) {
       return queryUserProfileApi().then(res => {
-
         commit("setUserInfo", res.data)
-
       })
     },
     //刷新方法
@@ -84,7 +87,6 @@ export default new Vuex.Store({
         username: payload.username,
         password: payload.password,
       }).then(res => {
-        console.log(res);
         return res
 
       }).catch(res => {

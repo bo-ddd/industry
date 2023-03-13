@@ -26,8 +26,6 @@ export default {
   },
 
   created() {
-    console.log('当前页面');
-    console.log(this.$route);
     if (this.$route.name == "login") {
       console.log('登录页');
       sessionStorage.clear();

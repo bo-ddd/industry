@@ -4,8 +4,8 @@
                 <div class="container" v-for="item in list" >
                     <div class="title">{{ item.title }}</div>
                     <div class="main">
-                        <div class="item clamp-1" v-for="child in item.children" @click="to(child.url)">
-                            <dv-border-box-12>
+                        <div :class="(child.toFlag?'':'no-click ')+'item clamp-1'" v-for="child in item.children" @click="to(child.url,child.toFlag)">
+                            <dv-border-box-12 :backgroundColor="child.toFlag?'rgb(10, 79, 120)':'rgb(153, 153, 153,0.5)'">
                                 {{ child.title }}
                             </dv-border-box-12>
                         </div>
@@ -122,11 +122,39 @@ export default {
             ],
         }
     },
-    created(){
-        // console.log(router);
+    mounted(){
+        this.handleList()
+    },
+    watch:{
+        "$store.state.menuList":function(newValue,oldValue){
+            this.handleList()
+        }
+    },
+    computed:{
+        a(){
+            return this.$store.state.menuList
+        }
     },
     methods:{
-        to(url){
+        handleList(){
+        this.list.forEach(module=>{
+            module.children=module.children.map(item=>{
+                let toFlag=false;
+                if(this.$store.state.menuList.find(i=>{return i.path==item.url})){
+                    toFlag=true; 
+                }
+                return {...item,toFlag}
+            });
+            module.children.sort((left,right)=>{
+              return right.toFlag-left.toFlag
+            })
+        })
+        },
+        to(url,flag){
+            if(!flag){
+                Message.warning("暂无权限");
+                return;
+            }
             if(!url){
                 Message.warning("该模块暂未开放");
                 return;
@@ -174,12 +202,15 @@ export default {
 .item {
     height: 8rem;
     line-height: 8rem;
-    background-color: rgb(10, 79, 120);
+    // background-color: rgb(10, 79, 120);
     border-radius: .5rem;
     text-align: center;
     cursor: pointer;
 }
-
+.no-click{
+    cursor:no-drop;
+    // background-color: rgba(153, 153, 153, 0.313);
+}
 .title {
     font-size: 2rem;
     font-weight: bold;

@@ -47,43 +47,24 @@ router.beforeEach(async (to, from, next) => {
     next();
   } else if (to.name != 'login' && !token) {
     next({ path: '/' });
-    // next()
   }
   else {
     if (!vuex.state.menuFlag) {
       console.log('有信');
-      console.log(vuex.state.userInfo);
       next();
     } else {
       console.log('无信');
-      // vuex.commit('SET_MENULIST');
-      // let user = vuex.state.userInfo;
-      // let userPower;
-      // if (user.deptNo) {
-      //   userPower = roleList.find(dept => {
-      //     return dept.deptId == user.deptNo
-      //   })?.roles.find(role => {
-      //     return role.roleId == user.roles
-      //   })
-      // }
-      //   userPower?.permissions.forEach(power => {
-      //     let addRouter = layoutRout.find(item => item.mate?.permissiont[0] == power);
-      //     console.log('找到了');
-      //     console.log(addRouter);
-          //  if (addRouter) 
-          //  router.addRoute('layout',
-          //  {
-          //    // 办公管理  > 公文 > 发布公文
-          //    path: '/publishKumon',
-          //    name: 'publishKumon',
-          //    component: () => import("../views/officeManagement/kumonManagement/publishKumon.vue"),
-          //    mate: {
-          //      permissiont: [21]
-          //    }
-          //  })
-      //   })
-      // next({ ...to, replace: false });
-      next()
+      if(vuex.state.ifGetInfo){
+        await vuex.dispatch('getUserInfo')
+      }
+      if(vuex.state.menuFlag){
+        await vuex.dispatch('getMenuList');
+        vuex.state.menuList.forEach(route=>{
+          router.addRoute('layout',route)
+        })
+      }
+      next({ ...to, replace: true });
+      // next()
     }
   }
 })

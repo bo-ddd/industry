@@ -191,7 +191,8 @@ export const layoutRoutes = [{
     name: 'EconomyManage',
     component: () => import("../views/ParkEconomyManage/EconomyManage.vue"),
     mate: {
-      permissiont: 20
+      permissiont: 20,
+      label:'园区经济管理'
     }
   }, {
     // 安全生产管理  > 风险分级管控
@@ -199,7 +200,8 @@ export const layoutRoutes = [{
     name: 'RiskControl',
     component: () => import("../views/safetyProductionManagement/riskControl/RiskControl.vue"),
     mate: {
-      permissiont: 3
+      permissiont: 3,
+      label:'风险分级管控'
     }
   }, {
     // 安全生产管理  > 安全防护
@@ -207,7 +209,8 @@ export const layoutRoutes = [{
     name: 'SafetyProtection',
     component: () => import("../views/safetyProductionManagement/SafetyProtection/SafetyProtection.vue"),
     mate: {
-      permissiont: 7
+      permissiont: 7,
+      label:'安全防护管理'
     }
   }, {
     // 安全生产管理  > 运输管理
@@ -215,7 +218,8 @@ export const layoutRoutes = [{
     name: 'TransportationView',
     component: () => import("../views/safetyProductionManagement/TransportationView/TransportationView.vue"),
     mate: {
-      permissiont: 8
+      permissiont: 8,
+      label:'运输管理'
     }
   }, {
     // 安全生产管理  > 安全生产信息
@@ -223,7 +227,8 @@ export const layoutRoutes = [{
     name: 'PrdInfo',
     component: () => import("../views/safetyProductionManagement/PrdInfo/PrdInfo.vue"),
     mate: {
-      permissiont: 4
+      permissiont: 4,
+      label:'安全生产信息管理'
     }
   }, {
     // 安全生产管理  > 安全生产监管
@@ -231,7 +236,8 @@ export const layoutRoutes = [{
     name: 'SuperviseView',
     component: () => import("../views/safetyProductionManagement/SuperviseView/SuperviseView.vue"),
     mate: {
-      permissiont: 1
+      permissiont: 1,
+      label:'安全生产监管'
     }
   }, {
     // 安全生产管理  > 安全隐患排查
@@ -239,7 +245,8 @@ export const layoutRoutes = [{
     name: 'HiddenTrouble',
     component: () => import("../views/safetyProductionManagement/HiddenTrouble/HiddenTrouble.vue"),
     mate: {
-      permissiont: 2
+      permissiont: 2,
+      label:'隐患排查治理'
     }
   }, {
     // 安全生产管理  > 风险隐患详情
@@ -247,7 +254,8 @@ export const layoutRoutes = [{
     name: 'HiddenDangerDetail',
     component: () => import("../views/safetyProductionManagement/HiddenDangerDetail/HiddenDangerDetail.vue"),
     mate: {
-      permissiont: 9
+      permissiont: 9,
+      label:'隐患详情'
     }
   }, {
     // 安全生产管理  > 卡口管理
@@ -255,7 +263,8 @@ export const layoutRoutes = [{
     name: 'CheckpointManagement',
     component: () => import("../views/safetyProductionManagement/CheckpointManagement/CheckpointManagement.vue"),
     mate: {
-      permissiont: 6
+      permissiont: 6,
+      label:'卡口管理'
     }
   }, {
     // 坏境管理  > 环境质量
@@ -263,7 +272,8 @@ export const layoutRoutes = [{
     name: 'EnvironmentalQuality',
     component: () => import("../views/environmentalManagement/EnvironmentalQuality/EnvironmentalQuality.vue"),
     mate: {
-      permissiont: 10
+      permissiont: 10,
+      label:'园区环境质量分析'
     }
   }, {
     // 坏境管理  > 污染源
@@ -271,7 +281,8 @@ export const layoutRoutes = [{
     name: 'PollutionSource',
     component: () => import("../views/environmentalManagement/PollutionSource/PollutionSource.vue"),
     mate: {
-      permissiont: 11
+      permissiont: 11,
+      label:'环境质量'
     }
   }, {
     // 坏境管理  > 污染物
@@ -279,7 +290,8 @@ export const layoutRoutes = [{
     name: 'Pollutant',
     component: () => import("../views/environmentalManagement/pollutant/Pollutant.vue"),
     mate: {
-      permissiont: 13
+      permissiont: 13,
+      label:'特征污染物名录库'
     }
   }, {
     // 坏境管理  > 环保登记
@@ -287,7 +299,8 @@ export const layoutRoutes = [{
     name: 'enterpriseEnvironmentalProtection',
     component: () => import("../views/environmentalManagement/enterpriseEnvironmentalProtection/enterpriseEnvironmentalProtection.vue"),
     mate: {
-      permissiont: 12
+      permissiont: 12,
+      label:'企业环保登记'
     }
   }, {
     // 坏境管理  > 消防
@@ -295,7 +308,8 @@ export const layoutRoutes = [{
     name: 'extinguishingAndProtection',
     component: () => import("../views/environmentalManagement/extinguishingAndProtection/ExtinguishingAndProtection.vue"),
     mate: {
-      permissiont: 15
+      permissiont: 15,
+      label:'园区消防管理'
     }
   },
   {
@@ -304,7 +318,8 @@ export const layoutRoutes = [{
     name: 'publishKumon',
     component: () => import("../views/officeManagement/kumonManagement/publishKumon.vue"),
     mate: {
-      permissiont: 21
+      permissiont: 21,
+      label:'公文管理'
     }
   },
   {
@@ -313,7 +328,8 @@ export const layoutRoutes = [{
     name: 'checkView',
     component: () => import("../views/officeManagement/kumonManagement/checkView.vue"),
     mate: {
-      permissiont: 2102
+      permissiont: 2102,
+      label:'公文详情'
     }
   },
   {
@@ -322,7 +338,8 @@ export const layoutRoutes = [{
     name: 'transactionManagement',
     component: () => import("../views/officeManagement/transactionManagement/transactionManagement.vue"),
     mate: {
-      permissiont: 22
+      permissiont: 22,
+      label:'事务管理'
     }
   }, {
     //园区应急管理 > 应急模拟训练
@@ -330,7 +347,8 @@ export const layoutRoutes = [{
     name: 'meetDrill',
     component: () => import("../views/meet/meetDrill/meetDrill.vue"),
     mate: {
-      permissiont: 16
+      permissiont: 16,
+      label:'应急模拟演练'
     }
   },
   {
@@ -339,7 +357,8 @@ export const layoutRoutes = [{
     name: 'meetEarly',
     component: () => import("../views/meet/meetEarly/meetEarly.vue"),
     mate: {
-      permissiont: 17
+      permissiont: 17,
+      label:'应急监测预警'
     }
   },
   {
@@ -348,7 +367,8 @@ export const layoutRoutes = [{
     name: 'meetPlan',
     component: () => import("../views/meet/meetPlan/meetPlan.vue"),
     mate: {
-      permissiont: 18
+      permissiont: 18,
+      label:'应急预案管理'
     }
   },
   {
@@ -357,7 +377,8 @@ export const layoutRoutes = [{
     name: 'meetPlandetail',
     component: () => import("../views/meet/meetPlandetail/meetPlandetail.vue"),
     mate: {
-      permissiont: 1801
+      permissiont: 1801,
+      label:'应急预案管理详情'
     }
   },
   {
@@ -366,15 +387,17 @@ export const layoutRoutes = [{
     name: 'meetResource',
     component: () => import("../views/meet/meetResource/meetResource.vue"),
     mate: {
-      permissiont: 19
+      permissiont: 19,
+      label:'应急资源管理'
     }
   },
   {
-    // 坏境管理  > 能源管理
+    // 园区应急管理  > 园区经济管理
     path: '/energyManagement',
     name: 'EnergyManagement',
     component: () => import("../views/environmentalManagement/energyManagement/EnergyManagement.vue"),
     mate: {
-      permissiont: 14
+      permissiont: 14,
+      label:'园区经济管理'
     }
   }]

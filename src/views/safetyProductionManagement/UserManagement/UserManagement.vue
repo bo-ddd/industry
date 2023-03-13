@@ -99,7 +99,7 @@
           <el-input class="iphone-input" v-model="selectUser.avatarName" placeholder="输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="部门" prop="deptNo">
-          <el-select v-model="selectUser.deptNo" placeholder="请选择">
+          <el-select v-model="selectUser.deptNo" @change="changeDept" placeholder="请选择">
             <el-option
               v-for="item in deptArr"
               :key="item.deptId"
@@ -215,16 +215,17 @@ export default {
   },
 
   methods: {
-    // async addUserInfo() {
-    //   let res=await
-    // },
+    changeDept(){
+      this.selectUser.roles="";
+      this.selectUser.position="";
+    },
     async updateUserInfo() {
       let { id, avatarName, phoneNumber,deptNo,roles  } = this.selectUser;
       let res = await editUserInfoApi(id, {
         avatarName,
         roles,
         deptNo,
-        phoneNumber,
+        // phoneNumber,
       });
       console.log(res);
       if (res.status == 200) {
