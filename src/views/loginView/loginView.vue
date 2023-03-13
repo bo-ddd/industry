@@ -42,6 +42,7 @@ export default {
 
     data() {
         return {
+            //登录inp.value
            input :{
             username:'',
             password:''
@@ -49,46 +50,51 @@ export default {
         }
     },
     methods: {
+        //封装消息提示方法
         loginMessage(text,type) {
         this.$message({
           showClose: true,
           message: text,
           type: type,
-          duration:1500
+          duration:1000
         });
        
       },
-    
+      
+      //跳转home页面
         toPage() {
             this.$router.push({
                 name: "Home",
             });
         },
-        login() {
-        console.log(this.input);
+        //登录方法
+      async  login() {
+            //前端校验
         if (!this.input.username) {
             this.loginMessage("用户名不能为空",'warning')
         }else if(!this.input.password){
             this.loginMessage("密码不能为空",'warning')
         }else {
-            loginApi({
-              username: this.input.username,
-              password: this.input.password,
-            }).then(res => {
-
+            //调取登录接口
+         await this.$store.dispatch("login",this.input).then(res => {
                 if (res.status == 201) {
-                    console.log(res);
+                    this.$store.commit('NEW_TOKEN')
+                    this.$store.commit('SET_TOKEN',res.data.data.access_token)
                     sessionStorage.setItem("token", res.data.data.access_token);
+                    sessionStorage.setItem("time", new Date().getTime());
                     this.loginMessage("登录成功",'success')
                     setTimeout(() => {
                         this.toPage()
-                    }, 1500);
+                    }, 1000);
+                }else{
+                    this.loginMessage("服务器忙",'error')
                 }
               }).catch(res => {
                if (res.response.status == 401) {
-                this.loginMessage("账号未授权",'error')
-                   
-               }
+                    this.loginMessage("账号未授权",'error')
+               }else{
+                    this.loginMessage("服务器忙",'error')
+                }
             })
         }
     },
