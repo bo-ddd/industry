@@ -150,7 +150,7 @@
 
 <script>
 import { getUserListApi, registerUserApi, editUserInfoApi } from "@/api/api";
-import rolesList from "@/config/roles";
+import {deptNoList} from "@/config/roles";
 export default {
   data() {
     return {
@@ -337,10 +337,10 @@ export default {
             ...user,
             roles: user.roles ? Number(user.roles) : "",
             phoneNumber: user.phoneNumber,
-            deptName: rolesList?.find((role) => {
+            deptName: deptNoList?.find((role) => {
               return role.deptId == user.deptNo;
             })?.name,
-            position: rolesList?.find((role) => {
+            position: deptNoList?.find((role) => {
                 return role.deptId == user.deptNo;
               })
               ?.roles.find((item) => {
@@ -438,7 +438,7 @@ export default {
       return this.pageNum * this.pageSize;
     },
     deptArr() {
-      return rolesList?.map((role) => {
+      return deptNoList?.map((role) => {
         return {
           deptId: role.deptId,
           name: role.name,
@@ -448,7 +448,7 @@ export default {
     roleArr() {
       console.log("监听变化" + this.selectUser);
       return this.selectUser
-        ? rolesList?.find((item) => item.deptId == this.selectUser.deptNo)?.roles
+        ? deptNoList?.find((item) => item.deptId == this.selectUser.deptNo)?.roles
         : [];
     },
     // phone(){
